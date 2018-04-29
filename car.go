@@ -16,15 +16,16 @@ type SimpleChaincode struct {
 
 //用户
 type User struct {
-	Name       string   `json:"name"`        //用户名称
-	Passwd     string   `json:"passwd"`      //密码
-	PhonNumber string   `json:"phoneNumber"` //电话号码
-	Score      float64  `json:"score"`       //信用分值
-	CarID      []string `json:"carId"`       //车牌号
-	PhotoID    []int    `json:"photoId"`     //提交图片ID
-	QuestionID []int    `json:"questionId"`  //提出问题ID
-	BookID     []int    `json:"bookId"`      //教程ID
-	ID         int      `json:"id"`          //用户ID
+	Name              string   `json:"name"`          //用户名称
+	Passwd            string   `json:"passwd"`        //密码
+	PhonNumber        string   `json:"phoneNumber"`   //电话号码
+	Score             float64  `json:"score"`         //信用分值
+	CarID             []string `json:"carId"`         //车牌号
+	PhotoID           []int    `json:"photoId"`       //提交图片ID
+	QuestionID        []int    `json:"questionId"`    //提出问题ID
+	BookID            []int    `json:"bookId"`        //教程ID
+	ArbitrationID     []int    `json:"arbitrationId"` //仲裁ID
+	ID                int      `json:"id"`            //用户ID
 }
 
 //图片
@@ -52,7 +53,7 @@ type Question struct {
 	StartTime string         `json:"startTime"` //问题提出时间
 	EndTime   string         `json:"endTime"`   //问题截止时间
 	Score     float64        `json:"score"`     //悬赏分值
-	Answers   []Answer       `json:"answers"`   //回复列表
+	Answers   map[int]Answer `json:"answers"`   //回复列表
 	UserID    int            `json:"userId"`    //提出者ID
 	ID        int            `json:"id"`        //问题ID
 }
@@ -68,6 +69,14 @@ type Answer struct {
 	ID         int            `json:"id"`        //回复ID
 }
 
+//仲裁
+type Arbitration struct {
+    StartTime    string    `json:"startTime"`   //仲裁提出时间
+	EndTime      string    `json:"endTime"`     //仲裁截止时间
+	QuestionID   int       `json:"questionId"`  //问题ID
+	AnswerID     []int     `json:"answerId"`    //回答ID
+}
+
 
 var PhotoList map[int]Photo
 
@@ -76,6 +85,8 @@ var BookList map[int]Book
 var QuestionList map[int]Question
 
 var AnswerList map[int][]Answer
+
+var ArbitrationList map[int]Arbitration
 
 //Init
 func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface) pb.Response {
@@ -687,7 +698,7 @@ func (t *SimpleChaincode) AnswerQuestion(stub shim.ChaincodeStubInterface, args 
 	answer.ParentID = 0
 	answer.Score = score
 	
-	question.Answers = append(question.Answers, answer)
+	question.Answers[answerId] = answer
 	QuestionList[questionId] = question
 
 	fmt.Printf("AnswerQuestion success \n")
@@ -753,7 +764,313 @@ func (t *SimpleChaincode) Reply(stub shim.ChaincodeStubInterface, args []string)
 	return shim.Success(nil)
 }
 
+//DistributeScore
+func (t *SimpleChaincode) DistributeScore(stub shim.ChaincodeStubInterface, args []string) pb.Response {
+	fmt.Println("DistributeScore")
 
+	var id int            //用户ID
+	var score float64     //获取分数
+	var questionId int    //问题ID
+	var answerId int      //回答ID
+	var question Question
+	var answer Answer
+	var user User
+	var err error
+	
+
+	if len(args) != 4 {
+		return shim.Error("Incorrect number of arguments. Expecting 4")
+	}
+
+	id, err = strconv.Atoi(args[0])
+	if err != nil {
+		return shim.Error("Expecting integer value for asset holding：UserID ")
+	}
+
+	score, err = strconv.ParseFloat(args[1], 64)
+	if err != nil {
+		return shim.Error("Expecting float64 value for asset holding：Score ")
+	}
+	
+	questionId, err = strconv.Atoi(args[2])
+	if err != nil {
+		return shim.Error("Expecting integer value for asset holding：QuestionID ")
+	}
+    
+	answerId, err = strconv.Atoi(args[3])
+	if err != nil {
+		return shim.Error("Expecting integer value for asset holding：AnswerID ")
+	}
+	
+	question = QuestionList[questionId]
+	answer = question.Answers[answerId]
+	
+	if score > question.Score {
+		return shim.Error("score no enough ")
+	}
+	
+	answer.Score = score
+	
+	userByte, erro := stub.GetState(answer.UserID)
+	if erro != nil {
+		return shim.Error(erro.Error())
+	}
+	//将byte的结果转换成struct
+	err = json.Unmarshal(userByte, &user)
+	if err != nil {
+		return shim.Error(err.Error())
+	}
+
+	fmt.Printf(" Name = %s, Score = %f, ID = %d\n", user.Name, user.Score, id)
+	
+	user.Score = user.Score + score
+	
+	jsons, errs := json.Marshal(user) //转换成JSON返回的是byte[]
+	if errs != nil {
+		return shim.Error(errs.Error())
+	}
+
+	// Write the state to the ledger
+	err = stub.PutState(strconv.Itoa(answer.UserID), jsons)
+	if err != nil {
+		return shim.Error(err.Error())
+	}
+	
+	question.Answers[answerId] = answer
+	question.Score = question.Score - score
+	QuestionList[questionId] = question
+
+	fmt.Printf("DistributeScore success \n")
+	return shim.Success(nil)
+}
+
+//ReturnScore
+func (t *SimpleChaincode) ReturnScore(stub shim.ChaincodeStubInterface, args []string) pb.Response {
+	fmt.Println("ReturnScore")
+	
+	var questionId int    //问题ID
+	var id int
+	var question Question
+	var user User
+	var err error
+	
+
+	if len(args) != 1 {
+		return shim.Error("Incorrect number of arguments. Expecting 1")
+	}
+	
+	questionId, err = strconv.Atoi(args[0])
+	if err != nil {
+		return shim.Error("Expecting integer value for asset holding：QuestionID ")
+	}
+	
+	question = QuestionList[questionId]
+	
+	id = question.UserID
+	
+	if question.Score <= 0 {
+		return shim.Error("score no enough ")
+	}
+	
+	userByte, erro := stub.GetState(strconv.Itoa(id))
+	if erro != nil {
+		return shim.Error(erro.Error())
+	}
+	//将byte的结果转换成struct
+	err = json.Unmarshal(userByte, &user)
+	if err != nil {
+		return shim.Error(err.Error())
+	}
+
+	fmt.Printf(" Name = %s, Score = %f, ID = %d\n", user.Name, user.Score, id)
+	
+	user.Score = user.Score + question.Score
+	
+	jsons, errs := json.Marshal(user) //转换成JSON返回的是byte[]
+	if errs != nil {
+		return shim.Error(errs.Error())
+	}
+
+	// Write the state to the ledger
+	err = stub.PutState(strconv.Itoa(id), jsons)
+	if err != nil {
+		return shim.Error(err.Error())
+	}
+	
+	question.Score = 0
+	QuestionList[questionId] = question
+
+	fmt.Printf("ReturnScore success \n")
+	return shim.Success(nil)
+}
+
+//SubmitArbitration
+func (t *SimpleChaincode) SubmitArbitration(stub shim.ChaincodeStubInterface, args []string) pb.Response {
+	fmt.Println("SubmitArbitration")
+
+	var id int            //用户ID
+	var startTime string  //仲裁提出时间
+	var endTime string    //仲裁截止时间
+	var questionId int    //问题ID
+	var answerId int      //回答ID
+	var user User
+	var question Question
+	var arbitration Arbitration
+	var err error
+	var ok bool
+
+	if len(args) != 5 {
+		return shim.Error("Incorrect number of arguments. Expecting 5")
+	}
+
+	id, err = strconv.Atoi(args[0])
+	if err != nil {
+		return shim.Error("Expecting integer value for asset holding：UserID ")
+	}
+	
+	startTime = args[1]
+
+	endTime = args[2]
+
+	questionId, err = strconv.ParseFloat(args[3], 64)
+	if err != nil {
+		return shim.Error("Expecting float64 value for asset holding：QuestionID ")
+	}
+
+	answerId, err = strconv.Atoi(args[4])
+	if err != nil {
+		return shim.Error("Expecting integer value for asset holding：AnswerID ")
+	}
+
+	question = QuestionList[questionId]
+	
+	if question.Score <= 0 {
+		return shim.Error("score no enough")
+	}
+	
+	arbitration, ok = ArbitrationList[questionId]
+	arbitration.AnswerID = append(arbitration.AnswerID, answerId)
+	if !ok {
+		arbitration.StartTime = startTime
+		arbitration.EndTime = endTime
+		arbitration.QuestionID = questionId
+	}
+
+	ArbitrationList[questionId] = arbitration
+
+	fmt.Printf("SubmitArbitration success \n")
+	return shim.Success(nil)
+}
+
+//DeleteUser
+func (t *SimpleChaincode) delete(stub shim.ChaincodeStubInterface, args []string) pb.Response {
+	if len(args) != 1 {
+		return shim.Error("Incorrect number of arguments. Expecting 1")
+	}
+
+	err := stub.DelState(args[0])
+	if err != nil {
+		return shim.Error("Failed to delete state")
+	}
+
+	return shim.Success(nil)
+}
+
+//Invoke
+func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
+	fmt.Println("Invoke")
+	function, args := stub.GetFunctionAndParameters()
+	if function == "invoke" {
+		// Make payment of X units from A to B
+		return t.invoke(stub, args)
+	} else if function == "delete" {
+		// Deletes an entity from its state
+		return t.delete(stub, args)
+	} else if function == "query" {
+		// the old "Query" is now implemtned in invoke
+		return t.query(stub, args)
+	} else if function == "CreateUser" {
+		// the old "Query" is now implemtned in invoke
+		return t.CreateUser(stub, args)
+	} else if function == "GetUser" {
+		// the old "Query" is now implemtned in invoke
+		return t.GetUser(stub, args)
+	} else if function == "SetUser" {
+		// the old "Query" is now implemtned in invoke
+		return t.SetUser(stub, args)
+	} else if function == "SubmitPhoto" {
+		// the old "Query" is now implemtned in invoke
+		return t.SubmitPhoto(stub, args)
+	} else if function == "RecivePunishmentOrAward" {
+		// the old "Query" is now implemtned in invoke
+		return t.RecivePunishmentOrAward(stub, args)
+	} else if function == "SubmitBook" {
+		// the old "Query" is now implemtned in invoke
+		return t.SubmitBook(stub, args)
+	} else if function == "GetBookList" {
+		// the old "Query" is now implemtned in invoke
+		return t.GetBookList(stub, args)
+	} else if function == "BuyBook" {
+		// the old "Query" is now implemtned in invoke
+		return t.BuyBook(stub, args)
+	} else if function == "SubmitQuestion" {
+		// the old "Query" is now implemtned in invoke
+		return t.SubmitQuestion(stub, args)
+	} else if function == "AnswerQuestion" {
+		// the old "Query" is now implemtned in invoke
+		return t.AnswerQuestion(stub, args)
+	} else if function == "Reply" {
+		// the old "Query" is now implemtned in invoke
+		return t.Reply(stub, args)
+	} else if function == "DistributeScore" {
+		// the old "Query" is now implemtned in invoke
+		return t.DistributeScore(stub, args)
+	} else if function == "ReturnScore" {
+		// the old "Query" is now implemtned in invoke
+		return t.ReturnScore(stub, args)
+	} else if function == "SubmitArbitration" {
+		// the old "Query" is now implemtned in invoke
+		return t.SubmitArbitration(stub, args)
+	}
+
+	return shim.Error("Invalid invoke function name. Expecting \"invoke\" \"delete\" \"query\"")
+}
+
+
+func (t *SimpleChaincode) invoke(stub shim.ChaincodeStubInterface, args []string) pb.Response {
+	return shim.Success(nil)
+}
+
+// query callback representing the query of a chaincode
+func (t *SimpleChaincode) query(stub shim.ChaincodeStubInterface, args []string) pb.Response {
+	var A string // Entities
+	var err error
+
+	if len(args) != 1 {
+		return shim.Error("Incorrect number of arguments. Expecting name of the person to query")
+	}
+
+	A = args[0]
+
+	// Get the state from the ledger
+	Avalbytes, erro := stub.GetState(A)
+	if erro != nil {
+		return shim.Error(erro.Error())
+	}
+	if err != nil {
+		jsonResp := "{\"Error\":\"Failed to get state for " + A + "\"}"
+		return shim.Error(jsonResp)
+	}
+
+	if Avalbytes == nil {
+		jsonResp := "{\"Error\":\"Nil amount for " + A + "\"}"
+		return shim.Error(jsonResp)
+	}
+
+	jsonResp := "{\"Name\":\"" + A + "\",\"Amount\":\"" + string(Avalbytes) + "\"}"
+	fmt.Printf("Query Response:%s\n", jsonResp)
+	return shim.Success(Avalbytes)
+}
 
 func main() {
 	err := shim.Start(new(SimpleChaincode))
