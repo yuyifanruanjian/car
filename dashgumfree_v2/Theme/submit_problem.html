@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>车辆行为记录与积分体系应用</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="assets/css/zabuto_calendar.css">
+    <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
+    <link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-responsive.css" rel="stylesheet">
+
+    <script src="assets/js/chart-master/Chart.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<section id="container" >
+    <!-- **********************************************************************************************************************************************************
+    TOP BAR CONTENT & NOTIFICATIONS
+    *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+        <div class="sidebar-toggle-box">
+            <div class="fa fa-bars tooltips" data-placement="right" data-original-title="收起左边栏"></div>
+        </div>
+        <!--logo start-->
+        <a href="login.html" class="logo"><b>车辆行为记录与积分体系应用</b></a>
+        <!--logo end-->
+        <div class="nav notify-row" id="top_menu">
+            <!--  notification start -->
+            <ul class="nav top-menu">
+                <!-- settings start -->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                        <i class="fa fa-tasks"></i>
+                        <span class="badge bg-theme" id="messageNumber">2</span>
+                    </a>
+                    <ul class="dropdown-menu extended tasks-bar">
+                        <div class="notify-arrow notify-arrow-green"></div>
+                        <li>
+                            <p class="green" id="messageText">你有2个待处理通知</p>
+                        </li>
+                        <div id="messageList">
+                            <li>
+                                <a href="index.html#">
+                                    <div class="task-info">
+                                        <div class="desc">yyf发来了一份认证请求</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#">
+                                    <div class="task-info">
+                                        <div class="desc">yyf发来一份处理请求</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </div>
+                    </ul>
+                </li>
+                <!-- settings end -->
+            </ul>
+            <!--  notification end -->
+        </div>
+        <div class="top-menu">
+            <ul class="nav pull-right top-menu">
+                <li><a class="logout" href="login.html">Logout</a></li>
+            </ul>
+        </div>
+    </header>
+    <!--header end-->
+
+    <!-- **********************************************************************************************************************************************************
+    MAIN SIDEBAR MENU
+    *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar"  class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+
+                <p class="centered"><a href="index.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                <h5 class="centered" id="username">yyf</h5>
+
+                <li class="mt">
+                    <a href="index.html">
+                        <i class="fa fa-dashboard"></i>
+                        <span>个人信息</span>
+                    </a>
+                </li>
+
+                <li class="mt">
+                    <a href="submit_img.html" >
+                        <i class="fa fa-desktop"></i>
+                        <span>提交照片</span>
+                    </a>
+                </li>
+
+                <li class="mt">
+                    <a class="active" href="submit_problem.html" >
+                        <i class="fa fa-cogs"></i>
+                        <span>提出问题</span>
+                    </a>
+                </li>
+                <li class="mt">
+                    <a href="submit_book.html" >
+                        <i class="fa fa-book"></i>
+                        <span>上传教程</span>
+                    </a>
+                </li>
+                <li class="mt">
+                    <a href="submit_arbitration.html" >
+                        <i class="fa fa-tasks"></i>
+                        <span>参与仲裁</span>
+                    </a>
+                </li>
+
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <!--sidebar end-->
+
+
+
+</section>
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/jjquery-1.8.3.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="assets/js/jquery.scrollTo.min.js"></script>
+<script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+
+
+<!--common script for all pages-->
+<script src="assets/js/common-scripts.js"></script>
+
+<!--script for this page-->
+<script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
+<script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+
+<script>
+    //custom select box
+
+    $(function(){
+        $('select.styled').customSelect();
+    });
+
+</script>
+
+<script>
+    $.each($(".bottom"), function(index, value) {
+        $(this).on("click", ".comment", function() {
+            var comment_this = this;
+            //alert("123");
+            if($.cookie("user")) {
+                if(!$(".comment_list").eq(index).has("form").length) {
+                    $.ajax({
+                        url : "show_comment.php",
+                        type : "post",
+                        data : {
+                            titleid : $(comment_this).attr("data-id")
+                        },
+                        beforeSend : function(jqXHR, settings) {
+                            $(".comment_list").eq(index).append("<dl class='comment_load'><dd>正在加载评论</dd></dl>");
+                        },
+                        success : function(response, status) {
+                            $(".comment_list").eq(index).find(".comment_load").hide();
+                            // 初始加载第1页(每页2条评论)
+                            var json_comment = $.parseJSON(response);
+                            var count = 0;
+                            $.each(json_comment, function(index2, value) {
+                                //alert(value.count); //查询总页数
+                                count = value.count;
+                                $(".comment_list").eq(index).append("<dl class='comment_content'><dt>" + value.user + "</dt><dd>" + value.comment + "</dd><dd class='date'>" + value.date + "</dd></dl>");
+                            });
+                            $(".comment_list").eq(index).append("<dl><dd><span class='load_more'>加载更多评论</span></dd></dl>");
+                            // 有了"加载更多评论"按钮，则从第2页开始加载评论
+                            var page = 2;
+                            // 如果评论总数<=2，"加载更多评论"按钮的click事件销毁，并隐藏
+                            if (page > count) {
+                                //将click事件销毁掉，所以用on()事件
+                                $(".comment_list").eq(index).find(".load_more").off("click");
+                                $(".comment_list").eq(index).find(".load_more").hide();
+                            }
+                            $(".comment_list").eq(index).find(".load_more").button().on("click", function() {
+                                $(".comment_list").eq(index).find(".load_more").button("disable");
+                                $.ajax({
+                                    url : "show_comment.php",
+                                    type : "post",
+                                    data : {
+                                        titleid : $(comment_this).attr("data-id"),
+                                        page : page //将要显示的第x页的x传递到服务器
+                                    },
+                                    beforeSend : function(jqXHR, settings) {
+                                        $(".comment_list").eq(index).find(".load_more").html("<img src = 'img/more_load.gif' />");
+                                    },
+                                    success : function(response, status) {
+                                        var json_comment_more = $.parseJSON(response);
+                                        $.each(json_comment_more, function(index3, value) {
+                                            $(".comment_list").eq(index).find(".comment_content").last().after("<dl class='comment_content'><dt>" + value.user + "</dt><dd>" + value.comment + "</dd><dd class='date'>" + value.date + "</dd></dl>");
+                                        });
+                                        $(".comment_list").eq(index).find(".load_more").button("enable");
+                                        $(".comment_list").eq(index).find(".load_more").html("加载更多评论");
+                                        page++; //不断显示下一页
+                                        // 要查询的页数超过总页数，"加载更多评论"按钮的click事件销毁，并隐藏
+                                        if (page > count) {
+                                            //将click事件销毁掉，所以用on()事件
+                                            $(".comment_list").eq(index).find(".load_more").off("click");
+                                            $(".comment_list").eq(index).find(".load_more").hide();
+                                        }
+                                    }
+                                });
+                            });
+                            $(".comment_list").eq(index).append("<form><dl class='comment_add'><dt><textarea name='comment'></textarea></dt><dd><input type='hidden' name='titleid' value='" + $(comment_this).attr("data-id") + "' /><input type='hidden' name='user' value='" + $.cookie("user") + "' /><input type='button' value='发表' /></dd></dl></form>");
+                            // 所以type="button"的按钮的click事件要放置在表单生成之后
+                            $(".comment_list").eq(index).find("input[type=button]").button().click(function() {
+                                //alert("123");
+                                //alert($(".comment_list").eq(index).find("form").find("textarea").val());
+                                var _this = this;
+                                $(".comment_list").eq(index).find("form").ajaxSubmit({
+                                    url : "add_comment.php",
+                                    type : "post",
+                                    beforeSubmit:function(formData,jqForm,options) {
+                                        $("#loading").dialog("open");
+                                        $(_this).button("disable"); //禁用发布按钮
+                                    },
+                                    success:function(responseText,statusText) {
+                                        //alert(responseText); //新增成功，返回1
+                                        if(responseText) {
+                                            $(_this).button("enable");
+                                            $("#loading").css("background","url(img/success.gif) no-repeat 20px center").html("数据新增成功...");
+                                            setTimeout(function() {
+                                                var date = new Date();
+                                                $("#loading").dialog("close");
+                                                $(".comment_list").eq(index).prepend('<dl class="comment_content"><dt>' + $.cookie('user') + '</dt><dd>' + $('.comment_list').eq(index).find('textarea').val() + '</dd><dd>' + date.getFullYear() + '-' + (date.getMonth()+ 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + '</dd></dl>');
+                                                $(".comment_list").eq(index).find("form").resetForm(); //重置表单
+                                                $("#loading").css("background","url(img/loading.gif) no-repeat 20px center").html("数据交互中...");
+                                            }, 1000);
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                    });
+                }
+                if($(".comment_list").eq(index).is(":hidden")) {
+                    $(".comment_list").eq(index).show();
+                    //$.ajax(); //远程加载不应放在这儿
+                } else {
+                    $(".comment_list").eq(index).hide();
+                }
+            } else {
+                $("#error").dialog("open");
+                setTimeout(function() {
+                    $("#error").dialog("close");
+                    $("#login").dialog("open");
+                }, 1000);
+            }
+        });
+    });
+</script>
+</body>
+</html>

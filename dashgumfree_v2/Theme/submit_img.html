@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>车辆行为记录与积分体系应用</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="assets/css/zabuto_calendar.css">
+    <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
+    <link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/app.css">
+
+    <script src="assets/js/chart-master/Chart.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- 七牛云图床存储 -->
+    <script type="text/javascript" src="assets/js/jquery.js"></script>
+    <script type="text/javascript" src="assets/js/crypto.js"></script>
+    <script type="text/javascript" src="assets/js/token.js"></script>
+    <script type="text/javascript" src="assets/js/qiniu.min.js"></script>
+
+</head>
+
+<body>
+<section>
+    <!-- **********************************************************************************************************************************************************
+    TOP BAR CONTENT & NOTIFICATIONS
+    *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+        <div class="sidebar-toggle-box">
+            <div class="fa fa-bars tooltips" data-placement="right" data-original-title="收起左边栏"></div>
+        </div>
+        <!--logo start-->
+        <a href="login.html" class="logo"><b>车辆行为记录与积分体系应用</b></a>
+        <!--logo end-->
+        <div class="nav notify-row" id="top_menu">
+            <!--  notification start -->
+            <ul class="nav top-menu">
+                <!-- settings start -->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                        <i class="fa fa-tasks"></i>
+                        <span class="badge bg-theme" id="messageNumber">2</span>
+                    </a>
+                    <ul class="dropdown-menu extended tasks-bar">
+                        <div class="notify-arrow notify-arrow-green"></div>
+                        <li>
+                            <p class="green" id="messageText">你有2个待处理通知</p>
+                        </li>
+                        <div id="messageList">
+                            <li>
+                                <a href="index.html#">
+                                    <div class="task-info">
+                                        <div class="desc">yyf发来了一份认证请求</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#">
+                                    <div class="task-info">
+                                        <div class="desc">yyf发来一份处理请求</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </div>
+                    </ul>
+                </li>
+                <!-- settings end -->
+            </ul>
+            <!--  notification end -->
+        </div>
+        <div class="top-menu">
+            <ul class="nav pull-right top-menu">
+                <li><a class="logout" href="login.html">Logout</a></li>
+            </ul>
+        </div>
+    </header>
+    <!--header end-->
+
+    <!-- **********************************************************************************************************************************************************
+    MAIN SIDEBAR MENU
+    *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar"  class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+
+                <p class="centered"><a href="index.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                <h5 class="centered" id="username">yyf</h5>
+
+                <li class="mt">
+                    <a href="index.html">
+                        <i class="fa fa-dashboard"></i>
+                        <span>个人信息</span>
+                    </a>
+                </li>
+
+                <li class="mt">
+                    <a class="active" href="submit_img.html" >
+                        <i class="fa fa-desktop"></i>
+                        <span>提交照片</span>
+                    </a>
+                </li>
+
+                <li class="mt">
+                    <a href="submit_problem.html" >
+                        <i class="fa fa-cogs"></i>
+                        <span>提出问题</span>
+                    </a>
+                </li>
+                <li class="mt">
+                    <a href="submit_book.html" >
+                        <i class="fa fa-book"></i>
+                        <span>上传教程</span>
+                    </a>
+                </li>
+                <li class="mt">
+                    <a href="submit_arbitration.html" >
+                        <i class="fa fa-tasks"></i>
+                        <span>参与仲裁</span>
+                    </a>
+                </li>
+
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <!--sidebar end-->
+
+    <!-- **********************************************************************************************************************************************************
+    MAIN CONTENT
+    *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <div id="container">
+                <div id="uploader" style="margin-left: 20%; margin-top: 20%; width: 280%; height: 100%;">
+                    <button id="pickfiles" class="btn btn-theme" style="font-size: x-large"><i class="fa fa-lock"></i> 提交图片</button>
+                    <div>
+                        <h1>拖放图片到这里上传图片</h1>
+                    </div>
+
+                </div>
+                <div class="display" style="margin-left: 20%; margin-top: 30px; width: 280%; height: 100%;">
+                    <div class="status" >
+                        <img src="assets/img/icons/suc.png" alt="上传成功">
+                        <div class="words"></div>
+                    </div>
+                    <div id="link-area" class="row">
+                        <div class="link">
+                            <div style="font-size: x-large" class="col-sm-2">图片链接</div>
+                            <div id="link" class="col-sm-8" style="font-size: x-large">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </section>
+
+</section>
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/jjquery-1.8.3.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="assets/js/jquery.scrollTo.min.js"></script>
+<script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+
+
+<!--common script for all pages-->
+<script src="assets/js/common-scripts.js"></script>
+
+<!--script for this page-->
+<script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
+<script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+
+<script>
+    //custom select box
+
+    $(function(){
+        $('select.styled').customSelect();
+    });
+
+</script>
+<!-- 提交文件 -->
+<script>
+    localStorage['ak'] = 'x2j9m_IbBZ0KIDhdF_rONYAeWvY_aNO21I2V8IP6';
+    localStorage['sk'] = '9YLou3qblDuQk0aRD6o22OKK4oPziysAU9WE4KW4';
+    localStorage['bucket'] = 'filesave';
+    localStorage['domain'] = 'p8pmytbbr.bkt.clouddn.com';
+    const uptoken = genUpToken(localStorage['ak'], localStorage['sk'], localStorage['bucket']);
+    const domain = localStorage['domain'].indexOf('http') == -1 ? 'http://' + localStorage['domain'] : localStorage['domain'];
+    var uploader = Qiniu.uploader({
+        disable_statistics_report: false,
+        runtimes: 'html5,flash,html4',
+        browse_button: 'pickfiles',
+        container: 'container',
+        drop_element: 'container',
+        max_file_size: '1000mb',
+        flash_swf_url: 'bower_components/plupload/js/Moxie.swf',
+        dragdrop: true,
+        chunk_size: '4mb',
+        multi_selection: !(moxie.core.utils.Env.OS.toLowerCase() === "ios"),
+        uptoken: uptoken,
+        domain: 'https://upload.qbox.me',
+        get_new_uptoken: false,
+        auto_start: true,
+        log_level: 5,
+        init: {
+            'BeforeChunkUpload': function(up, file) {
+                console.log("before chunk upload:", file.name);
+            },
+            'FilesAdded': function(up, files) {
+                $('.words').html('上传中...');
+            },
+            'BeforeUpload': function(up, file) {
+                console.log("this is a beforeupload function from init");
+                var chunk_size = plupload.parseSize(this.getOption(
+                    'chunk_size'));
+            },
+            'UploadProgress': function(up, file) {
+            },
+            'UploadComplete': function() {
+                $('.words').html('上传完成');
+                $('.status').css('display', 'flex');
+                setTimeout(() => {
+                    $('.status').css('display', 'none');
+                }, 3000);
+                $('#link-area').css('visibility', 'visible');
+
+            },
+            'FileUploaded': function(up, file, info) {
+                console.log("response:", info.response);
+                res = info.response;
+                res = JSON.parse(res);
+                const link = domain + '/' + res.key;
+                $('#link').append(link);
+            },
+            'Error': function(up, err, errTip) {
+            }
+        }
+    });
+
+
+    $('#container').on(
+        'dragenter',
+        function(e) {
+            e.preventDefault();
+            $('#container').addClass('draging');
+            e.stopPropagation();
+        }
+    ).on('drop', function(e) {
+        e.preventDefault();
+        $('#container').removeClass('draging');
+        e.stopPropagation();
+    }).on('dragleave', function(e) {
+        e.preventDefault();
+        $('#container').removeClass('draging');
+        e.stopPropagation();
+    }).on('dragover', function(e) {
+        e.preventDefault();
+        $('#container').addClass('draging');
+        e.stopPropagation();
+    });
+
+    $('#link-area').on('click', function(e) {
+        const btn = e.target;
+        const targetId = $(btn).attr('data-action-target');
+        const val = $(targetId).val();
+        copyToClipboard(val);
+    });
+
+    function copyToClipboard(input) {
+        const el = document.createElement('textarea');
+        el.style.fontsize = '12pt'
+        el.style.border = '0'
+        el.style.padding = '0'
+        el.style.margin = '0'
+        el.style.position = 'absolute'
+        el.style.left = '-9999px'
+        el.setAttribute('readonly', '')
+        el.value = input
+
+        document.body.appendChild(el)
+        el.select()
+
+        let success = false;
+        try {
+            success = document.execCommand('copy', true);
+        } catch (err) { }
+
+        document.body.removeChild(el);
+
+        return success;
+    }
+</script>
+
+</body>
+</html>
