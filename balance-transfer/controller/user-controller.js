@@ -5,24 +5,16 @@ logger.setLevel('DEBUG');
 var user = require('../model/user');
 
 
-var register = async function (req) {
+var register = async function (req, res, token) {
     try {
         var para_json = {
             name:req.body.username,
-            passwd:req.body.passwd,
+            passwd:req.body.password,
             phone:req.body.phone,
-            url:""
-
+            url:"",
+            score: 0
         };
-        var user_id = await user.register(para_json);
-
-        var response = {
-            success: true,
-            status: '200',
-            message: '注册成功',
-            payload: {id: user_id}
-        };
-        return response;
+        await user.register(res, token, para_json);
     } catch(error) {
         logger.error('Failed to get registered user: %s with error: %s', this.body.name, error.toString());
         return 'failed '+error.toString();

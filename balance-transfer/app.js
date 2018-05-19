@@ -409,12 +409,14 @@ var userController = require('./controller/user-controller');
 app.post('/register', async function(req, res) {
     logger.debug('==================== Register ==================');
     console.log(req.body);
-    let message = await userController.register(req);
     var token = jwt.sign({
         exp: Math.floor(Date.now() / 1000) + parseInt(hfc.getConfigSetting('jwt_expiretime')),
         username: req.body.username,
-        orgName: '0'
+        orgName: req.body.password
     }, app.get('secret'));
-    message.token = token;
-    res.send(message);
+    userController.register(req, res, token).then(function () {
+        console.log(111);
+    }, function () {
+        console.log(222);
+    });
 });
