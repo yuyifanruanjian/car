@@ -42,6 +42,9 @@ var sqlSelect = async function(search){
         }
     }
     sql += sql_temp? ("where"+sql_temp.substring(4,sql_temp.length-1)):"";
+    if (search.order != null) {
+        sql += ' order by ' + search.order;
+    }
     if (search.page != null) {
         sql+=" limit "+search.page.limit+" offset "+search.page.offset*search.page.limit;
     }

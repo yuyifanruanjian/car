@@ -411,12 +411,83 @@ app.post('/register', async function(req, res) {
     console.log(req.body);
     var token = jwt.sign({
         exp: Math.floor(Date.now() / 1000) + parseInt(hfc.getConfigSetting('jwt_expiretime')),
-        username: req.body.username,
+        username: req.body.phone,
         orgName: req.body.password
     }, app.get('secret'));
-    userController.register(req, res, token).then(function () {
-        console.log(111);
-    }, function () {
-        console.log(222);
-    });
+    await userController.register(req, res, token);
+});
+
+//CarRegister
+app.post('/carRegister', async function(req, res) {
+    logger.debug('==================== Car Register ==================');
+    console.log(req.body);
+    await userController.carRegister(req, res);
+});
+
+//Login
+app.post('/login', async function(req, res) {
+    logger.debug('==================== Login ==================');
+    console.log(req.body);
+    var token = jwt.sign({
+        exp: Math.floor(Date.now() / 1000) + parseInt(hfc.getConfigSetting('jwt_expiretime')),
+        username: req.body.phone,
+        orgName: req.body.password
+    }, app.get('secret'));
+    await userController.login(req, res, token);
+});
+
+//UserInfo
+app.post('/userInfo', async function(req, res) {
+    logger.debug('==================== User Info ==================');
+    console.log(req.body);
+    await userController.userInfo(req, res);
+});
+
+//MinePhoto
+app.post('/minePhoto', async function(req, res) {
+    logger.debug('==================== Mine Photo ==================');
+    console.log(req.body);
+    await userController.minePhoto(req, res);
+});
+
+//MyCarPhoto
+app.post('/myCarPhoto', async function(req, res) {
+    logger.debug('==================== My Car Photo ==================');
+    console.log(req.body);
+    await userController.myCarPhoto(req, res);
+});
+
+//MineQuestion
+app.post('/mineQuestion', async function(req, res) {
+    logger.debug('==================== Mine Question ==================');
+    console.log(req.body);
+    await userController.mineQuestion(req, res);
+});
+
+//AnswerQuestion
+app.post('/answerQuestion', async function(req, res) {
+    logger.debug('==================== Answer Question ==================');
+    console.log(req.body);
+    await userController.answerQuestion(req, res);
+});
+
+//MineBook
+app.post('/mineBook', async function(req, res) {
+    logger.debug('==================== Mine Book ==================');
+    console.log(req.body);
+    await userController.mineBook(req, res);
+});
+
+//MineArbitration
+app.post('/mineArbitration', async function(req, res) {
+    logger.debug('==================== Mine Arbitration ==================');
+    console.log(req.body);
+    await userController.mineArbitration(req, res);
+});
+
+//VotedArbitration
+app.post('/votedArbitration', async function(req, res) {
+    logger.debug('==================== Voted Arbitration ==================');
+    console.log(req.body);
+    await userController.votedArbitration(req, res);
 });
