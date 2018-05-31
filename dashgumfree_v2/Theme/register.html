@@ -74,13 +74,15 @@ MAIN CONTENT
 <script type="text/javascript" src="assets/js/md5.js"></script>
 <script>
     $.backstretch("assets/img/hero-bg.jpg", {speed: 500});
-    $("#carIdList").val(2);
+    $("#carIdList").val(1);
     document.getElementById("addCarId").onclick=function () {
-        $("#carIdList").append("<input type=\"text\" class=\"form-control\" placeholder=\"车牌号\" autofocus id=\"carId"+$("#carIdList").val().toString()+"\"><br>")
+        $("#carIdList").append("<input type=\"text\" class=\"form-control\" placeholder=\"车牌号\" autofocus id=\"carId"+($("#carIdList").val()+1).toString()+"\"><br>")
+        $("#carIdList").val($("#carIdList").val()+1);
     };
 
     var host = "192.168.1.102";
     var port = "4000";
+
     $(function () {
         $("#register").click(function () {
             var username = $("#username").val();
@@ -91,21 +93,42 @@ MAIN CONTENT
                 return;
             }
             var phone = $("#phone").val();
-            var carIdList = [];
-            for (var i = 1; i <= $("#carIdList").val(); i++){
-                carIdList[i] = $("#carId"+i.toString()).val();
+            var carIdList = new Array();
+            for (var i = 0; i < $("#carIdList").val(); i++){
+                carIdList.push({id:$("#carId"+(i+1).toString()).val(), score: 0});
             }
             $.ajax({
                 type: "post",
                 url: "http://"+host+":"+port+"/register",
                 dataType: "json",
-                data:{ username: username, password: passwd1, phone: phone, carIdList: carIdList },
+                data:{ username: username, password: passwd1, phone: phone},
                 success: function(data){
                     if(data){
                         if(data.message == "注册成功"){
-                            window.location.href = "index.html";
+                            var id = data.payload.id;
+                            var token = data.token;
+                            if (carIdList != {}) {
+                                $.ajax({
+                                    type: "post",
+                                    url: "http://" + host + ":" + port + "/carRegister",
+                                    dataType: "json",
+                                    beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
+                                    data: {id: id, carIdList: JSON.stringify(carIdList)},
+                                    success: function (data) {
+                                        if (data) {
+                                            if (data.message == "注册成功") {
+                                                window.location.href = "index.html?token="+token+"&id="+id;
+                                            } else {
+                                                alert(data.message);
+                                            }
+                                        } else {
+                                            alert("数据传输失败");
+                                        }
+                                    }
+                                });
+                            }
                         }else{
-                            alert('注册失败');
+                            alert(data.message);
                         }
                     } else{
                         alert("数据传输失败");
