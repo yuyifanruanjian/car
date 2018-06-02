@@ -405,6 +405,9 @@ app.get('/channels', async function(req, res) {
 
 
 var userController = require('./controller/user-controller');
+var photoController = require('./controller/photo-controller');
+var bookController = require('./controller/book-controller');
+var questionController = require('./controller/question-controller');
 //Register
 app.post('/register', async function(req, res) {
     logger.debug('==================== Register ==================');
@@ -490,4 +493,88 @@ app.post('/votedArbitration', async function(req, res) {
     logger.debug('==================== Voted Arbitration ==================');
     console.log(req.body);
     await userController.votedArbitration(req, res);
+});
+
+//SubmitPhoto
+app.post('/submitPhoto', async function(req, res) {
+    logger.debug('==================== Submit Photo ==================');
+    console.log(req.body);
+    await photoController.submitPhoto(req, res);
+});
+
+//ReceivePunOrAward
+app.post('/receivePunOrAward', async function(req, res) {
+    logger.debug('==================== Receive Pun Or Award ==================');
+    console.log(req.body);
+    await photoController.receivePunOrAward(req, res);
+});
+
+//PhotoList
+app.post('/photoList', async function(req, res) {
+    logger.debug('==================== Photo List ==================');
+    console.log(req.body);
+    await photoController.photoList(req, res);
+});
+
+//SubmitBook
+app.post('/submitBook', async function(req, res) {
+    logger.debug('==================== Submit Book ==================');
+    console.log(req.body);
+    await bookController.submitBook(req, res);
+});
+
+//BookList
+app.post('/bookList', async function(req, res) {
+    logger.debug('==================== Book List ==================');
+    console.log(req.body);
+    await bookController.bookList(req, res);
+});
+
+//BuyBook
+app.post('/buyBook', async function(req, res) {
+    logger.debug('==================== Buy Book ==================');
+    console.log(req.body);
+    await bookController.buyBook(req, res);
+});
+
+//SubmitQuestion
+app.post('/submitQuestion', async function(req, res) {
+    logger.debug('==================== Submit Question ==================');
+    console.log(req.body);
+    await questionController.submitQuestion(req, res);
+});
+
+//QuestionList
+app.post('/questionList', async function(req, res) {
+    logger.debug('==================== Question List ==================');
+    console.log(req.body);
+    await questionController.questionList(req, res);
+});
+
+//QuestionInfo
+app.post('/questionInfo', async function(req, res) {
+    logger.debug('==================== Question Info ==================');
+    console.log(req.body);
+    await questionController.questionInfo(req, res);
+});
+
+//AnswerList
+app.post('/answerList', async function(req, res) {
+    logger.debug('==================== Answer List ==================');
+    console.log(req.body);
+    await questionController.answerList(req, res);
+});
+
+//Answer
+app.post('/answer', async function(req, res) {
+    logger.debug('==================== Answer ==================');
+    console.log(req.body);
+    await questionController.answer(req, res);
+});
+
+//BestAnswer
+app.post('/bestAnswer', async function(req, res) {
+    logger.debug('==================== Best Answer ==================');
+    console.log(req.body);
+    await questionController.bestAnswer(req, res);
 });
