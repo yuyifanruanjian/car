@@ -97,13 +97,13 @@
                 <h5 class="centered" id="username">yyf</h5>
 
                 <li class="sub-menu">
-                    <a class="active" href="javascript:;" >
+                    <a href="javascript:;" >
                         <i class="fa fa-desktop"></i>
                         <span>个人信息</span>
                     </a>
                     <ul class="sub">
-                        <li><a onclick="goToMyPhoto()">我的照片列表</a></li>
-                        <li class="active"><a onclick="goToMyQuestion()">我的问题列表</a></li>
+                        <li class="active"><a onclick="goToMyPhoto()">我的照片列表</a></li>
+                        <li><a onclick="goToMyQuestion()">我的问题列表</a></li>
                         <li><a onclick="goToMyBook()">我的教程列表</a></li>
                         <li><a onclick="goToMyArbitration()">我的仲裁列表</a></li>
                     </ul>
@@ -121,13 +121,13 @@
                 </li>
 
                 <li class="sub-menu">
-                    <a href="javascript:;" >
+                    <a class="active" href="javascript:;" >
                         <i class="fa fa-question"></i>
                         <span>问题</span>
                     </a>
                     <ul class="sub">
-                        <li class="active"><a onclick="goToSubmitProblem()">提出问题</a></li>
-                        <li><a onclick="goToProblemList()">问题列表</a></li>
+                        <li><a onclick="goToSubmitProblem()">提出问题</a></li>
+                        <li class="active"><a onclick="goToProblemList()">问题列表</a></li>
                     </ul>
                 </li>
 
@@ -165,13 +165,8 @@
     *********************************************************************************************************************************************************** -->
     <!--main content start-->
     <section id="main-content">
-        <section class="wrapper site-min-height" id="mineQuestion">
-            <h3><i class="fa fa-angle-right"></i> 我提出的问题</h3>
-            <hr>
-        </section><! --/wrapper -->
-
-        <section class="wrapper site-min-height" id="answerQuestion">
-            <h3><i class="fa fa-angle-right"></i> 我回答的问题</h3>
+        <section class="wrapper site-min-height" id="questionList">
+            <h3><i class="fa fa-angle-right"></i> 问题列表</h3>
             <hr>
         </section><! --/wrapper -->
     </section><!-- /MAIN CONTENT -->
@@ -229,7 +224,7 @@
             var id = req['id'];
             $.ajax({
                 type: "post",
-                url: "http://"+host+":"+port+"/mineQuestion",
+                url: "http://"+host+":"+port+"/questionList",
                 dataType: "json",
                 data:{ id: id},
                 beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
@@ -238,11 +233,11 @@
                         if(data.message == "获取成功"){
                             for (var i = 0; i < data.payload.length; i++) {
                                 if (i % 3 == 0){
-                                    $('#mineQuestion').append("<div class=\"row\" id=\"mineQuestion"+parseInt(i/3).toString()+"\">\n</div>");
+                                    $('#questionList').append("<div class=\"row\" id=\"questionList"+parseInt(i/3).toString()+"\">\n</div>");
                                 }
                                 startt = new Date(new Date(data.payload[i].starttime).getTime());
                                 endt = new Date(new Date(data.payload[i].endtime).getTime());
-                                $('#mineQuestion'+parseInt(i/3).toString()).append("<div class=\"col-md-4 col-sm-4 mb question\" id=\""+data.payload[i].id.toString()+"\" onclick=\"getQuestionInfo()\">\n" +
+                                $('#questionList'+parseInt(i/3).toString()).append("<div class=\"col-md-4 col-sm-4 mb question\" id=\""+data.payload[i].id.toString()+"\" onclick=\"getQuestionInfo()\">\n" +
                                     "                    <div class=\"white-panel pn\">\n" +
                                     "                        <div class=\"white-header\">\n" +
                                     "                            <h5>"+data.payload[i].name+"</h5>\n" +
@@ -261,8 +256,8 @@
                                     "                    </div>\n" +
                                     "                </div><!-- /col-md-4 -->");
                             }
-                            $("#mineQuestion").on('click','.question',function(){
-                                var questionId = $(this).attr('id');
+                            $("#questionList").on('click','.question',function(){
+                                var questionId = $('.question').attr('id');
                                 goToProblem(questionId);
                             });
                         }else{
@@ -274,52 +269,6 @@
                 }
             });
 
-            $.ajax({
-                type: "post",
-                url: "http://"+host+":"+port+"/answerQuestion",
-                dataType: "json",
-                data:{ id: id},
-                beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
-                success: function(data){
-                    if(data){
-                        if(data.message == "获取成功"){
-                            for (var i = 0; i < data.payload.length; i++) {
-                                if (i % 3 == 0){
-                                    $('#answerQuestion').append("<div class=\"row\" id=\"answerQuestion"+parseInt(i/3).toString()+"\">\n</div>");
-                                }
-                                startt = new Date(new Date(data.payload[i].starttime).getTime());
-                                endt = new Date(new Date(data.payload[i].endtime).getTime());
-                                $('#answerQuestion'+parseInt(i/3).toString()).append("<div class=\"col-md-4 col-sm-4 mb question\" id=\"question"+data.payload[i].id.toString()+"\" onclick=\"getQuestionInfo()\">\n" +
-                                    "                    <div class=\"white-panel pn\">\n" +
-                                    "                        <div class=\"white-header\">\n" +
-                                    "                            <h5>"+data.payload[i].name+"</h5>\n" +
-                                    "                        </div>\n" +
-                                    "                        <div class=\"row\">\n" +
-                                    "                            <div class=\"col-sm-4 col-xs-4 goleft\">\n" +
-                                    "                                <p><i class=\"fa fa-money\"></i> "+data.payload[i].score+"</p>\n" +
-                                    "                            </div>\n" +
-                                    "                            <div class=\"col-sm-8 col-xs-8 goright\">\n" +
-                                    "                                <p><i class=\"fa fa-times-circle-o\"></i> "+startt.getFullYear()+"-"+(startt.getMonth()+1).toString()+"-"+startt.getDate()+" "+startt.getHours()+":"+startt.getMinutes()+":"+startt.getSeconds()+"~"+endt.getFullYear()+"-"+(endt.getMonth()+1).toString()+"-"+endt.getDate()+" "+endt.getHours()+":"+endt.getMinutes()+":"+endt.getSeconds()+"</p>\n" +
-                                    "                            </div>\n" +
-                                    "                        </div>\n" +
-                                    "                        <div class=\"centered\">\n" +
-                                    "                            <span class=\"span-wrap\">"+data.payload[i].content+"</span>\n" +
-                                    "                        </div>\n" +
-                                    "                    </div>\n" +
-                                    "                </div><!-- /col-md-4 -->");
-                            }
-                            $("#answerQuestion").on('click','.question',function(){
-                                var questionId = $(this).attr('id');
-                                goToProblem(questionId);
-                            });
-                        }else{
-                            alert(data.message);
-                        }
-                    } else{
-                        alert("数据传输失败");
-                    }
-                }
-            });
         });
 
     });

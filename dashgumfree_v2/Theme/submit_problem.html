@@ -7,21 +7,19 @@
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>车辆行为记录与积分体系应用</title>
+    <title>DASHGUM - Bootstrap Admin Template</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="assets/css/zabuto_calendar.css">
-    <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
-    <link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">
-
+    <link href="assets/js/fancybox/jquery.fancybox.css" rel="stylesheet" />
     <!-- Custom styles for this template -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
-    <script src="assets/js/chart-master/Chart.js"></script>
+    <script src="assets/js/jquery.js"></script>
+
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -29,7 +27,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+
 <section id="container" >
     <!-- **********************************************************************************************************************************************************
     TOP BAR CONTENT & NOTIFICATIONS
@@ -47,7 +45,7 @@
             <ul class="nav top-menu">
                 <!-- settings start -->
                 <li class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                    <a data-toggle="dropdown" class="dropdown-toggle">
                         <i class="fa fa-tasks"></i>
                         <span class="badge bg-theme" id="messageNumber">2</span>
                     </a>
@@ -58,14 +56,14 @@
                         </li>
                         <div id="messageList">
                             <li>
-                                <a href="index.html#">
+                                <a onclick="goToIndex()">
                                     <div class="task-info">
                                         <div class="desc">yyf发来了一份认证请求</div>
                                     </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a onclick="goToIndex()">
                                     <div class="task-info">
                                         <div class="desc">yyf发来一份处理请求</div>
                                     </div>
@@ -95,40 +93,65 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
 
-                <p class="centered"><a href="index.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                <p class="centered"><img src="assets/img/ui-sam.jpg" onclick="goToIndex()" id="userimg" class="img-rounded" width="60" height="60"></a></p>
                 <h5 class="centered" id="username">yyf</h5>
 
-                <li class="mt">
-                    <a href="index.html">
-                        <i class="fa fa-dashboard"></i>
+                <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-desktop"></i>
                         <span>个人信息</span>
                     </a>
+                    <ul class="sub">
+                        <li class="active"><a onclick="goToMyPhoto()">我的照片列表</a></li>
+                        <li><a onclick="goToMyQuestion()">我的问题列表</a></li>
+                        <li><a onclick="goToMyBook()">我的教程列表</a></li>
+                        <li><a onclick="goToMyArbitration()">我的仲裁列表</a></li>
+                    </ul>
                 </li>
 
-                <li class="mt">
-                    <a href="submit_img.html" >
-                        <i class="fa fa-desktop"></i>
-                        <span>提交照片</span>
+                <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-photo"></i>
+                        <span>照片</span>
                     </a>
+                    <ul class="sub">
+                        <li class="active"><a onclick="goToSubmitPhoto()">提交照片</a></li>
+                        <li><a onclick="goToImgList()">照片列表</a></li>
+                    </ul>
                 </li>
 
-                <li class="mt">
-                    <a class="active" href="submit_problem.html" >
-                        <i class="fa fa-cogs"></i>
-                        <span>提出问题</span>
+                <li class="sub-menu">
+                    <a class="active" href="javascript:;" >
+                        <i class="fa fa-question"></i>
+                        <span>问题</span>
                     </a>
+                    <ul class="sub">
+                        <li class="active"><a onclick="goToSubmitProblem()">提出问题</a></li>
+                        <li><a onclick="goToProblemList()">问题列表</a></li>
+                    </ul>
                 </li>
-                <li class="mt">
-                    <a href="submit_book.html" >
+
+                <li class="sub-menu">
+                    <a href="javascript:;" >
                         <i class="fa fa-book"></i>
-                        <span>上传教程</span>
+                        <span>教程</span>
                     </a>
+                    <ul class="sub">
+                        <li class="active"><a onclick="goToSubmitBook()">上传教程</a></li>
+                        <li><a onclick="goToBookList()">教程列表</a></li>
+                    </ul>
                 </li>
-                <li class="mt">
-                    <a href="submit_arbitration.html" >
-                        <i class="fa fa-tasks"></i>
-                        <span>参与仲裁</span>
+
+                <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-th-list"></i>
+                        <span>仲裁</span>
                     </a>
+                    <ul class="sub">
+                        <li class="active"><a  href="submit_arbitration.html">参与仲裁</a></li>
+                        <li><a  href="buttons.html">Buttons</a></li>
+                        <li><a  href="panels.html">Panels</a></li>
+                    </ul>
                 </li>
 
             </ul>
@@ -137,145 +160,124 @@
     </aside>
     <!--sidebar end-->
 
+    <!-- **********************************************************************************************************************************************************
+    MAIN CONTENT
+    *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper site-min-height" id="mineQuestion">
+            <h3><i class="fa fa-angle-right"></i> 提出问题</h3>
+            <hr>
+            <div id="form">
+                <div class="row mt">
+                    <div class="col-lg-12">
+                        <div class="form-panel">
+                            <h4 class="mb"><i class="fa fa-angle-right"></i> 问题信息</h4>
+                            <form class="form-horizontal style-form" method="get">
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">问题内容</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" id="content" type="text" placeholder="问题内容"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">悬赏分</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" id="score" placeholder="0" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">开始时间</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="start" class="form-control" placeholder="yyyymmddHHMMSS">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">结束时间</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="end" class="form-control" placeholder="yyyymmddHHMMSS">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-5 col-sm-5 control-label"></label>
+                                    <button type="button" class="btn btn-theme" id="submitInfo"><i class="fa"></i>提交</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div><!-- col-lg-12-->
+                </div><!-- /row -->
+            </div>
+        </section><! --/wrapper -->
 
-
+    </section><!-- /MAIN CONTENT -->
+    <!--main content end-->
 </section>
+<script src="assets/js/index.js"></script>
+<script src="assets/js/route.js"></script>
 <!-- js placed at the end of the document so the pages load faster -->
-<script src="assets/js/jquery.js"></script>
-<script src="assets/js/jjquery-1.8.3.min.js"></script>
+<script src="assets/js/fancybox/jquery.fancybox.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
 <script src="assets/js/jquery.scrollTo.min.js"></script>
 <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-
-
 <!--common script for all pages-->
 <script src="assets/js/common-scripts.js"></script>
-
-<!--script for this page-->
-<script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
-<script type="text/javascript" src="assets/js/gritter-conf.js"></script>
-
-<script>
-    //custom select box
-
-    $(function(){
-        $('select.styled').customSelect();
+<script type="text/javascript">
+    $(function() {
+        //    fancybox
+        jQuery(".fancybox").fancybox();
     });
 
 </script>
 
-<script>
-    $.each($(".bottom"), function(index, value) {
-        $(this).on("click", ".comment", function() {
-            var comment_this = this;
-            //alert("123");
-            if($.cookie("user")) {
-                if(!$(".comment_list").eq(index).has("form").length) {
-                    $.ajax({
-                        url : "show_comment.php",
-                        type : "post",
-                        data : {
-                            titleid : $(comment_this).attr("data-id")
-                        },
-                        beforeSend : function(jqXHR, settings) {
-                            $(".comment_list").eq(index).append("<dl class='comment_load'><dd>正在加载评论</dd></dl>");
-                        },
-                        success : function(response, status) {
-                            $(".comment_list").eq(index).find(".comment_load").hide();
-                            // 初始加载第1页(每页2条评论)
-                            var json_comment = $.parseJSON(response);
-                            var count = 0;
-                            $.each(json_comment, function(index2, value) {
-                                //alert(value.count); //查询总页数
-                                count = value.count;
-                                $(".comment_list").eq(index).append("<dl class='comment_content'><dt>" + value.user + "</dt><dd>" + value.comment + "</dd><dd class='date'>" + value.date + "</dd></dl>");
-                            });
-                            $(".comment_list").eq(index).append("<dl><dd><span class='load_more'>加载更多评论</span></dd></dl>");
-                            // 有了"加载更多评论"按钮，则从第2页开始加载评论
-                            var page = 2;
-                            // 如果评论总数<=2，"加载更多评论"按钮的click事件销毁，并隐藏
-                            if (page > count) {
-                                //将click事件销毁掉，所以用on()事件
-                                $(".comment_list").eq(index).find(".load_more").off("click");
-                                $(".comment_list").eq(index).find(".load_more").hide();
-                            }
-                            $(".comment_list").eq(index).find(".load_more").button().on("click", function() {
-                                $(".comment_list").eq(index).find(".load_more").button("disable");
-                                $.ajax({
-                                    url : "show_comment.php",
-                                    type : "post",
-                                    data : {
-                                        titleid : $(comment_this).attr("data-id"),
-                                        page : page //将要显示的第x页的x传递到服务器
-                                    },
-                                    beforeSend : function(jqXHR, settings) {
-                                        $(".comment_list").eq(index).find(".load_more").html("<img src = 'img/more_load.gif' />");
-                                    },
-                                    success : function(response, status) {
-                                        var json_comment_more = $.parseJSON(response);
-                                        $.each(json_comment_more, function(index3, value) {
-                                            $(".comment_list").eq(index).find(".comment_content").last().after("<dl class='comment_content'><dt>" + value.user + "</dt><dd>" + value.comment + "</dd><dd class='date'>" + value.date + "</dd></dl>");
-                                        });
-                                        $(".comment_list").eq(index).find(".load_more").button("enable");
-                                        $(".comment_list").eq(index).find(".load_more").html("加载更多评论");
-                                        page++; //不断显示下一页
-                                        // 要查询的页数超过总页数，"加载更多评论"按钮的click事件销毁，并隐藏
-                                        if (page > count) {
-                                            //将click事件销毁掉，所以用on()事件
-                                            $(".comment_list").eq(index).find(".load_more").off("click");
-                                            $(".comment_list").eq(index).find(".load_more").hide();
-                                        }
-                                    }
-                                });
-                            });
-                            $(".comment_list").eq(index).append("<form><dl class='comment_add'><dt><textarea name='comment'></textarea></dt><dd><input type='hidden' name='titleid' value='" + $(comment_this).attr("data-id") + "' /><input type='hidden' name='user' value='" + $.cookie("user") + "' /><input type='button' value='发表' /></dd></dl></form>");
-                            // 所以type="button"的按钮的click事件要放置在表单生成之后
-                            $(".comment_list").eq(index).find("input[type=button]").button().click(function() {
-                                //alert("123");
-                                //alert($(".comment_list").eq(index).find("form").find("textarea").val());
-                                var _this = this;
-                                $(".comment_list").eq(index).find("form").ajaxSubmit({
-                                    url : "add_comment.php",
-                                    type : "post",
-                                    beforeSubmit:function(formData,jqForm,options) {
-                                        $("#loading").dialog("open");
-                                        $(_this).button("disable"); //禁用发布按钮
-                                    },
-                                    success:function(responseText,statusText) {
-                                        //alert(responseText); //新增成功，返回1
-                                        if(responseText) {
-                                            $(_this).button("enable");
-                                            $("#loading").css("background","url(img/success.gif) no-repeat 20px center").html("数据新增成功...");
-                                            setTimeout(function() {
-                                                var date = new Date();
-                                                $("#loading").dialog("close");
-                                                $(".comment_list").eq(index).prepend('<dl class="comment_content"><dt>' + $.cookie('user') + '</dt><dd>' + $('.comment_list').eq(index).find('textarea').val() + '</dd><dd>' + date.getFullYear() + '-' + (date.getMonth()+ 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + '</dd></dl>');
-                                                $(".comment_list").eq(index).find("form").resetForm(); //重置表单
-                                                $("#loading").css("background","url(img/loading.gif) no-repeat 20px center").html("数据交互中...");
-                                            }, 1000);
-                                        }
-                                    }
-                                });
-                            });
+<!--<script>-->
+<!--//custom select box-->
+
+<!--$(function(){-->
+<!--$("select.styled").customSelect();-->
+<!--});-->
+
+<!--</script>-->
+
+<script type="application/javascript">
+    $(document).ready(function () {
+        var host = "192.168.1.102";
+        var port = "4000";
+
+        $("#submitInfo").click(function () {
+            var host = "192.168.1.102";
+            var port = "4000";
+            var req = GetRequest();
+            var token = req['token'];
+            var id = req['id'];
+
+            var content = $('#content').val();
+            var score = $('#score').val();
+            var starttime = $('#start').val();
+            var endtime = $('#end').val();
+
+            $.ajax({
+                type: "post",
+                url: "http://"+host+":"+port+"/submitQuestion",
+                dataType: "json",
+                data:{ id: id, score: score, content: content, starttime: starttime, endtime: endtime},
+                beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
+                success: function(data){
+                    if(data){
+                        if(data.message == "提交成功"){
+                            goToProblemList()
+                        }else{
+                            alert(data.message);
                         }
-                    });
+                    } else{
+                        alert("数据传输失败");
+                    }
                 }
-                if($(".comment_list").eq(index).is(":hidden")) {
-                    $(".comment_list").eq(index).show();
-                    //$.ajax(); //远程加载不应放在这儿
-                } else {
-                    $(".comment_list").eq(index).hide();
-                }
-            } else {
-                $("#error").dialog("open");
-                setTimeout(function() {
-                    $("#error").dialog("close");
-                    $("#login").dialog("open");
-                }, 1000);
-            }
+            });
         });
     });
 </script>
+
+
 </body>
 </html>

@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>DASHGUM - Bootstrap Admin Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="assets/js/fancybox/jquery.fancybox.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-responsive.css" rel="stylesheet">
+
+    <script src="assets/js/jquery.js"></script>
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<section id="container" >
+    <!-- **********************************************************************************************************************************************************
+    TOP BAR CONTENT & NOTIFICATIONS
+    *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+        <div class="sidebar-toggle-box">
+            <div class="fa fa-bars tooltips" data-placement="right" data-original-title="收起左边栏"></div>
+        </div>
+        <!--logo start-->
+        <a href="login.html" class="logo"><b>车辆行为记录与积分体系应用</b></a>
+        <!--logo end-->
+        <div class="nav notify-row" id="top_menu">
+            <!--  notification start -->
+            <ul class="nav top-menu">
+                <!-- settings start -->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle">
+                        <i class="fa fa-tasks"></i>
+                        <span class="badge bg-theme" id="messageNumber">2</span>
+                    </a>
+                    <ul class="dropdown-menu extended tasks-bar">
+                        <div class="notify-arrow notify-arrow-green"></div>
+                        <li>
+                            <p class="green" id="messageText">你有2个待处理通知</p>
+                        </li>
+                        <div id="messageList">
+                            <li>
+                                <a onclick="goToIndex()">
+                                    <div class="task-info">
+                                        <div class="desc">yyf发来了一份认证请求</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a onclick="goToIndex()">
+                                    <div class="task-info">
+                                        <div class="desc">yyf发来一份处理请求</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </div>
+                    </ul>
+                </li>
+                <!-- settings end -->
+            </ul>
+            <!--  notification end -->
+        </div>
+        <div class="top-menu">
+            <ul class="nav pull-right top-menu">
+                <li><a class="logout" href="login.html">Logout</a></li>
+            </ul>
+        </div>
+    </header>
+    <!--header end-->
+
+    <!-- **********************************************************************************************************************************************************
+    MAIN SIDEBAR MENU
+    *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar"  class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+
+                <p class="centered"><img src="assets/img/ui-sam.jpg" onclick="goToIndex()" id="userimg" class="img-rounded" width="60" height="60"></a></p>
+                <h5 class="centered" id="username">yyf</h5>
+
+                <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-desktop"></i>
+                        <span>个人信息</span>
+                    </a>
+                    <ul class="sub">
+                        <li class="active"><a onclick="goToMyPhoto()">我的照片列表</a></li>
+                        <li><a onclick="goToMyQuestion()">我的问题列表</a></li>
+                        <li><a onclick="goToMyBook()">我的教程列表</a></li>
+                        <li><a onclick="goToMyArbitration()">我的仲裁列表</a></li>
+                    </ul>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-photo"></i>
+                        <span>照片</span>
+                    </a>
+                    <ul class="sub">
+                        <li class="active"><a onclick="goToSubmitPhoto()">提交照片</a></li>
+                        <li><a onclick="goToImgList()">照片列表</a></li>
+                    </ul>
+                </li>
+
+                <li class="sub-menu">
+                    <a class="active" href="javascript:;" >
+                        <i class="fa fa-question"></i>
+                        <span>问题</span>
+                    </a>
+                    <ul class="sub">
+                        <li class="active"><a onclick="goToSubmitProblem()">提出问题</a></li>
+                        <li><a onclick="goToProblemList()">问题列表</a></li>
+                    </ul>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-book"></i>
+                        <span>教程</span>
+                    </a>
+                    <ul class="sub">
+                        <li class="active"><a onclick="goToSubmitBook()">上传教程</a></li>
+                        <li><a onclick="goToBookList()">教程列表</a></li>
+                    </ul>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-th-list"></i>
+                        <span>仲裁</span>
+                    </a>
+                    <ul class="sub">
+                        <li class="active"><a  href="submit_arbitration.html">参与仲裁</a></li>
+                        <li><a  href="buttons.html">Buttons</a></li>
+                        <li><a  href="panels.html">Panels</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <!--sidebar end-->
+
+    <!-- **********************************************************************************************************************************************************
+    MAIN CONTENT
+    *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper site-min-height" id="mineQuestion">
+            <h3><i class="fa fa-angle-right"></i> 问题</h3>
+            <hr>
+            <div id="form">
+                <div class="row mt">
+                    <div class="col-lg-12">
+                        <div class="form-panel">
+                            <h4 class="mb"><i class="fa fa-angle-right"></i> 问题信息</h4>
+                            <form class="form-horizontal style-form" method="get">
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">问题内容</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" id="content" type="text" disabled rows="4" style="border: none; background: white"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">提问者</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="name" placeholder="0" disabled class="form-control" style="border: none; background: white">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">悬赏分</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="score" disabled class="form-control" style="border: none; background: white">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">时间</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="time" class="form-control" disabled style="border: none; background: white">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">问题状态</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="status" class="form-control" disabled style="border: none; background: white">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-5 col-sm-5 control-label"></label>
+                                    <button type="button" class="btn btn-theme" id="answerList"><i class="fa"></i>回答列表</button>
+                                    <button type="button" class="btn btn-theme" id="answerButton" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa"></i>回答</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div><!-- col-lg-12-->
+                </div><!-- /row -->
+            </div>
+            <div id="answer">
+                <div class="row mt">
+                    <div class="col-lg-12">
+                        <div class="form-panel">
+                            <h4 class="mb"><i class="fa fa-angle-right"></i> 回答列表</h4>
+                            <form class="form-horizontal style-form" method="get">
+                                <div id="answerL">
+
+                                </div>
+                            </form>
+                        </div>
+                    </div><!-- col-lg-12-->
+                </div><!-- /row -->
+            </div>
+        </section><! --/wrapper -->
+
+    </section><!-- /MAIN CONTENT -->
+    <!--main content end-->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">回复内容</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <textarea class="form-control" id="replyContent" type="text" rows="4" style="border: none; background: white"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="submitAnswer">提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<script src="assets/js/index.js"></script>
+<script src="assets/js/route.js"></script>
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="assets/js/fancybox/jquery.fancybox.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="assets/js/jquery.scrollTo.min.js"></script>
+<script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+<!--common script for all pages-->
+<script src="assets/js/common-scripts.js"></script>
+<script type="text/javascript">
+    $(function() {
+        //    fancybox
+        jQuery(".fancybox").fancybox();
+    });
+
+</script>
+
+<!--<script>-->
+<!--//custom select box-->
+
+<!--$(function(){-->
+<!--$("select.styled").customSelect();-->
+<!--});-->
+
+<!--</script>-->
+
+<script type="application/javascript">
+    $(document).ready(function () {
+        var host = "192.168.1.102";
+        var port = "4000";
+
+        var req = GetRequest();
+        var token = req['token'];
+        var id = req['id'];
+        var questionId = req['pid'];
+        var ttime = new Date();
+        var year = ttime.getFullYear();
+        if (ttime.getMonth()+1 < 10) {
+            var month = '0'+(ttime.getMonth()+1).toString();
+        } else {
+            var month = (ttime.getMonth()+1).toString();
+        }
+        if (ttime.getDate() < 10) {
+            var day = '0'+ttime.getDate();
+        } else {
+            var day = ttime.getDate();
+        }
+        if (ttime.getHours() < 10) {
+            var hour = '0'+ttime.getHours();
+        } else {
+            var hour = ttime.getHours();
+        }
+        if (ttime.getMinutes() < 10) {
+            var minute = '0'+ttime.getMinutes();
+        } else {
+            var minute = ttime.getMinutes();
+        }
+        if (ttime.getSeconds() < 10) {
+            var second = '0'+ttime.getSeconds();
+        } else {
+            var second = ttime.getSeconds();
+        }
+        var stime = ''+year+month+day+hour+minute+second;
+        $.ajax({
+            type: "post",
+            url: "http://"+host+":"+port+"/questionInfo",
+            dataType: "json",
+            data:{ questionId: questionId, ttime: stime},
+            beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
+            success: function(data){
+                if(data){
+                    if(data.message == "获取成功"){
+                        $('#content').val(data.payload.content);
+                        $('#name').val(data.payload.name);
+                        $('#score').val(data.payload.score);
+                        var startt = new Date(new Date(data.payload.starttime).getTime());
+                        var endt = new Date(new Date(data.payload.endtime).getTime());
+                        var stime = startt.getFullYear()+"-"+(startt.getMonth()+1).toString()+"-"+startt.getDate()+" "+startt.getHours()+":"+startt.getMinutes()+":"+startt.getSeconds()+"~"+endt.getFullYear()+"-"+(endt.getMonth()+1).toString()+"-"+endt.getDate()+" "+endt.getHours()+":"+endt.getMinutes()+":"+endt.getSeconds()
+                        $('#time').val(stime);
+                        var active = data.payload.active;
+                        if (active==2) {
+                            $('#status').val('问题截止');
+                        } else if (active==0) {
+                            $('#status').val('问题结束');
+                        } else {
+                            $('#status').val('问题待解决');
+                        }
+                    }else{
+                        alert(data.message);
+                    }
+                } else{
+                    alert("数据传输失败");
+                }
+            }
+        });
+    });
+
+    $('#answerList').click(function () {
+        var host = "192.168.1.102";
+        var port = "4000";
+
+        var req = GetRequest();
+        var token = req['token'];
+        var id = req['id'];
+        var questionId = req['pid'];
+        $.ajax({
+            type: "post",
+            url: "http://"+host+":"+port+"/answerList",
+            dataType: "json",
+            data:{ questionId: questionId},
+            beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
+            success: function(data){
+                if(data){
+                    if(data.message == "获取成功"){
+                        var json = JSON.parse(data.payload);
+                        var flag = 0;
+                        for (var i in json) {
+                            var star = '';
+                            if (json[i].active==1) {
+                                star = '-最佳答案';
+                                flag = 1
+                            }
+                            if (flag==1) {
+                                var di = '<div class="panel-group col-sm-1 col-sm-1 control-label"></div>';
+                            } else {
+                                var di = '<div class="panel-group col-sm-1 col-sm-1 control-label"><a class="bestAnswer" id="'+json[i].answerId+'" userId="'+json[i].userId+'">最佳</a></div>';
+                            }
+                            var ttime = new Date(new Date(json[i].time).getTime());
+                            var year = ttime.getFullYear();
+                            if (ttime.getMonth()+1 < 10) {
+                                var month = '0'+(ttime.getMonth()+1).toString();
+                            } else {
+                                var month = (ttime.getMonth()+1).toString();
+                            }
+                            if (ttime.getDate() < 10) {
+                                var day = '0'+ttime.getDate();
+                            } else {
+                                var day = ttime.getDate();
+                            }
+                            if (ttime.getHours() < 10) {
+                                var hour = '0'+ttime.getHours();
+                            } else {
+                                var hour = ttime.getHours();
+                            }
+                            if (ttime.getMinutes() < 10) {
+                                var minute = '0'+ttime.getMinutes();
+                            } else {
+                                var minute = ttime.getMinutes();
+                            }
+                            if (ttime.getSeconds() < 10) {
+                                var second = '0'+ttime.getSeconds();
+                            } else {
+                                var second = ttime.getSeconds();
+                            }
+                            var stime = ''+year+'-'+month+'-'+day+' '+hour+':'+minute+':'+second;
+                            $('#answerL').append('<div class="form-group">\n' +
+                                '                                    <label class="col-sm-1 col-sm-1 control-label" value="'+json[i].userId+'">'+json[i].name+star+'</label>\n' + di +
+                                '                                    <div class="col-sm-7 col-sm-7 control-label">\n' + json[i].content +
+                                '                                    </div>\n' +
+                                '                                    <label class="col-sm-2 col-sm-2 control-label">'+stime+'</label>\n' +
+                                '                                    <div class="col-sm-1 col-sm-1 control-label" id="accordion'+i+'">\n' +
+                                '                                        <a data-toggle="collapse" data-parent="#accordion'+i+'"\n' +
+                                '                                           href="#collapseexample'+i+'">\n' +
+                                '                                            列表\n' +
+                                '                                        </a>\n' +
+                                '                                        <a class="answer" rid="'+json[i].answerId+'" pid="'+json[i].answerId+'" data-toggle="modal" data-target="#exampleModalCenter">\n' +
+                                '                                            回复\n' +
+                                '                                        </a>\n' +
+                                '                                    </div>\n' +
+                                '                                </div>');
+                            $('#answerL').append('<div class="form-group">\n' +
+                                    '<div class="panel-collapse collapse" id="collapseexample'+i+'"></div></div>');
+                            for (var j in json[i].answers) {
+                                var toname = ':';
+                                if (json[i].answers[j].replyId!=0) {
+                                    if (json[i].answers.hasOwnProperty(json[i].answers[j].replyId)) {
+                                        toname = json[i].answers[json[i].answers[j].replyId].name+':';
+                                    } else {
+                                        toname = json[json[i].answers[j].replyId].name;
+                                    }
+                                }
+                                var ttime = new Date(new Date(json[i].answers[j].time).getTime());
+                                var year = ttime.getFullYear();
+                                if (ttime.getMonth()+1 < 10) {
+                                    var month = '0'+(ttime.getMonth()+1).toString();
+                                } else {
+                                    var month = (ttime.getMonth()+1).toString();
+                                }
+                                if (ttime.getDate() < 10) {
+                                    var day = '0'+ttime.getDate();
+                                } else {
+                                    var day = ttime.getDate();
+                                }
+                                if (ttime.getHours() < 10) {
+                                    var hour = '0'+ttime.getHours();
+                                } else {
+                                    var hour = ttime.getHours();
+                                }
+                                if (ttime.getMinutes() < 10) {
+                                    var minute = '0'+ttime.getMinutes();
+                                } else {
+                                    var minute = ttime.getMinutes();
+                                }
+                                if (ttime.getSeconds() < 10) {
+                                    var second = '0'+ttime.getSeconds();
+                                } else {
+                                    var second = ttime.getSeconds();
+                                }
+                                var stime = ''+year+'-'+month+'-'+day+' '+hour+':'+minute+':'+second;
+                                $('#collapseexample'+i).append(
+                                '                                            <label class="col-sm-2 col-sm-2 control-label">'+json[i].answers[j].name+'回复'+toname+'</label>\n' +
+                                '                                            <div class="col-sm-7 col-sm-7 control-label">\n' + json[i].answers[j].content +
+                                '                                            </div>\n' +
+                                '                                            <label class="col-sm-2 col-sm-2 control-label">'+stime+'</label>\n' +
+                                '                                            <div class="panel-group col-sm-1 col-sm-1 control-label">\n' +
+                                '                                                <a class="reply" rid="'+json[i].answers[j].answerId+'" pid="'+json[i].answers[j].parentId+'" data-toggle="modal" data-target="#exampleModalCenter">\n' +
+                                '                                                    回复\n' +
+                                '                                                </a>\n' +
+                                '                                            </div>');
+                            }
+                        }
+                        $("#answerL").on('click','.reply',function(){
+                            var rid = $(this).attr('rid');
+                            var pid = $(this).attr('pid');
+                            $("#replyContent").attr('rid', rid);
+                            $("#replyContent").attr('pid', pid);
+                        });
+                        $("#answerL").on('click','.answer',function(){
+                            var rid = $(this).attr('rid');
+                            var pid = $(this).attr('pid');
+                            $("#replyContent").attr('rid', rid);
+                            $("#replyContent").attr('pid', pid);
+                        });
+                        $("#answerL").on('click','.bestAnswer',function(){
+                            var answerId = $(this).attr('id');
+                            var userId = $(this).attr('userId');
+                            bestAnswer(answerId, userId);
+                        });
+                    } else {
+                        alert(data.message);
+                    }
+                } else {
+                    alert("数据传输失败");
+                }
+            }
+        });
+    });
+
+    $("#answerButton").click(function () {
+        $("#replyContent").attr('rid', 0);
+        $("#replyContent").attr('pid', 0);
+    });
+
+    $("#submitAnswer").click(function () {
+        var rid = $("#replyContent").attr('rid');
+        var pid = $("#replyContent").attr('pid');
+        var content = $("#replyContent").val();
+        var host = "192.168.1.102";
+        var port = "4000";
+
+        var req = GetRequest();
+        var token = req['token'];
+        var id = req['id'];
+        var questionId = req['pid'];
+        var ttime = new Date();
+        var year = ttime.getFullYear();
+        if (ttime.getMonth()+1 < 10) {
+            var month = '0'+(ttime.getMonth()+1).toString();
+        } else {
+            var month = (ttime.getMonth()+1).toString();
+        }
+        if (ttime.getDate() < 10) {
+            var day = '0'+ttime.getDate();
+        } else {
+            var day = ttime.getDate();
+        }
+        if (ttime.getHours() < 10) {
+            var hour = '0'+ttime.getHours();
+        } else {
+            var hour = ttime.getHours();
+        }
+        if (ttime.getMinutes() < 10) {
+            var minute = '0'+ttime.getMinutes();
+        } else {
+            var minute = ttime.getMinutes();
+        }
+        if (ttime.getSeconds() < 10) {
+            var second = '0'+ttime.getSeconds();
+        } else {
+            var second = ttime.getSeconds();
+        }
+        var stime = ''+year+month+day+hour+minute+second;
+        $.ajax({
+            type: "post",
+            url: "http://"+host+":"+port+"/answer",
+            dataType: "json",
+            data:{ id: id, questionId: questionId, rid: rid, pid: pid, content: content, ttime:stime},
+            beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
+            success: function(data){
+                if(data){
+                    if(data.message == "回复成功"){
+                        goToProblem(questionId);
+                    } else {
+                        alert(data.message);
+                    }
+                } else {
+                    alert("数据传输失败");
+                }
+            }
+        });
+
+    });
+
+    function bestAnswer(answerId, userId) {
+        var host = "192.168.1.102";
+        var port = "4000";
+
+        var req = GetRequest();
+        var token = req['token'];
+        var id = req['id'];
+        var questionId = req['pid'];
+        $.ajax({
+            type: "post",
+            url: "http://"+host+":"+port+"/bestAnswer",
+            dataType: "json",
+            data:{ id: userId, questionId: questionId, answerId: answerId, charId: id},
+            beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
+            success: function(data){
+                if(data){
+                    if(data.message == "选取成功"){
+                        alert(1);
+                    } else {
+                        alert(data.message);
+                    }
+                } else {
+                    alert("数据传输失败");
+                }
+            }
+        });
+    }
+
+    $(function () {
+        $('#collapseexample').on('show.bs.collapse', function () {
+        });
+    });
+</script>
+
+
+</body>
+</html>

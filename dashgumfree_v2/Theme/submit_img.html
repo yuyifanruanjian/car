@@ -37,6 +37,7 @@
     <script type="text/javascript" src="assets/js/crypto.js"></script>
     <script type="text/javascript" src="assets/js/token.js"></script>
     <script type="text/javascript" src="assets/js/qiniu.min.js"></script>
+    <script src="assets/js/route.js"></script>
 
 </head>
 
@@ -58,7 +59,7 @@
             <ul class="nav top-menu">
                 <!-- settings start -->
                 <li class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                    <a data-toggle="dropdown" class="dropdown-toggle">
                         <i class="fa fa-tasks"></i>
                         <span class="badge bg-theme" id="messageNumber">2</span>
                     </a>
@@ -69,14 +70,14 @@
                         </li>
                         <div id="messageList">
                             <li>
-                                <a href="index.html#">
+                                <a onclick="goToIndex()">
                                     <div class="task-info">
                                         <div class="desc">yyf发来了一份认证请求</div>
                                     </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a onclick="goToIndex()">
                                     <div class="task-info">
                                         <div class="desc">yyf发来一份处理请求</div>
                                     </div>
@@ -106,40 +107,65 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
 
-                <p class="centered"><a href="index.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                <p class="centered"><img src="assets/img/ui-sam.jpg" onclick="goToIndex()" id="userimg" class="img-rounded" width="60" height="60"></a></p>
                 <h5 class="centered" id="username">yyf</h5>
 
-                <li class="mt">
-                    <a href="index.html">
-                        <i class="fa fa-dashboard"></i>
+                <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-desktop"></i>
                         <span>个人信息</span>
                     </a>
+                    <ul class="sub">
+                        <li class="active"><a onclick="goToMyPhoto()">我的照片列表</a></li>
+                        <li><a onclick="goToMyQuestion()">我的问题列表</a></li>
+                        <li><a onclick="goToMyBook()">我的教程列表</a></li>
+                        <li><a onclick="goToMyArbitration()">我的仲裁列表</a></li>
+                    </ul>
                 </li>
 
-                <li class="mt">
-                    <a class="active" href="submit_img.html" >
-                        <i class="fa fa-desktop"></i>
-                        <span>提交照片</span>
+                <li class="sub-menu">
+                    <a class="active" href="javascript:;" >
+                        <i class="fa fa-photo"></i>
+                        <span>照片</span>
                     </a>
+                    <ul class="sub">
+                        <li class="active"><a onclick="goToSubmitPhoto()">提交照片</a></li>
+                        <li><a onclick="goToImgList()">照片列表</a></li>
+                    </ul>
                 </li>
 
-                <li class="mt">
-                    <a href="submit_problem.html" >
-                        <i class="fa fa-cogs"></i>
-                        <span>提出问题</span>
+                <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-question"></i>
+                        <span>问题</span>
                     </a>
+                    <ul class="sub">
+                        <li class="active"><a onclick="goToSubmitProblem()">提出问题</a></li>
+                        <li><a onclick="goToProblemList()">问题列表</a></li>
+                    </ul>
                 </li>
-                <li class="mt">
-                    <a href="submit_book.html" >
+
+                <li class="sub-menu">
+                    <a href="javascript:;" >
                         <i class="fa fa-book"></i>
-                        <span>上传教程</span>
+                        <span>教程</span>
                     </a>
+                    <ul class="sub">
+                        <li class="active"><a onclick="goToSubmitBook()">上传教程</a></li>
+                        <li><a onclick="goToBookList()">教程列表</a></li>
+                    </ul>
                 </li>
-                <li class="mt">
-                    <a href="submit_arbitration.html" >
-                        <i class="fa fa-tasks"></i>
-                        <span>参与仲裁</span>
+
+                <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-th-list"></i>
+                        <span>仲裁</span>
                     </a>
+                    <ul class="sub">
+                        <li class="active"><a  href="submit_arbitration.html">参与仲裁</a></li>
+                        <li><a  href="buttons.html">Buttons</a></li>
+                        <li><a  href="panels.html">Panels</a></li>
+                    </ul>
                 </li>
 
             </ul>
@@ -155,26 +181,23 @@
     <section id="main-content">
         <section class="wrapper">
             <div id="container">
-                <div id="uploader" style="margin-left: 20%; margin-top: 20%; width: 280%; height: 100%;">
+                <div id="uploader" style="margin-left: 20%; margin-top: 20%; width: 1100px; height: 100%;">
                     <button id="pickfiles" class="btn btn-theme" style="font-size: x-large"><i class="fa fa-lock"></i> 提交图片</button>
                     <div>
-                        <h1>拖放图片到这里上传图片</h1>
+                        <h1 id="h1">拖放图片到这里上传图片</h1>
                     </div>
-
                 </div>
-                <div class="display" style="margin-left: 20%; margin-top: 30px; width: 280%; height: 100%;">
-                    <div class="status" >
-                        <img src="assets/img/icons/suc.png" alt="上传成功">
-                        <div class="words"></div>
-                    </div>
-                    <div id="link-area" class="row">
-                        <div class="link">
-                            <div style="font-size: x-large" class="col-sm-2">图片链接</div>
-                            <div id="link" class="col-sm-8" style="font-size: x-large">
-                        </div>
-                    </div>
+            </div>
+            <!--<div class="display" style="margin-left: 10%; margin-top: 30px; width: 1100px; height: 100%;">-->
+                <!--<div id="link-area" class="row">-->
+                    <!--<div class="link">-->
+                        <!--<div style="font-size: x-large" class="col-sm-2">图片链接</div>-->
+                        <!--<div id="link" class="col-sm-8" style="font-size: x-large"></div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div id="form">
 
-                </div>
             </div>
         </section>
     </section>
@@ -202,7 +225,6 @@
     $(function(){
         $('select.styled').customSelect();
     });
-
 </script>
 <!-- 提交文件 -->
 <script>
@@ -243,12 +265,7 @@
             'UploadProgress': function(up, file) {
             },
             'UploadComplete': function() {
-                $('.words').html('上传完成');
-                $('.status').css('display', 'flex');
-                setTimeout(() => {
-                    $('.status').css('display', 'none');
-                }, 3000);
-                $('#link-area').css('visibility', 'visible');
+                // $('#link-area').css('visibility', 'visible');
 
             },
             'FileUploaded': function(up, file, info) {
@@ -256,7 +273,143 @@
                 res = info.response;
                 res = JSON.parse(res);
                 const link = domain + '/' + res.key;
-                $('#link').append(link);
+                // $('#link').append(link);
+                $('#pickfiles').hide();
+                $('#h1').hide();
+                $('#uploader').append('<img src="'+link+'" style="max-width: 100%; max-height: 100%;"/>');
+
+                $('#form').append('<!-- BASIC FORM ELELEMNTS -->\n' +
+                    '          \t<div class="row mt">\n' +
+                    '          \t\t<div class="col-lg-12">\n' +
+                    '                  <div class="form-panel">\n' +
+                    '                  \t  <h4 class="mb"><i class="fa fa-angle-right"></i> 提交信息</h4>\n' +
+                    '                      <form class="form-horizontal style-form" method="get">\n' +
+                    '                          <div class="form-group">\n' +
+                    '                              <label class="col-sm-2 col-sm-2 control-label">图片链接</label>\n' +
+                    '                              <div class="col-sm-10">\n' +
+                    '                                  <input class="form-control" id="imgurl" type="text" disabled value="'+link+'">\n' +
+                    '                              </div>\n' +
+                    '                          </div>\n' +
+                    '                          <div class="form-group">\n' +
+                    '                              <label class="col-sm-2 col-sm-2 control-label">车牌号</label>\n' +
+                    '                              <div class="col-sm-10">\n' +
+                    '                                  <input type="text" id="carId" class="form-control">\n' +
+                    '                              </div>\n' +
+                    '                          </div>\n' +
+                    '                          <div class="form-group">\n' +
+                    '                              <label class="col-sm-2 col-sm-2 control-label">行为好坏</label>\n' +
+                    '                              <div class="col-sm-10">\n' +
+                    '                                  <select class="form-control" id="goodOrBad">\n' +
+                    '                                      <option>坏</option>\n' +
+                    '                                      <option>好</option>\n' +
+                    '                                  </select>\n' +
+                    '                              </div>\n' +
+                    '                          </div>\n' +
+                    '                          <div class="form-group">\n' +
+                    '                              <label class="col-sm-2 col-sm-2 control-label">行为影响分值</label>\n' +
+                    '                              <div class="col-sm-10">\n' +
+                    '                                  <select class="form-control" id="score">\n' +
+                    '                                      <option>1</option>\n' +
+                    '                                      <option>2</option>\n' +
+                    '                                      <option>3</option>\n' +
+                    '                                      <option>6</option>\n' +
+                    '                                      <option>9</option>\n' +
+                    '                                      <option>12</option>\n' +
+                    '                                  </select>\n' +
+                    '                              </div>\n' +
+                    '                          </div>\n' +
+                    '                          <div class="form-group">\n' +
+                    '                              <label class="col-sm-2 col-sm-2 control-label">简单描述</label>\n' +
+                    '                              <div class="col-sm-10">\n' +
+                    '                                  <input type="text" id="content" class="form-control">\n' +
+                    '                              </div>\n' +
+                    '                          </div>\n' +
+                    '                          <div class="form-group">\n' +
+                    '                              <label class="col-sm-5 col-sm-5 control-label"></label>\n' +
+                    '                              <button type="button" class="btn btn-theme" id="submitInfo"><i class="fa"></i>提交</button>\n' +
+                    '                          </div>\n' +
+                    '                      </form>\n' +
+                    '                  </div>\n' +
+                    '          \t\t</div><!-- col-lg-12-->      \t\n' +
+                    '          \t</div><!-- /row -->\n');
+                $("#submitInfo").click(function () {
+                    var host = "192.168.1.102";
+                    var port = "4000";
+                    var req = GetRequest();
+                    var token = req['token'];
+                    var id = req['id'];
+
+                    var photoUrl = $('#imgurl').val();
+                    var carId = $('#carId').val();
+                    var goodOrBad = $('#goodOrBad').val();
+                    var score = $('#score').val();
+                    var content = $('#content').val();
+                    var ttime = new Date();
+                    var year = ttime.getFullYear();
+                    if (ttime.getMonth()+1 < 10) {
+                        var month = '0'+(ttime.getMonth()+1).toString();
+                    } else {
+                        var month = (ttime.getMonth()+1).toString();
+                    }
+                    if (ttime.getDate() < 10) {
+                        var day = '0'+ttime.getDate();
+                    } else {
+                        var day = ttime.getDate();
+                    }
+                    if (ttime.getHours() < 10) {
+                        var hour = '0'+ttime.getHours();
+                    } else {
+                        var hour = ttime.getHours();
+                    }
+                    if (ttime.getMinutes() < 10) {
+                        var minute = '0'+ttime.getMinutes();
+                    } else {
+                        var minute = ttime.getMinutes();
+                    }
+                    if (ttime.getSeconds() < 10) {
+                        var second = '0'+ttime.getSeconds();
+                    } else {
+                        var second = ttime.getSeconds();
+                    }
+                    var stime = ''+year+month+day+hour+minute+second;
+
+                    $.ajax({
+                        type: "post",
+                        url: "http://"+host+":"+port+"/submitPhoto",
+                        dataType: "json",
+                        data:{ id: id, photoUrl: photoUrl, carId: carId, goodOrBad: goodOrBad, score: score, content: content, ttime: stime},
+                        beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
+                        success: function(data){
+                            if(data){
+                                if(data.message == "提交成功"){
+                                    alert(data.payload.id);
+                                    $.ajax({
+                                        type: "post",
+                                        url: "http://"+host+":"+port+"/receivePunOrAward",
+                                        dataType: "json",
+                                        data:{ carId: carId, goodOrBad: goodOrBad, score: score},
+                                        beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
+                                        success: function(data){
+                                            if(data){
+                                                if(data.message == "修改成功"){
+                                                    goToImgList();
+                                                }else{
+                                                    alert(data.message);
+                                                }
+                                            } else{
+                                                alert("数据传输失败");
+                                            }
+                                        }
+                                    });
+                                }else{
+                                    alert(data.message);
+                                }
+                            } else{
+                                alert("数据传输失败");
+                            }
+                        }
+                    });
+                });
             },
             'Error': function(up, err, errTip) {
             }

@@ -45,3 +45,52 @@ function goToMyArbitration() {
     var id = req['id'];
     window.location.href = "myarbitration.html?token="+token+"&id="+id;
 }
+
+function goToSubmitPhoto() {
+    var req = GetRequest();
+    var token = req['token'];
+    var id = req['id'];
+    window.location.href = "submit_img.html?token="+token+"&id="+id;
+}
+
+function goToImgList() {
+    var req = GetRequest();
+    var token = req['token'];
+    var id = req['id'];
+    window.location.href = "imglist.html?token="+token+"&id="+id;
+}
+
+function goToSubmitBook() {
+    var req = GetRequest();
+    var token = req['token'];
+    var id = req['id'];
+    window.location.href = "submit_book.html?token="+token+"&id="+id;
+}
+
+function goToBookList() {
+    var req = GetRequest();
+    var token = req['token'];
+    var id = req['id'];
+    window.location.href = "booklist.html?token="+token+"&id="+id;
+}
+
+function goToSubmitProblem() {
+    var req = GetRequest();
+    var token = req['token'];
+    var id = req['id'];
+    window.location.href = "submit_problem.html?token="+token+"&id="+id;
+}
+
+function goToProblemList() {
+    var req = GetRequest();
+    var token = req['token'];
+    var id = req['id'];
+    window.location.href = "problemlist.html?token="+token+"&id="+id;
+}
+
+function goToProblem(problemId) {
+    var req = GetRequest();
+    var token = req['token'];
+    var id = req['id'];
+    window.location.href = "problem.html?token="+token+"&id="+id+"&pid="+problemId;
+}
