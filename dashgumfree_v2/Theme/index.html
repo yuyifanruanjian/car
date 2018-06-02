@@ -49,7 +49,7 @@
                 <ul class="nav top-menu">
                     <!-- settings start -->
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                        <a data-toggle="dropdown" class="dropdown-toggle">
                             <i class="fa fa-tasks"></i>
                             <span class="badge bg-theme" id="messageNumber">2</span>
                         </a>
@@ -60,14 +60,14 @@
                             </li>
                             <div id="messageList">
                                 <li>
-                                    <a href="index.html#">
+                                    <a onclick="goToIndex()">
                                         <div class="task-info">
                                             <div class="desc">yyf发来了一份认证请求</div>
                                         </div>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="index.html#">
+                                    <a onclick="goToIndex()">
                                         <div class="task-info">
                                             <div class="desc">yyf发来一份处理请求</div>
                                         </div>
@@ -97,40 +97,68 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="index.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+              	  <p class="centered"><img src="assets/img/ui-sam.jpg" onclick="goToIndex()" id="userimg" class="img-rounded" width="60" height="60"></a></p>
               	  <h5 class="centered" id="username">yyf</h5>
-              	  	
-                  <li class="mt">
-                      <a class="active" href="index.html">
-                          <i class="fa fa-dashboard"></i>
+
+                  <li class="sub-menu">
+                      <a class="active" href="javascript:;" >
+                          <i class="fa fa-desktop"></i>
                           <span>个人信息</span>
                       </a>
+                      <ul class="sub">
+                          <li class="active"><a onclick="goToMyPhoto()">我的照片列表</a></li>
+                          <li><a onclick="goToMyQuestion()">我的问题列表</a></li>
+                          <li><a onclick="goToMyBook()">我的教程列表</a></li>
+                          <li><a onclick="goToMyArbitration()">我的仲裁列表</a></li>
+                      </ul>
                   </li>
 
-                  <li class="mt">
-                      <a href="submit_img.html" >
-                          <i class="fa fa-desktop"></i>
-                          <span>提交照片</span>
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="fa fa-photo"></i>
+                          <span>照片</span>
                       </a>
+                      <ul class="sub">
+                          <li class="active"><a  href="submit_img.html">提交照片</a></li>
+                          <li><a  href="buttons.html">Buttons</a></li>
+                          <li><a  href="panels.html">Panels</a></li>
+                      </ul>
                   </li>
 
-                  <li class="mt">
-                      <a href="submit_problem.html" >
-                          <i class="fa fa-cogs"></i>
-                          <span>提出问题</span>
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="fa fa-question"></i>
+                          <span>问题</span>
                       </a>
+                      <ul class="sub">
+                          <li class="active"><a  href="submit_problem.html">提出问题</a></li>
+                          <li><a  href="buttons.html">Buttons</a></li>
+                          <li><a  href="panels.html">Panels</a></li>
+                      </ul>
                   </li>
-                  <li class="mt">
-                      <a href="submit_book.html" >
+
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
                           <i class="fa fa-book"></i>
-                          <span>上传教程</span>
+                          <span>教程</span>
                       </a>
+                      <ul class="sub">
+                          <li class="active"><a  href="submit_book.html">上传教程</a></li>
+                          <li><a  href="buttons.html">Buttons</a></li>
+                          <li><a  href="panels.html">Panels</a></li>
+                      </ul>
                   </li>
-                  <li class="mt">
-                      <a href="submit_arbitration.html" >
-                          <i class="fa fa-tasks"></i>
-                          <span>参与仲裁</span>
+
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="fa fa-th-list"></i>
+                          <span>仲裁</span>
                       </a>
+                      <ul class="sub">
+                          <li class="active"><a  href="submit_arbitration.html">参与仲裁</a></li>
+                          <li><a  href="buttons.html">Buttons</a></li>
+                          <li><a  href="panels.html">Panels</a></li>
+                      </ul>
                   </li>
 
               </ul>
@@ -201,7 +229,7 @@
 										<p><br></p>
 									</div>
 	                      		</div>
-								<img id="imgR" src="assets/img/ui-sam.jpg" class="img-circle" width="120">
+								<img id="imgR" src="assets/img/ui-sam.jpg" class="img-rounded" width="240" height="128">
 	                      	</div><! --/grey-panel -->
                       	</div><!-- /col-md-4-->
                       	
@@ -212,8 +240,8 @@
 						  			<h5>提出的问题示例</h5>
                       			</div>
 								<div class="row">
-									<div class="col-sm-6 col-xs-6 goleft">
-										<p id="problemScore"><i class="fa fa-heart"></i> 2</p>
+									<div class="col-sm-6 col-xs-6 goleft" id="problemScore">
+
 									</div>
 									<div class="col-sm-6 col-xs-6"></div>
 	                      		</div>
@@ -224,7 +252,6 @@
                       	</div><!-- /col-md-4 -->
                       	
 						<div class="col-md-4 mb">
-							<!-- WHITE PANEL - TOP USER -->
 							<div class="white-panel pn">
 								<div class="white-header">
 									<h5>上传的教程示例</h5>
@@ -236,8 +263,8 @@
 										<p id="time">2012</p>
 									</div>
 									<div class="col-md-6">
-										<p class="small mt" id="value">总价</p>
-										<p id="bookScore">47.60</p>
+										<p class="small mt">总价</p>
+										<p id="value">47.60</p>
 									</div>
 								</div>
 							</div>
@@ -304,7 +331,7 @@
       <footer class="site-footer">
           <div class="text-center">
               2018 - yyf
-              <a href="index.html" class="go-top">
+              <a onclick="goToIndex()" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
           </div>
@@ -331,7 +358,8 @@
     <!--script for this page-->
     <script src="assets/js/sparkline-chart.js"></script>    
 	<script src="assets/js/zabuto_calendar.js"></script>	
-	
+	<script src="assets/js/index.js"></script>
+    <script src="assets/js/route.js"></script>
 	<script type="text/javascript">
         $(document).ready(function () {
         });
@@ -361,15 +389,81 @@
                     {type: "block", label: "Regular event", }
                 ]
             });
+
+            var host = "192.168.1.102";
+            var port = "4000";
+            $(function () {
+                var req = GetRequest();
+                var token = req['token'];
+                var id = req['id'];
+                $.ajax({
+                    type: "post",
+                    url: "http://"+host+":"+port+"/userInfo",
+                    dataType: "json",
+                    data:{ id: id},
+                    beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
+                    success: function(data){
+                        if(data){
+                            if(data.message == "获取成功"){
+                                $('#username').text(data.payload.username);
+                                if (data.payload.url == '') {
+                                    var src = "assets/img/ui-sam.jpg";
+                                } else {
+                                    var src = data.payload.url;
+                                }
+                                $('#userimg').attr('src', src);
+                                $('#score').text(data.payload.score);
+                                $('#scoreText').text("该用户有"+data.payload.score.toString()+"信用分");
+                                $('#photoNumber').text(data.payload.photonum);
+                                $('#photoNumberMessage').text("该用户提交了"+data.payload.photonum.toString()+"张图片");
+                                $('#problemNumber').text(data.payload.questionnum);
+                                $('#problemNumberMessage').text("该用户提出了"+data.payload.questionnum.toString()+"个问题");
+                                $('#bookNumber').text(data.payload.booknum);
+                                $('#bookNumberMessage').text("该用户上传了"+data.payload.booknum.toString()+"本教程");
+                                $('#arbitrationNumber').text(data.payload.arbitrationnum);
+                                $('#arbitrationNumberMessage').text("该用户参与了"+data.payload.arbitrationnum.toString()+"次仲裁");
+                                if (data.payload.photo.length == 0) {
+                                    var src = "assets/img/ui-sam.jpg";
+                                } else {
+                                    var src = data.payload.photo[0].photoUrl;
+                                }
+                                $('#imgR').attr('src', src);
+                                if (data.payload.question.length == 0) {
+                                    var score = 0;
+                                    var content = "用户不曾提问";
+                                } else {
+                                    var score = data.payload.question[0].score;
+                                    var content = data.payload.question[0].content;
+                                }
+                                $('#problemScore').append("<p id=\"problemScore\"><i class=\"fa fa-money\"></i> "+score+"</p>");
+                                $('#problemR').text(content);
+                                if (data.payload.book.length == 0) {
+                                    var bname = "system";
+                                    var uname = "system";
+                                    var ttime = "0000-00-00";
+                                    var score = 0;
+                                } else {
+                                    var bname = data.payload.book[0].bname;
+                                    var uname = data.payload.book[0].uname;
+                                    var tt = new Date(new Date(data.payload.book[0].ttime).getTime());
+                                    var ttime = tt.getFullYear()+"-"+(tt.getMonth()+1).toString()+"-"+tt.getDate()+" "+tt.getHours()+":"+tt.getMinutes()+":"+tt.getSeconds()
+                                    var score = data.payload.book[0].score;
+                                }
+                                $('#bookR').text(bname);
+                                $('#writer').text(uname);
+                                $('#time').text(ttime);
+                                $('#value').text(score);
+                            }else{
+                                alert(data.message);
+                            }
+                        } else{
+                            alert("数据传输失败");
+                        }
+                    }
+                });
+            });
+
         });
-        
-        
-        function myNavFunction(id) {
-            $("#date-popover").hide();
-            var nav = $("#" + id).data("navigation");
-            var to = $("#" + id).data("to");
-            console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
-        }
     </script>
   
 
