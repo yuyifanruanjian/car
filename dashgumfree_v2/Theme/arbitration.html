@@ -132,18 +132,18 @@
                 </li>
 
                 <li class="sub-menu">
-                    <a class="active" href="javascript:;" >
+                    <a href="javascript:;" >
                         <i class="fa fa-book"></i>
                         <span>教程</span>
                     </a>
                     <ul class="sub">
-                        <li><a onclick="goToSubmitBook()">上传教程</a></li>
-                        <li class="active"><a onclick="goToBookList()">教程列表</a></li>
+                        <li class="active"><a onclick="goToSubmitBook()">上传教程</a></li>
+                        <li><a onclick="goToBookList()">教程列表</a></li>
                     </ul>
                 </li>
 
                 <li class="sub-menu">
-                    <a href="javascript:;" >
+                    <a class="active" href="javascript:;" >
                         <i class="fa fa-th-list"></i>
                         <span>仲裁</span>
                     </a>
@@ -164,31 +164,56 @@
     *********************************************************************************************************************************************************** -->
     <!--main content start-->
     <section id="main-content">
-        <section class="wrapper site-min-height" id="bookList">
-            <h3><i class="fa fa-angle-right"></i> 教程列表</h3>
+        <section class="wrapper site-min-height" id="mineQuestion">
+            <h3><i class="fa fa-angle-right"></i> 仲裁</h3>
             <hr>
+            <div id="form">
+                <div class="row mt">
+                    <div class="col-lg-12">
+                        <div class="form-panel">
+                            <h4 class="mb"><i class="fa fa-angle-right"></i> 问题信息</h4>
+                            <form class="form-horizontal style-form" method="get">
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">问题内容</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" id="content" type="text" disabled rows="4" style="border: none; background: white"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">悬赏分</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="score" disabled class="form-control" style="border: none; background: white">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">仲裁状态</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="status" disabled class="form-control" style="border: none; background: white">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div><!-- col-lg-12-->
+                </div><!-- /row -->
+            </div>
+            <div id="answer">
+                <div class="row mt">
+                    <div class="col-lg-12">
+                        <div class="form-panel">
+                            <h4 class="mb"><i class="fa fa-angle-right"></i> 回答列表</h4>
+                            <form class="form-horizontal style-form" method="get">
+                                <div id="answerL">
+
+                                </div>
+                            </form>
+                        </div>
+                    </div><!-- col-lg-12-->
+                </div><!-- /row -->
+            </div>
         </section><! --/wrapper -->
 
-        <!--<section class="wrapper site-min-height" id="boughtBook">-->
-        <!--<h3><i class="fa fa-angle-right"></i> 我回答的问题</h3>-->
-        <!--<hr>-->
-        <!--</section><! &#45;&#45;/wrapper &ndash;&gt;-->
     </section><!-- /MAIN CONTENT -->
-
     <!--main content end-->
-
-
-    <!--main content end-->
-    <!--footer start-->
-    <footer class="site-footer">
-        <div class="text-center">
-            2018 - yyf
-            <a onclick="goToBookList()" class="go-top">
-                <i class="fa fa-angle-up"></i>
-            </a>
-        </div>
-    </footer>
-    <!--footer end-->
 </section>
 <script src="assets/js/index.js"></script>
 <script src="assets/js/route.js"></script>
@@ -219,83 +244,118 @@
 
 <script type="application/javascript">
     $(document).ready(function () {
-
         var host = "192.168.1.102";
         var port = "4000";
-        $(function () {
-            var req = GetRequest();
-            var token = req['token'];
-            var id = req['id'];
-            var idList = [id];
-            $.ajax({
-                type: "post",
-                url: "http://"+host+":"+port+"/bookList",
-                dataType: "json",
-                data:{ id: JSON.stringify(idList)},
-                beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
-                success: function(data){
-                    if(data){
-                        if(data.message == "获取成功"){
-                            for (var i = 0; i < data.payload.length; i++) {
-                                if (i % 3 == 0){
-                                    $('#bookList').append("<div class=\"row\" id=\"bookList"+parseInt(i/3).toString()+"\">\n</div>");
-                                }
-                                tt = new Date(new Date(data.payload[i].ttime).getTime());
-                                $('#bookList'+parseInt(i/3).toString()).append("<div class=\"col-md-4 mb book\" id='"+data.payload[i].id+"'>\n" +
-                                    "<div class=\"white-panel pn\">\n" +
-                                    "<div class=\"white-header\">\n" +
-                                    "<h5>"+data.payload[i].uname+"</h5>\n" +
-                                    "</div>\n" +
-                                    "<p><b>"+data.payload[i].bname+"</b></p>\n" +
-                                    "<div class=\"row\">\n" +
-                                    "<div class=\"col-md-6\">\n" +
-                                    "<p class=\"small mt\">"+data.payload[i].uname+"</p>\n" +
-                                    "<p>"+tt.getFullYear()+"-"+(tt.getMonth()+1).toString()+"-"+tt.getDate()+" "+tt.getHours()+":"+tt.getMinutes()+":"+tt.getSeconds()+"</p>\n" +
-                                    "</div>\n" +
-                                    "<div class=\"col-md-6\">\n" +
-                                    "<p class=\"small mt\">总价</p>\n" +
-                                    "<p>"+data.payload[i].score+"</p>\n" +
-                                    "</div>\n" +
-                                    "</div>\n" +
-                                    "</div>\n" +
-                                    "</div>");
-                            }
-                            $("#bookList").on('click','.book',function(){
-                                var bookId = $(this).attr('id');
-                                buy(bookId);
-                            });
-                        }else{
-                            alert(data.message);
-                        }
-                    } else{
-                        alert("数据传输失败");
-                    }
-                }
-            });
-        });
-        function buy(bookId) {
-            var req = GetRequest();
-            var token = req['token'];
-            var id = req['id'];
-            $.ajax({
-                type: "post",
-                url: "http://"+host+":"+port+"/buyBook",
-                dataType: "json",
-                data:{ id: id, bookId: bookId},
-                beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
-                success: function(data){
-                    if(data){
-                        if(data.message == "购买成功"){
-                            goToBookList();
-                        }else{
-                            alert(data.message);
-                        }
-                    } else{
-                        alert("数据传输失败");
-                    }
-                }
-            });
+
+        var req = GetRequest();
+        var token = req['token'];
+        var id = req['id'];
+        var arbitrationId = req['aid'];
+        var ttime = new Date();
+        var year = ttime.getFullYear();
+        if (ttime.getMonth()+1 < 10) {
+            var month = '0'+(ttime.getMonth()+1).toString();
+        } else {
+            var month = (ttime.getMonth()+1).toString();
         }
+        if (ttime.getDate() < 10) {
+            var day = '0'+ttime.getDate();
+        } else {
+            var day = ttime.getDate();
+        }
+        if (ttime.getHours() < 10) {
+            var hour = '0'+ttime.getHours();
+        } else {
+            var hour = ttime.getHours();
+        }
+        if (ttime.getMinutes() < 10) {
+            var minute = '0'+ttime.getMinutes();
+        } else {
+            var minute = ttime.getMinutes();
+        }
+        if (ttime.getSeconds() < 10) {
+            var second = '0'+ttime.getSeconds();
+        } else {
+            var second = ttime.getSeconds();
+        }
+        var stime = ''+year+month+day+hour+minute+second;
+        $.ajax({
+            type: "post",
+            url: "http://"+host+":"+port+"/arbitrationInfo",
+            dataType: "json",
+            data:{ arbitrationId: arbitrationId},
+            beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
+            success: function(data){
+                if(data){
+                    if(data.message == "获取成功"){
+                        $('#content').val(data.payload.question.content);
+                        $('#score').val(data.payload.question.score);
+                        if (data.payload.question.active == 1) {
+                            var active = '仲裁正在进行';
+                        } else {
+                            var active = '仲裁结束';
+                        }
+                        $('#status').val(active);
+                        var json = JSON.parse(data.payload.vote);
+                        var answers = JSON.parse(data.payload.answer);
+                        for (var i=0; i<answers.length; i++) {
+                            if (json.hasOwnProperty(answers[i].id)) {
+                                var l = json[answers[i].id].vids;
+                            } else {
+                                var l = [];
+                            }
+                            if (data.payload.question.active==1){
+                                var di = '                                        <a class="vote" qid="'+data.payload.question.userId+'" aid="'+ answers[i].id+'" auid="'+answers[i].userId+'" vids="'+JSON.stringify(l)+'">\n' +
+                                    '                                            投票\n' +
+                                    '                                        </a>\n';
+                            } else {
+                                var di = '';
+                            }
+                            $('#answerL').append('<div class="form-group">\n' +
+                                '                                    <label class="col-sm-1 col-sm-1 control-label">' + answers[i].name + '</label>\n' +
+                                '                                    <div class="col-sm-7 col-sm-7 control-label">\n' + answers[i].content +
+                                '                                    </div>\n' +
+                                '                                    <label class="col-sm-1 col-sm-1 control-label">' + l.length + '票</label>\n' +
+                                '                                    <div class="col-sm-1 col-sm-1 control-label">\n' + di +
+                                '                                    </div>\n' +
+                                '                                </div>');
+                        }
+                        $("#answerL").on('click','.vote',function(){
+                            var qid = $(this).attr('qid');
+                            var aid = $(this).attr('aid');
+                            var auid = $(this).attr('auid');
+                            var vids = JSON.parse($(this).attr('vids'));
+                            if (id!=auid&&id!=qid&&!vids.hasOwnProperty(id)){
+                                $.ajax({
+                                    type: "post",
+                                    url: "http://"+host+":"+port+"/vote",
+                                    dataType: "json",
+                                    data:{ arbitrationId: arbitrationId, answerId: aid, userId: id},
+                                    beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
+                                    success: function(data){
+                                        if(data){
+                                            if(data.message == "投票成功"){
+                                                alert('投票成功');
+                                            } else {
+                                                alert(data.message);
+                                            }
+                                        } else {
+                                            alert("数据传输失败");
+                                        }
+                                    }
+                                });
+                            } else {
+                                alert('投票失败');
+                            }
+                        });
+                    }else{
+                        alert(data.message);
+                    }
+                } else{
+                    alert("数据传输失败");
+                }
+            }
+        });
     });
 
     var num = Math.round(Math.random()*90+60);
@@ -353,6 +413,11 @@
         });
 
     }, 500*num);
+
+    $(function () {
+        $('#collapseexample').on('show.bs.collapse', function () {
+        });
+    });
 </script>
 
 

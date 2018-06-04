@@ -126,30 +126,30 @@
                         <span>问题</span>
                     </a>
                     <ul class="sub">
-                        <li class="active"><a onclick="goToSubmitProblem()">提出问题</a></li>
-                        <li><a onclick="goToProblemList()">问题列表</a></li>
-                    </ul>
-                </li>
-
-                <li class="sub-menu">
-                    <a class="active" href="javascript:;" >
-                        <i class="fa fa-book"></i>
-                        <span>教程</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a onclick="goToSubmitBook()">上传教程</a></li>
-                        <li class="active"><a onclick="goToBookList()">教程列表</a></li>
+                        <li><a onclick="goToSubmitProblem()">提出问题</a></li>
+                        <li class="active"><a onclick="goToProblemList()">问题列表</a></li>
                     </ul>
                 </li>
 
                 <li class="sub-menu">
                     <a href="javascript:;" >
+                        <i class="fa fa-book"></i>
+                        <span>教程</span>
+                    </a>
+                    <ul class="sub">
+                        <li class="active"><a onclick="goToSubmitBook()">上传教程</a></li>
+                        <li><a onclick="goToBookList()">教程列表</a></li>
+                    </ul>
+                </li>
+
+                <li class="sub-menu">
+                    <a class="active" href="javascript:;" >
                         <i class="fa fa-th-list"></i>
                         <span>仲裁</span>
                     </a>
                     <ul class="sub">
-                        <li class="active"><a onclick="goToSubmitArbitration()">待仲裁问题</a></li>
-                        <li><a onclick="goToArbitrationList()">仲裁列表</a></li>
+                        <li><a onclick="goToSubmitArbitration()">待仲裁问题</a></li>
+                        <li class="active"><a onclick="goToArbitrationList()">仲裁列表</a></li>
                     </ul>
                 </li>
 
@@ -164,15 +164,10 @@
     *********************************************************************************************************************************************************** -->
     <!--main content start-->
     <section id="main-content">
-        <section class="wrapper site-min-height" id="bookList">
-            <h3><i class="fa fa-angle-right"></i> 教程列表</h3>
+        <section class="wrapper site-min-height" id="arbitrationList">
+            <h3><i class="fa fa-angle-right"></i> 仲裁列表</h3>
             <hr>
         </section><! --/wrapper -->
-
-        <!--<section class="wrapper site-min-height" id="boughtBook">-->
-        <!--<h3><i class="fa fa-angle-right"></i> 我回答的问题</h3>-->
-        <!--<hr>-->
-        <!--</section><! &#45;&#45;/wrapper &ndash;&gt;-->
     </section><!-- /MAIN CONTENT -->
 
     <!--main content end-->
@@ -183,7 +178,7 @@
     <footer class="site-footer">
         <div class="text-center">
             2018 - yyf
-            <a onclick="goToBookList()" class="go-top">
+            <a onclick="goToMyQuestion()" class="go-top">
                 <i class="fa fa-angle-up"></i>
             </a>
         </div>
@@ -226,43 +221,43 @@
             var req = GetRequest();
             var token = req['token'];
             var id = req['id'];
-            var idList = [id];
             $.ajax({
                 type: "post",
-                url: "http://"+host+":"+port+"/bookList",
+                url: "http://"+host+":"+port+"/arbitratedList",
                 dataType: "json",
-                data:{ id: JSON.stringify(idList)},
+                data:{ id: id},
                 beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
                 success: function(data){
                     if(data){
                         if(data.message == "获取成功"){
                             for (var i = 0; i < data.payload.length; i++) {
                                 if (i % 3 == 0){
-                                    $('#bookList').append("<div class=\"row\" id=\"bookList"+parseInt(i/3).toString()+"\">\n</div>");
+                                    $('#arbitrationList').append("<div class=\"row\" id=\"arbitrationList"+parseInt(i/3).toString()+"\">\n</div>");
                                 }
-                                tt = new Date(new Date(data.payload[i].ttime).getTime());
-                                $('#bookList'+parseInt(i/3).toString()).append("<div class=\"col-md-4 mb book\" id='"+data.payload[i].id+"'>\n" +
-                                    "<div class=\"white-panel pn\">\n" +
-                                    "<div class=\"white-header\">\n" +
-                                    "<h5>"+data.payload[i].uname+"</h5>\n" +
-                                    "</div>\n" +
-                                    "<p><b>"+data.payload[i].bname+"</b></p>\n" +
-                                    "<div class=\"row\">\n" +
-                                    "<div class=\"col-md-6\">\n" +
-                                    "<p class=\"small mt\">"+data.payload[i].uname+"</p>\n" +
-                                    "<p>"+tt.getFullYear()+"-"+(tt.getMonth()+1).toString()+"-"+tt.getDate()+" "+tt.getHours()+":"+tt.getMinutes()+":"+tt.getSeconds()+"</p>\n" +
-                                    "</div>\n" +
-                                    "<div class=\"col-md-6\">\n" +
-                                    "<p class=\"small mt\">总价</p>\n" +
-                                    "<p>"+data.payload[i].score+"</p>\n" +
-                                    "</div>\n" +
-                                    "</div>\n" +
-                                    "</div>\n" +
-                                    "</div>");
+                                startt = new Date(new Date(data.payload[i].starttime).getTime());
+                                endt = new Date(new Date(data.payload[i].endtime).getTime());
+                                $('#arbitrationList'+parseInt(i/3).toString()).append("<div class=\"col-md-4 col-sm-4 mb arbitrationList\" id=\""+data.payload[i].id.toString()+"\" onclick=\"getQuestionInfo()\">\n" +
+                                    "                    <div class=\"white-panel pn\">\n" +
+                                    "                        <div class=\"white-header\">\n" +
+                                    "                            <h5>"+data.payload[i].name+"</h5>\n" +
+                                    "                        </div>\n" +
+                                    "                        <div class=\"row\">\n" +
+                                    "                            <div class=\"col-sm-4 col-xs-4 goleft\">\n" +
+                                    "                                <p><i class=\"fa fa-money\"></i> "+data.payload[i].score+"</p>\n" +
+                                    "                            </div>\n" +
+                                    "                            <div class=\"col-sm-8 col-xs-8 goright\">\n" +
+                                    "                                <p><i class=\"fa fa-times-circle-o\"></i> "+startt.getFullYear()+"-"+(startt.getMonth()+1).toString()+"-"+startt.getDate()+" "+startt.getHours()+":"+startt.getMinutes()+":"+startt.getSeconds()+"~"+endt.getFullYear()+"-"+(endt.getMonth()+1).toString()+"-"+endt.getDate()+" "+endt.getHours()+":"+endt.getMinutes()+":"+endt.getSeconds()+"</p>\n" +
+                                    "                            </div>\n" +
+                                    "                        </div>\n" +
+                                    "                        <div class=\"centered\">\n" +
+                                    "                            <span class=\"span-wrap\">"+data.payload[i].content+"</span>\n" +
+                                    "                        </div>\n" +
+                                    "                    </div>\n" +
+                                    "                </div><!-- /col-md-4 -->");
                             }
-                            $("#bookList").on('click','.book',function(){
-                                var bookId = $(this).attr('id');
-                                buy(bookId);
+                            $("#arbitrationList").on('click','.arbitrationList',function(){
+                                var arbitrationId = $(this).attr('id');
+                                goToArbitration(arbitrationId);
                             });
                         }else{
                             alert(data.message);
@@ -272,30 +267,9 @@
                     }
                 }
             });
+
         });
-        function buy(bookId) {
-            var req = GetRequest();
-            var token = req['token'];
-            var id = req['id'];
-            $.ajax({
-                type: "post",
-                url: "http://"+host+":"+port+"/buyBook",
-                dataType: "json",
-                data:{ id: id, bookId: bookId},
-                beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
-                success: function(data){
-                    if(data){
-                        if(data.message == "购买成功"){
-                            goToBookList();
-                        }else{
-                            alert(data.message);
-                        }
-                    } else{
-                        alert("数据传输失败");
-                    }
-                }
-            });
-        }
+
     });
 
     var num = Math.round(Math.random()*90+60);

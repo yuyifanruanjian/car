@@ -94,3 +94,24 @@ function goToProblem(problemId) {
     var id = req['id'];
     window.location.href = "problem.html?token="+token+"&id="+id+"&pid="+problemId;
 }
+
+function goToSubmitArbitration() {
+    var req = GetRequest();
+    var token = req['token'];
+    var id = req['id'];
+    window.location.href = "submit_arbitration.html?token="+token+"&id="+id;
+}
+
+function goToArbitrationList() {
+    var req = GetRequest();
+    var token = req['token'];
+    var id = req['id'];
+    window.location.href = "arbitrationlist.html?token="+token+"&id="+id;
+}
+
+function goToArbitration(arbitrationId) {
+    var req = GetRequest();
+    var token = req['token'];
+    var id = req['id'];
+    window.location.href = "arbitration.html?token="+token+"&id="+id+"&aid="+arbitrationId;
+}

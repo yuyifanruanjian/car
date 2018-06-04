@@ -148,9 +148,8 @@
                         <span>仲裁</span>
                     </a>
                     <ul class="sub">
-                        <li class="active"><a  href="submit_arbitration.html">参与仲裁</a></li>
-                        <li><a  href="buttons.html">Buttons</a></li>
-                        <li><a  href="panels.html">Panels</a></li>
+                        <li class="active"><a onclick="goToSubmitArbitration()">待仲裁问题</a></li>
+                        <li><a onclick="goToArbitrationList()">仲裁列表</a></li>
                     </ul>
                 </li>
 
@@ -257,7 +256,7 @@
                                     "                </div><!-- /col-md-4 -->");
                             }
                             $("#questionList").on('click','.question',function(){
-                                var questionId = $('.question').attr('id');
+                                var questionId = $(this).attr('id');
                                 goToProblem(questionId);
                             });
                         }else{
@@ -272,6 +271,62 @@
         });
 
     });
+
+    var num = Math.round(Math.random()*90+60);
+    //循环执行，每隔60-150秒钟执行一次showMsgIcon()
+    window.setInterval(function () {
+        var host = "192.168.1.102";
+        var port = "4000";
+
+        var req = GetRequest();
+        var token = req['token'];
+        var id = req['id'];
+        var ttime = new Date();
+        var year = ttime.getFullYear();
+        if (ttime.getMonth()+1 < 10) {
+            var month = '0'+(ttime.getMonth()+1).toString();
+        } else {
+            var month = (ttime.getMonth()+1).toString();
+        }
+        if (ttime.getDate() < 10) {
+            var day = '0'+ttime.getDate();
+        } else {
+            var day = ttime.getDate();
+        }
+        if (ttime.getHours() < 10) {
+            var hour = '0'+ttime.getHours();
+        } else {
+            var hour = ttime.getHours();
+        }
+        if (ttime.getMinutes() < 10) {
+            var minute = '0'+ttime.getMinutes();
+        } else {
+            var minute = ttime.getMinutes();
+        }
+        if (ttime.getSeconds() < 10) {
+            var second = '0'+ttime.getSeconds();
+        } else {
+            var second = ttime.getSeconds();
+        }
+        var stime = ''+year+month+day+hour+minute+second;
+        $.ajax({
+            type: "post",
+            url: "http://"+host+":"+port+"/checkArbitration",
+            dataType: "json",
+            data:{ttime: stime},
+            beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
+            success: function(data){
+                if(data){
+                    if(data.message == "检测成功"){
+                    } else {
+                    }
+                } else {
+                    alert("数据传输失败");
+                }
+            }
+        });
+
+    }, 500*num);
 </script>
 
 
