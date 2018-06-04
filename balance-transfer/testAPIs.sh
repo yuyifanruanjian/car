@@ -167,8 +167,8 @@ TRX_ID=$(curl -s -X POST \
   -H "content-type: application/json" \
   -d '{
 	"peers": ["peer0.org1.example.com","peer1.org1.example.com"],
-	"fcn":"CreateUser",
-	"args":["a","b","15900583269","E3680","1"]
+	"fcn":"CreateUserScore",
+	"args":["1"]
 }')
 echo "Transacton ID is $TRX_ID"
 echo

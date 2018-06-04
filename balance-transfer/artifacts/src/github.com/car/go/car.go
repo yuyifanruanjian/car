@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"strconv"
-	"strings"
+	"bytes"
 
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 	pb "github.com/hyperledger/fabric/protos/peer"
@@ -17,19 +17,27 @@ type SimpleChaincode struct {
 //用户积分
 type UserScore struct {
 	UserId int `json:"userId"` //用户ID
-	NewScore float64 `json:"newDcore"` //用户当前积分
-	OldScore float64 `json:"oldDcore"` //用户上步积分
+	NewScore float64 `json:"newScore"` //用户当前积分
+	OldScore float64 `json:"oldScore"` //用户上步积分
 	EventType string `json:"eventType"` //事件类型
-	Event string 'json:"json:event"' //事件
+	Event string `json:"event"` //事件
 }
 
 //车辆积分
 type CarScore struct {
 	CarId string `json:"carId"` //车牌号
-	NewScore float64 `json:"newDcore"` //车辆当前积分
-	OldScore float64 `json:"oldDcore"` //车辆上步积分
+	NewScore float64 `json:"newScore"` //车辆当前积分
+	OldScore float64 `json:"oldScore"` //车辆上步积分
 	EventType string `json:"eventType"` //事件类型
-	Event string 'json:"json:event"' //事件
+	Event string `json:"event"` //事件
+}
+
+//Init
+func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface) pb.Response {
+	fmt.Println("service Init")
+
+	fmt.Printf(" init success \n")
+	return shim.Success(nil)
 }
 
 //CreateUserScore
@@ -133,21 +141,14 @@ func (t *SimpleChaincode) ModifyUserScore(stub shim.ChaincodeStubInterface, args
 //GetUserScoreInfo
 func (t *SimpleChaincode) GetUserScoreInfo(stub shim.ChaincodeStubInterface, args []string) pb.Response {
 	fmt.Println("GetUserScoreInfo")
-
-	var userId int       //用户ID
 	
 	var err error
 
 	if len(args) != 1 {
 		return shim.Error("Incorrect number of arguments. Expecting 1")
 	}
-
-	userId, err = strconv.Atoi(args[0])
-	if err != nil {
-		return shim.Error("Expecting integer value for asset holding：UserId ")
-	}
 	
-	resultsIterator, err := stub.GetHistoryForKey(userId)
+	resultsIterator, err := stub.GetHistoryForKey(args[0])
 	if err != nil {
 		return shim.Error(err.Error())
 	}
