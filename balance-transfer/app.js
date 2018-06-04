@@ -408,6 +408,7 @@ var userController = require('./controller/user-controller');
 var photoController = require('./controller/photo-controller');
 var bookController = require('./controller/book-controller');
 var questionController = require('./controller/question-controller');
+var arbitrationController = require('./controller/arbitration-controller');
 //Register
 app.post('/register', async function(req, res) {
     logger.debug('==================== Register ==================');
@@ -578,3 +579,47 @@ app.post('/bestAnswer', async function(req, res) {
     console.log(req.body);
     await questionController.bestAnswer(req, res);
 });
+
+//ArbitratedQuestion
+app.post('/arbitratedQuestion', async function(req, res) {
+    logger.debug('==================== Arbitrated Question ==================');
+    console.log(req.body);
+    await arbitrationController.arbitratedQuestion(req, res);
+});
+
+//ArbitratedList
+app.post('/arbitratedList', async function(req, res) {
+    logger.debug('==================== Arbitrated List ==================');
+    console.log(req.body);
+    await arbitrationController.arbitratedList(req, res);
+});
+
+//SubmitArbitration
+app.post('/submitArbitration', async function(req, res) {
+    logger.debug('==================== Submit Arbitration ==================');
+    console.log(req.body);
+    await arbitrationController.submitArbitration(req, res);
+});
+
+//ArbitrationInfo
+app.post('/arbitrationInfo', async function(req, res) {
+    logger.debug('==================== Arbitration Info ==================');
+    console.log(req.body);
+    await arbitrationController.arbitrationInfo(req, res);
+});
+
+//Vote
+app.post('/vote', async function(req, res) {
+    logger.debug('==================== Vote ==================');
+    console.log(req.body);
+    await arbitrationController.vote(req, res);
+});
+
+//CheckArbitration
+app.post('/checkArbitration', async function(req, res) {
+    logger.debug('==================== Check Arbitration ==================');
+    console.log(req.body);
+    await arbitrationController.checkArbitration(req, res);
+});
+
+
