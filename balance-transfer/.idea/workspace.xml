@@ -18,16 +18,25 @@
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="232">
-              <caret line="621" column="48" selection-start-line="621" selection-start-column="48" selection-end-line="621" selection-end-column="48" />
+              <caret line="453" column="33" selection-start-line="453" selection-start-column="33" selection-end-line="453" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="user-controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controller/user-controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="111">
+              <caret line="151" column="27" selection-start-line="151" selection-start-column="27" selection-end-line="151" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="256" column="10" lean-forward="true" selection-start-line="231" selection-start-column="11" selection-end-line="256" selection-end-column="10" />
+            <state relative-caret-position="217">
+              <caret line="532" column="32" lean-forward="true" selection-start-line="532" selection-start-column="32" selection-end-line="532" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -41,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="arbitration.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="arbitration.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/arbitration.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="364" column="33" selection-start-line="364" selection-start-column="33" selection-end-line="364" selection-end-column="33" />
+            <state relative-caret-position="-1478">
+              <caret line="356" column="50" lean-forward="true" selection-start-line="356" selection-start-column="50" selection-end-line="356" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -127,17 +136,17 @@
         <option value="$PROJECT_DIR$/runApp.sh" />
         <option value="$PROJECT_DIR$/model/car.js" />
         <option value="$PROJECT_DIR$/proxy/db.js" />
-        <option value="$PROJECT_DIR$/controller/user-controller.js" />
-        <option value="$PROJECT_DIR$/model/user.js" />
         <option value="$PROJECT_DIR$/controller/photo-controller.js" />
         <option value="$PROJECT_DIR$/controller/book-controller.js" />
         <option value="$PROJECT_DIR$/model/photo.js" />
         <option value="$PROJECT_DIR$/model/book.js" />
         <option value="$PROJECT_DIR$/controller/question-controller.js" />
         <option value="$PROJECT_DIR$/model/question.js" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/controller/arbitration-controller.js" />
         <option value="$PROJECT_DIR$/model/arbitration.js" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/controller/user-controller.js" />
+        <option value="$PROJECT_DIR$/model/user.js" />
       </list>
     </option>
   </component>
@@ -265,12 +274,12 @@
       <workItem from="1527738748880" duration="40234000" />
       <workItem from="1527890289417" duration="36904000" />
       <workItem from="1527998704460" duration="625000" />
-      <workItem from="1528067071614" duration="28179000" />
+      <workItem from="1528067071614" duration="29325000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="199804000" />
+    <option name="totallyTimeSpent" value="200950000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1366" height="706" extended-state="6" />
@@ -524,13 +533,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/user-controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controller/photo-controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -556,13 +558,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="29" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="621" column="48" selection-start-line="621" selection-start-column="48" selection-end-line="621" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -601,17 +596,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/user.js">
+    <entry file="file://$PROJECT_DIR$/model/arbitration.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="256" column="10" lean-forward="true" selection-start-line="231" selection-start-column="11" selection-end-line="256" selection-end-column="10" />
+        <state relative-caret-position="-1478">
+          <caret line="356" column="50" lean-forward="true" selection-start-line="356" selection-start-column="50" selection-end-line="356" selection-end-column="50" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/arbitration.js">
+    <entry file="file://$PROJECT_DIR$/controller/user-controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="151" column="27" selection-start-line="151" selection-start-column="27" selection-end-line="151" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="453" column="33" selection-start-line="453" selection-start-column="33" selection-end-line="453" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
-          <caret line="364" column="33" selection-start-line="364" selection-start-column="33" selection-end-line="364" selection-end-column="33" />
+          <caret line="532" column="32" lean-forward="true" selection-start-line="532" selection-start-column="32" selection-end-line="532" selection-end-column="32" />
         </state>
       </provider>
     </entry>

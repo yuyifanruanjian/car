@@ -507,6 +507,41 @@ var votedArbitration = async function (res, user) {
     }
 };
 
+var userName = async function (res, user) {
+    try {
+        var response = {
+            success: false,
+            status: '999',
+            message: '获取失败'
+        };
+        var queryq = {
+            wants:'name, url',
+            table:'user',
+            conditions:{
+                id:[user.id]
+            }
+        };
+        let sql = await db.sqlSelect(queryq);
+        db.connection.query(sql.sql, sql.sqlData, async function(err, results) {
+            if(err) {
+                logger.error(err);
+            } else {
+                response = {
+                    success: true,
+                    message: '获取成功',
+                    status: '200',
+                    payload: results
+                };
+                logger.debug(results);
+            }
+            res.json(response);
+        });
+    } catch(error) {
+        logger.error('Failed to insert user: %s with error: %s', user.phone, error.toString());
+        res.json(response);
+    }
+};
+
 exports.register = register;
 exports.login = login;
 exports.userInfo = userInfo;
@@ -517,3 +552,4 @@ exports.answerQuestion = answerQuestion;
 exports.mineBook = mineBook;
 exports.mineArbitration = mineArbitration;
 exports.votedArbitration = votedArbitration;
+exports.userName = userName;

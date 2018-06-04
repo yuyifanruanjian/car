@@ -447,6 +447,13 @@ app.post('/userInfo', async function(req, res) {
     await userController.userInfo(req, res);
 });
 
+//UserName
+app.post('/userName', async function(req, res) {
+    logger.debug('==================== User Name ==================');
+    console.log(req.body);
+    await userController.userName(req, res);
+});
+
 //MinePhoto
 app.post('/minePhoto', async function(req, res) {
     logger.debug('==================== Mine Photo ==================');
