@@ -226,6 +226,26 @@
             var req = GetRequest();
             var token = req['token'];
             var id = req['id'];
+
+            $.ajax({
+                type: "post",
+                url: "http://"+host+":"+port+"/userName",
+                dataType: "json",
+                data:{ id: id},
+                beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
+                success: function(data){
+                    if(data){
+                        if(data.message == "获取成功"){
+                            $('#username').text(data.payload[0].name);
+                            $('#userimg').attr('src', data.payload[0].url);
+                        }else{
+                            alert(data.message);
+                        }
+                    } else{
+                        alert("数据传输失败");
+                    }
+                }
+            });
             $.ajax({
                 type: "post",
                 url: "http://"+host+":"+port+"/mineArbitration",

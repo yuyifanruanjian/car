@@ -221,12 +221,41 @@
 <script>
     //custom select box
 
-    $(function(){
-        $('select.styled').customSelect();
-    });
+    // $(function(){
+    //     $('select.styled').customSelect();
+    // });
 </script>
 <!-- 提交文件 -->
 <script>
+    $(document).ready(function () {
+        var host = "192.168.1.102";
+        var port = "4000";
+        var req = GetRequest();
+        var token = req['token'];
+        var id = req['id'];
+        $.ajax({
+            type: "post",
+            url: "http://" + host + ":" + port + "/userName",
+            dataType: "json",
+            data: {id: id},
+            beforeSend: function (request) {
+                request.setRequestHeader('Authorization', 'Bearer ' + token);
+            },
+            success: function (data) {
+                if (data) {
+                    if (data.message == "获取成功") {
+                        $('#username').text(data.payload[0].name);
+                        $('#userimg').attr('src', data.payload[0].url);
+                    } else {
+                        alert(data.message);
+                    }
+                } else {
+                    alert("数据传输失败");
+                }
+            }
+        });
+    });
+
     localStorage['ak'] = 'x2j9m_IbBZ0KIDhdF_rONYAeWvY_aNO21I2V8IP6';
     localStorage['sk'] = '9YLou3qblDuQk0aRD6o22OKK4oPziysAU9WE4KW4';
     localStorage['bucket'] = 'filesave';
