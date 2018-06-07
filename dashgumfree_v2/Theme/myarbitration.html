@@ -220,7 +220,7 @@
 <script type="application/javascript">
     $(document).ready(function () {
 
-        var host = "192.168.1.102";
+        var host = "47.96.16.251";
         var port = "4000";
         $(function () {
             var req = GetRequest();
@@ -261,7 +261,7 @@
                                 }
                                 startt = new Date(new Date(data.payload[i].starttime).getTime());
                                 endt = new Date(new Date(data.payload[i].endtime).getTime());
-                                $('#mineArbitration'+parseInt(i/3).toString()).append("<div class=\"col-md-4 col-sm-4 mb\" id=\"arbitration"+data.payload[i].id.toString()+"\" onclick=\"getArbitrationInfo()\">\n" +
+                                $('#mineArbitration'+parseInt(i/3).toString()).append("<div class=\"col-md-4 col-sm-4 mb arbitrationList\" id=\""+data.payload[i].id.toString()+"\" onclick=\"getArbitrationInfo()\">\n" +
                                     "                    <div class=\"white-panel pn\">\n" +
                                     "                        <div class=\"white-header\">\n" +
                                     "                            <h5>"+data.payload[i].name+"</h5>\n" +
@@ -280,6 +280,10 @@
                                     "                    </div>\n" +
                                     "                </div><!-- /col-md-4 -->");
                             }
+                            $("#mineArbitration").on('click','.arbitrationList',function(){
+                                var arbitrationId = $(this).attr('id');
+                                goToArbitration(arbitrationId);
+                            });
                         }else{
                             alert(data.message);
                         }
@@ -304,7 +308,7 @@
                                 }
                                 startt = new Date(new Date(data.payload[i].starttime).getTime());
                                 endt = new Date(new Date(data.payload[i].endtime).getTime());
-                                $('#votedArbitration'+parseInt(i/3).toString()).append("<div class=\"col-md-4 col-sm-4 mb\" id=\"arbitration"+data.payload[i].id.toString()+"\" onclick=\"getQuestionInfo()\">\n" +
+                                $('#votedArbitration'+parseInt(i/3).toString()).append("<div class=\"col-md-4 col-sm-4 mb arbitrationList\" id=\""+data.payload[i].id.toString()+"\" onclick=\"getQuestionInfo()\">\n" +
                                     "                    <div class=\"white-panel pn\">\n" +
                                     "                        <div class=\"white-header\">\n" +
                                     "                            <h5>"+data.payload[i].name+"</h5>\n" +
@@ -323,6 +327,10 @@
                                     "                    </div>\n" +
                                     "                </div><!-- /col-md-4 -->");
                             }
+                            $("#votedArbitration").on('click','.arbitrationList',function(){
+                                var arbitrationId = $(this).attr('id');
+                                goToArbitration(arbitrationId);
+                            });
                         }else{
                             alert(data.message);
                         }
@@ -338,7 +346,7 @@
     var num = Math.round(Math.random()*90+60);
     //循环执行，每隔60-150秒钟执行一次showMsgIcon()
     window.setInterval(function () {
-        var host = "192.168.1.102";
+        var host = "47.96.16.251";
         var port = "4000";
 
         var req = GetRequest();
