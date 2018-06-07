@@ -27,6 +27,7 @@
     "fabric-ca-client": "~1.1.0",
     "fabric-client": "~1.1.0",
     "fs-extra": "^2.0.0",
+    "grpc": "^1.12.2",
     "jsonwebtoken": "^7.3.0",
     "log4js": "^0.6.38",
     "mysql": "^2.15.0"
