@@ -107,7 +107,7 @@ var arbitratedList = async function (res, arbitration) {
             message: '获取失败'
         };
         var queryq = {
-            wants:'distinct question.id, question.content, question.starttime, question.endtime, question.score, question.active, user.name',
+            wants:'distinct arbitration.id, question.content, question.starttime, question.endtime, question.score, question.active, user.name',
             table:'question join arbitration on (arbitration.questionId=question.id) join user on (user.id=question.userId)',
             conditions:{
                 'question.active':[2]
