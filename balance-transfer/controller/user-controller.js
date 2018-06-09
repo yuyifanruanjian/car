@@ -156,6 +156,30 @@ var userName = async function (req, res) {
     }
 };
 
+var userMessage = async function (req, res) {
+    try {
+        var para_json = {
+            id:req.body.id,
+        };
+        await user.userMessage(res, para_json);
+    } catch(error) {
+        logger.error('Failed to get registered user: %s with error: %s', this.body.id, error.toString());
+        return 'failed '+error.toString();
+    }
+};
+
+var carMessage = async function (req, res) {
+    try {
+        var para_json = {
+            id:req.body.carId,
+        };
+        await car.carMessage(res, para_json);
+    } catch(error) {
+        logger.error('Failed to get registered user: %s with error: %s', this.body.id, error.toString());
+        return 'failed '+error.toString();
+    }
+};
+
 exports.register = register;
 exports.carRegister = carRegister;
 exports.login = login;
@@ -168,3 +192,5 @@ exports.mineBook = mineBook;
 exports.mineArbitration = mineArbitration;
 exports.votedArbitration = votedArbitration;
 exports.userName = userName;
+exports.userMessage = userMessage;
+exports.carMessage = carMessage;

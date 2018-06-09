@@ -539,7 +539,28 @@ var userName = async function (res, user) {
             res.json(response);
         });
     } catch(error) {
-        logger.error('Failed to insert user: %s with error: %s', user.phone, error.toString());
+        logger.error('Failed to insert user: %s with error: %s', user.id, error.toString());
+        res.json(response);
+    }
+};
+
+var userMessage = async function (res, user) {
+    try {
+        var results = invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "GetUserScoreInfo", [user.id.toString()], "Jim", "Org1");
+        var response = {
+            success: true,
+            message: '获取成功',
+            status: '200',
+            payload: results
+        };
+        res.json(response);
+    } catch(error) {
+        var response = {
+            success: false,
+            status: '999',
+            message: '获取失败'
+        };
+        logger.error('Failed to insert user: %s with error: %s', user.id, error.toString());
         res.json(response);
     }
 };
@@ -555,3 +576,4 @@ exports.mineBook = mineBook;
 exports.mineArbitration = mineArbitration;
 exports.votedArbitration = votedArbitration;
 exports.userName = userName;
+exports.userMessage = userMessage;

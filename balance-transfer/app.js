@@ -630,4 +630,18 @@ app.post('/checkArbitration', async function(req, res) {
     await arbitrationController.checkArbitration(req, res);
 });
 
+//UserMessage
+app.post('/userMessage', async function(req, res) {
+    logger.debug('==================== User Message ==================');
+    console.log(req.body);
+    await userController.userMessage(req, res);
+});
+
+//CarMessage
+app.post('/carMessage', async function(req, res) {
+    logger.debug('==================== Car Message ==================');
+    console.log(req.body);
+    await userController.carMessage(req, res);
+});
+
 

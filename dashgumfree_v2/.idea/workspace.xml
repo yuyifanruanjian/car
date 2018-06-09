@@ -3,9 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="82c87f7e-cb2b-4cde-9707-677ca6668819" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/../balance-transfer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../balance-transfer/1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../balance-transfer/model/photo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/model/photo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../balance-transfer/！" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../balance-transfer/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../balance-transfer/controller/user-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/controller/user-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../balance-transfer/model/car.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/model/car.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../balance-transfer/model/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/model/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theme/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Theme/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Theme/submit_img.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/submit_img.html" afterDir="false" />
     </list>
@@ -36,33 +38,32 @@
       <file leaf-file-name="register.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Theme/register.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="110" selection-start-line="110" selection-end-line="110" />
+            <state relative-caret-position="-224">
+              <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="submit_img.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Theme/submit_img.html">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Theme/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="413" column="56" lean-forward="true" selection-start-line="413" selection-start-column="56" selection-end-line="413" selection-end-column="56" />
+            <state relative-caret-position="1190">
+              <caret line="463" column="19" lean-forward="true" selection-start-line="463" selection-start-column="19" selection-end-line="463" selection-end-column="19" />
               <folding>
-                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+                <element signature="e#17457#21588#0" />
+                <element signature="e#21615#22115#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="submit_book.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Theme/submit_book.html">
+      <file leaf-file-name="submit_img.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Theme/submit_img.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4956">
-              <caret line="225" column="10" selection-start-line="225" selection-start-column="10" selection-end-line="225" selection-end-column="10" />
+            <state relative-caret-position="168">
+              <caret line="367" column="39" selection-start-line="367" selection-start-column="39" selection-end-line="367" selection-end-column="39" />
               <folding>
-                <element signature="n#header#0;n#section#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#section#0;n#section#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#section#0;n#section#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -193,7 +194,6 @@
         <option value="$PROJECT_DIR$/Theme/general.html" />
         <option value="$PROJECT_DIR$/Theme/assets/problemlist.html" />
         <option value="$PROJECT_DIR$/Theme/assets/js/route.js" />
-        <option value="$PROJECT_DIR$/Theme/index.html" />
         <option value="$PROJECT_DIR$/Theme/imglist.html" />
         <option value="$PROJECT_DIR$/Theme/arbitrationlist.html" />
         <option value="$PROJECT_DIR$/Theme/booklist.html" />
@@ -208,8 +208,9 @@
         <option value="$PROJECT_DIR$/Theme/myarbitration.html" />
         <option value="$PROJECT_DIR$/Theme/login.html" />
         <option value="$PROJECT_DIR$/Theme/submit_problem.html" />
-        <option value="$PROJECT_DIR$/Theme/register.html" />
         <option value="$PROJECT_DIR$/Theme/submit_img.html" />
+        <option value="$PROJECT_DIR$/Theme/register.html" />
+        <option value="$PROJECT_DIR$/Theme/index.html" />
       </list>
     </option>
   </component>
@@ -317,12 +318,12 @@
       <workItem from="1528191689476" duration="1162000" />
       <workItem from="1528289274691" duration="957000" />
       <workItem from="1528348881256" duration="1992000" />
-      <workItem from="1528535645097" duration="17100000" />
+      <workItem from="1528535645097" duration="19079000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="209845000" />
+    <option name="totallyTimeSpent" value="211824000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -552,20 +553,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Theme/assets/js/route.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="111" column="9" selection-start-line="111" selection-start-column="9" selection-end-line="111" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Theme/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-166">
-          <caret line="403" column="51" selection-start-line="403" selection-start-column="47" selection-end-line="403" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Theme/arbitration.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7196">
@@ -622,13 +609,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Theme/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="110" selection-start-line="110" selection-end-line="110" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Theme/submit_problem.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="334">
@@ -636,12 +616,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Theme/assets/js/route.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="562">
+          <caret line="59" column="50" lean-forward="true" selection-start-line="59" selection-start-column="50" selection-end-line="59" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Theme/submit_img.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="413" column="56" lean-forward="true" selection-start-line="413" selection-start-column="56" selection-end-line="413" selection-end-column="56" />
+        <state relative-caret-position="168">
+          <caret line="367" column="39" selection-start-line="367" selection-start-column="39" selection-end-line="367" selection-end-column="39" />
           <folding>
             <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Theme/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-224">
+          <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Theme/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="463" column="19" lean-forward="true" selection-start-line="463" selection-start-column="19" selection-end-line="463" selection-end-column="19" />
+          <folding>
+            <element signature="e#17457#21588#0" />
+            <element signature="e#21615#22115#0" />
           </folding>
         </state>
       </provider>

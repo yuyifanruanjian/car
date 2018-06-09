@@ -32,19 +32,7 @@ var register = async function (res, car) {
                     },
                     async function (results, callback) {
                         if (results.length > 0) {
-                            var update = {
-                                table:'car',
-                                wants: {
-                                    score:item.score
-                                },
-                                conditions:{
-                                    carId:item.id
-                                }
-                            };
-                            let sql = await db.sqlUpdate(update);
-                            db.connection.query(sql.sql, sql.sqlData, async function(err, results1) {
-                                callback(err);
-                            });
+                            callback(null);
                         } else {
                             var insert = {
                                 table:'car',
@@ -91,5 +79,27 @@ var register = async function (res, car) {
     }
 };
 
+var carMessage = async function (res, car) {
+    try {
+        var results = invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "GetCarScoreInfo", [car.id.toString()], "Jim", "Org1");
+        var response = {
+            success: true,
+            message: '获取成功',
+            status: '200',
+            payload: results
+        };
+        res.json(response);
+    } catch(error) {
+        var response = {
+            success: false,
+            status: '999',
+            message: '获取失败'
+        };
+        logger.error('Failed to insert user: %s with error: %s', car.id, error.toString());
+        res.json(response);
+    }
+};
+
 exports.register = register;
+exports.carMessage = carMessage;
 

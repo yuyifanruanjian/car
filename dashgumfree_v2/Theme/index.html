@@ -280,28 +280,7 @@
                     <!--COMPLETED ACTIONS DONUTS CHART-->
 						<h3>消息</h3>
                       <div id="messageDetailList">
-                          <!-- First Action -->
-                          <div class="desc">
-                              <div class="thumb">
-                                  <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                              </div>
-                              <div class="details">
-                                  <p><muted>2天前</muted><br/>
-                                      yyf提交了一份教程<br/>
-                                  </p>
-                              </div>
-                          </div>
-                          <!-- Second Action -->
-                          <div class="desc">
-                              <div class="thumb">
-                                  <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                              </div>
-                              <div class="details">
-                                  <p><muted>3天前</muted><br/>
-                                      yyf提出了一个问题<br/>
-                                  </p>
-                              </div>
-                          </div>
+
                       </div>
                         <!-- CALENDAR-->
                         <div id="calendar" class="mb">
@@ -453,6 +432,32 @@
                                 alert(data.message);
                             }
                         } else{
+                            alert("数据传输失败");
+                        }
+                    }
+                });
+
+                $.ajax({
+                    type: "post",
+                    url: "http://"+host+":"+port+"/userMessage",
+                    dataType: "json",
+                    data:{ id: id},
+                    beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
+                    success: function(data) {
+                        if (data) {
+                            if (data.message == "获取成功") {
+                                $('#messageDetailList').append('<div class="desc">\n' +
+                                    '                    <div class="thumb">\n' +
+                                    '                    <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>\n' +
+                                    '                </div>\n' +
+                                    '                <div class="details">\n' +
+                                    '                    <p><muted></muted><br/>\n' +
+                                    '                '+data.payload+'<br/>\n' +
+                                    '                </p>\n' +
+                                    '                </div>\n' +
+                                    '                </div>')
+                            }
+                        } else {
                             alert("数据传输失败");
                         }
                     }
