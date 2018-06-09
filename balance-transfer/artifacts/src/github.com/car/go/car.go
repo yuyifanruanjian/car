@@ -95,8 +95,8 @@ func (t *SimpleChaincode) ModifyUserScore(stub shim.ChaincodeStubInterface, args
 	var userScore UserScore
 	var err error
 
-	if len(args) != 1 {
-		return shim.Error("Incorrect number of arguments. Expecting 1")
+	if len(args) != 4 {
+		return shim.Error("Incorrect number of arguments. Expecting 4")
 	}
 
 	userId, err = strconv.Atoi(args[0])
