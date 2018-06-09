@@ -252,11 +252,12 @@ app.post('/channels/:channelName/chaincodes', async function(req, res) {
 // Invoke transaction on chaincode on target peers
 app.post('/channels/:channelName/chaincodes/:chaincodeName', async function(req, res) {
 	logger.debug('==================== INVOKE ON CHAINCODE ==================');
-	var peers = req.body.peers;
+        var peers = JSON.parse(req.body.peers);
 	var chaincodeName = req.params.chaincodeName;
 	var channelName = req.params.channelName;
 	var fcn = req.body.fcn;
-	var args = req.body.args;
+	var args = JSON.parse(req.body.args);
+        console.log(args);
 	logger.debug('channelName  : ' + channelName);
 	logger.debug('chaincodeName : ' + chaincodeName);
 	logger.debug('fcn  : ' + fcn);
