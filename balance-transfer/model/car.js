@@ -4,6 +4,7 @@ var logger = log4js.getLogger('Car');
 logger.setLevel('DEBUG');
 var db = require('./../proxy/db');
 var async = require("async");
+var invoke = require('./../app/invoke-transaction');
 
 var register = async function (res, car) {
     try {
@@ -54,6 +55,7 @@ var register = async function (res, car) {
                                 }
                             };
                             let sql = await db.sqlInsert(insert);
+                            invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "CreateCarScore", [item.id], "Jim", "Org1");
                             db.connection.query(sql.sql, sql.sqlData, async function(err, results1) {
                                 callback(err);
                             });

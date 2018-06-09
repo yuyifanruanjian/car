@@ -4,6 +4,7 @@ var logger = log4js.getLogger('User');
 logger.setLevel('DEBUG');
 var db = require('./../proxy/db');
 var async = require("async");
+var invoke = require('./../app/invoke-transaction');
 
 
 var register = async function (res, token, user) {
@@ -80,6 +81,7 @@ var register = async function (res, token, user) {
                         payload: results2[0]
                     };
                     logger.debug(results2[0]);
+                    invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "CreateUserScore", [results2[0].id.toString()], "Jim", "Org1");
                 }
             }
             res.json(response);

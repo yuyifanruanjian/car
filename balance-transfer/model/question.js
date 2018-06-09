@@ -4,7 +4,7 @@ var logger = log4js.getLogger('Question');
 logger.setLevel('DEBUG');
 var db = require('./../proxy/db');
 var async = require("async");
-
+var invoke = require('./../app/invoke-transaction');
 
 var submitQuestion = async function (res, question) {
     try {
@@ -45,7 +45,6 @@ var submitQuestion = async function (res, question) {
                     };
                     let sql = await db.sqlInsert(insert);
                     db.connection.query(sql.sql, sql.sqlData, async function(err, results1) {
-                        response.success = true;
                         callback(err);
                     });
                 }
@@ -58,11 +57,34 @@ var submitQuestion = async function (res, question) {
                     sql.sql = 'update user set score=score-? where id=?';
                     sql.sqlData = [question.score, question.id];
                     db.connection.query(sql.sql, sql.sqlData, async function(err, results2) {
-                        callback(err, results2);
+                        callback(err);
+                    });
+                }
+            },
+            async function (callback) {
+                if (response.message == '分值不足') {
+                    callback(null);
+                } else {
+                    var queryq = {
+                        wants:'id',
+                        table:'question',
+                        conditions:{
+                            userId:[question.id],
+                            score:[question.score],
+                            content:[question.content],
+                            starttime:[question.starttime],
+                            endtime:[question.endtime],
+                            active:[1]
+                        }
+                    };
+                    let sql = await db.sqlSelect(queryq);
+                    db.connection.query(sql.sql, sql.sqlData, async function(err, results3) {
+                        response.success = true;
+                        callback(err, results3);
                     });
                 }
             }
-        ], async function (err, results2) {
+        ], async function (err, results3) {
             if(err) {
                 logger.error(err);
             } else {
@@ -73,6 +95,7 @@ var submitQuestion = async function (res, question) {
                         status: '200'
                     };
                     logger.debug('submit question seuccess');
+                    invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [question.id.toString(), '-'+question.score.toString(), "5", results3[0].id.toString()+'+'+question.content+'+'+question.starttime], "Jim", "Org1");
                 }
             }
             res.json(response);
@@ -279,10 +302,38 @@ var bestAnswer = async function (res, question) {
             status: '999',
             message: '选取失败'
         };
+        var ttime = new Date();
+        var year = ttime.getFullYear();
+        if (ttime.getMonth()+1 < 10) {
+            var month = '0'+(ttime.getMonth()+1).toString();
+        } else {
+            var month = (ttime.getMonth()+1).toString();
+        }
+        if (ttime.getDate() < 10) {
+            var day = '0'+ttime.getDate();
+        } else {
+            var day = ttime.getDate();
+        }
+        if (ttime.getHours() < 10) {
+            var hour = '0'+ttime.getHours();
+        } else {
+            var hour = ttime.getHours();
+        }
+        if (ttime.getMinutes() < 10) {
+            var minute = '0'+ttime.getMinutes();
+        } else {
+            var minute = ttime.getMinutes();
+        }
+        if (ttime.getSeconds() < 10) {
+            var second = '0'+ttime.getSeconds();
+        } else {
+            var second = ttime.getSeconds();
+        }
+        var stime = ''+year+month+day+hour+minute+second;
         async.waterfall([
             async function (callback) {
                 var queryq = {
-                    wants:'user.id, question.score',
+                    wants:'user.id, question.score, question.content',
                     table:'question join user on (user.id=question.userId)',
                     conditions:{
                         'question.id':[question.questionId],
@@ -303,6 +354,7 @@ var bestAnswer = async function (res, question) {
                     var sql = {};
                     sql.sql = 'update user set score=score+? where id=?';
                     sql.sqlData = [results[0].score, question.id];
+                    invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [question.id.toString(), results[0].score.toString(), "6", question.questionId.toString()+'+'+results[0].content+'+'+stime], "Jim", "Org1");
                     db.connection.query(sql.sql, sql.sqlData, async function(err, results3) {
                         callback(err);
                     });

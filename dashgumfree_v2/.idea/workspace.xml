@@ -3,10 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="82c87f7e-cb2b-4cde-9707-677ca6668819" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/../balance-transfer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../balance-transfer/artifacts/src/github.com/car/go/car.go" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/artifacts/src/github.com/car/go/car.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Theme/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Theme/submit_img.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/submit_img.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../balance-transfer/model/arbitration.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/model/arbitration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../balance-transfer/model/book.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/model/book.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../balance-transfer/model/car.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/model/car.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../balance-transfer/model/photo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/model/photo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../balance-transfer/model/question.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/model/question.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../balance-transfer/model/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/model/user.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,8 +37,8 @@
       <file leaf-file-name="register.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Theme/register.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="132" column="123" selection-start-line="132" selection-start-column="123" selection-end-line="132" selection-end-column="123" />
+            <state relative-caret-position="84">
+              <caret line="147" column="81" lean-forward="true" selection-start-line="147" selection-start-column="81" selection-end-line="147" selection-end-column="81" />
             </state>
           </provider>
         </entry>
@@ -44,8 +46,8 @@
       <file leaf-file-name="submit_img.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Theme/submit_img.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="439" column="75" lean-forward="true" selection-start-line="439" selection-start-column="75" selection-end-line="439" selection-end-column="75" />
+            <state relative-caret-position="194">
+              <caret line="402" column="69" lean-forward="true" selection-start-line="375" selection-start-column="20" selection-end-line="402" selection-end-column="69" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
               </folding>
@@ -316,12 +318,12 @@
       <workItem from="1528191689476" duration="1162000" />
       <workItem from="1528289274691" duration="957000" />
       <workItem from="1528348881256" duration="1992000" />
-      <workItem from="1528535645097" duration="14685000" />
+      <workItem from="1528535645097" duration="16320000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="207430000" />
+    <option name="totallyTimeSpent" value="209065000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -630,15 +632,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Theme/register.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="132" column="123" selection-start-line="132" selection-start-column="123" selection-end-line="132" selection-end-column="123" />
+        <state relative-caret-position="84">
+          <caret line="147" column="81" lean-forward="true" selection-start-line="147" selection-start-column="81" selection-end-line="147" selection-end-column="81" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Theme/submit_img.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="439" column="75" lean-forward="true" selection-start-line="439" selection-start-column="75" selection-end-line="439" selection-end-column="75" />
+        <state relative-caret-position="194">
+          <caret line="402" column="69" lean-forward="true" selection-start-line="375" selection-start-column="20" selection-end-line="402" selection-end-column="69" />
           <folding>
             <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
           </folding>

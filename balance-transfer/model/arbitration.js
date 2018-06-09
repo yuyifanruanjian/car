@@ -4,6 +4,7 @@ var logger = log4js.getLogger('Arbitration');
 logger.setLevel('DEBUG');
 var db = require('./../proxy/db');
 var async = require("async");
+var invoke = require('./../app/invoke-transaction');
 
 var arbitratedQuestion = async function (res, arbitration) {
     try {
@@ -353,7 +354,7 @@ var checkArbitration = async function (res, arbitration) {
         async.waterfall([
             async function (callback) {
                 var sql = {};
-                sql.sql = 'select score, arbitration.id, arbitration.questionId from arbitration join question on (question.id=arbitration.questionId) where arbitration.active=1 and arbitration.endtime<?';
+                sql.sql = 'select score, arbitration.id, arbitration.questionId, question.content from arbitration join question on (question.id=arbitration.questionId) where arbitration.active=1 and arbitration.endtime<?';
                 sql.sqlData = [arbitration.ttime];
                 db.connection.query(sql.sql, sql.sqlData, async function(err, results0) {
                     callback(err, results0);
@@ -382,7 +383,8 @@ var checkArbitration = async function (res, arbitration) {
                                 }
                                 results[item.questionId] = {
                                     results: a,
-                                    score: item.score
+                                    score: item.score,
+                                    content: item.content
                                 };
                                 cb();
                             }
@@ -403,13 +405,15 @@ var checkArbitration = async function (res, arbitration) {
                                     results1[key] = {
                                         answerId: key,
                                         count: -1,
-                                        score: value.score / 2
+                                        score: value.score / 2,
+                                        content: value.content
                                     }
                                 } else {
                                     results1[key] = {
                                         answerId: maxA,
                                         count: maxV,
-                                        score: value.score
+                                        score: value.score,
+                                        content: value.content
                                     }
                                 }
                                 var sql = {};
@@ -439,6 +443,11 @@ var checkArbitration = async function (res, arbitration) {
                                                 var sql = {};
                                                 sql.sql = 'update user set score=score+? where id=?';
                                                 sql.sqlData = [value.score, value.userId];
+                                                if (value.count == -1) {
+                                                    invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [value.userId.toString(), value.score.toString(), "7", key.toString()+'+'+value.content+'+'+arbitration.ttime], "Jim", "Org1");
+                                                } else {
+                                                    invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [value.userId.toString(), value.score.toString(), "6", key.toString()+'+'+value.content+'+'+arbitration.ttime], "Jim", "Org1");
+                                                }
                                                 db.connection.query(sql.sql, sql.sqlData, async function (err, results4) {
                                                     cb(err);
                                                 });

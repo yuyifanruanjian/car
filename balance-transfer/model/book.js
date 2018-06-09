@@ -4,7 +4,7 @@ var logger = log4js.getLogger('Book');
 logger.setLevel('DEBUG');
 var db = require('./../proxy/db');
 var async = require("async");
-
+var invoke = require('./../app/invoke-transaction');
 
 var submitBook = async function (res, book) {
     try {
@@ -136,10 +136,38 @@ var buyBook = async function (res, book) {
             status: '999',
             message: '购买失败'
         };
+        var ttime = new Date();
+        var year = ttime.getFullYear();
+        if (ttime.getMonth()+1 < 10) {
+            var month = '0'+(ttime.getMonth()+1).toString();
+        } else {
+            var month = (ttime.getMonth()+1).toString();
+        }
+        if (ttime.getDate() < 10) {
+            var day = '0'+ttime.getDate();
+        } else {
+            var day = ttime.getDate();
+        }
+        if (ttime.getHours() < 10) {
+            var hour = '0'+ttime.getHours();
+        } else {
+            var hour = ttime.getHours();
+        }
+        if (ttime.getMinutes() < 10) {
+            var minute = '0'+ttime.getMinutes();
+        } else {
+            var minute = ttime.getMinutes();
+        }
+        if (ttime.getSeconds() < 10) {
+            var second = '0'+ttime.getSeconds();
+        } else {
+            var second = ttime.getSeconds();
+        }
+        var stime = ''+year+month+day+hour+minute+second;
         async.waterfall([
             async function (callback) {
                 var queryq = {
-                    wants:'userId, score',
+                    wants:'userId, score, bookUrl, name',
                     table:'book',
                     conditions:{
                         id:[book.bookId]
@@ -177,6 +205,8 @@ var buyBook = async function (res, book) {
                             });
                         },
                         async function (err) {
+                            invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [results[0].userId.toString(), results[0].score.toString(), "3", book.bookId.toString()+'+'+results[0].name+'+'+results[0].bookUrl+'+'+stime], "Jim", "Org1");
+                            invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [book.id.toString(), '-'+results[0].score.toString(), "4", book.bookId.toString()+'+'+results[0].name+'+'+results[0].bookUrl+'+'+stime], "Jim", "Org1");
                             callback(err);
                         });
                 } else {
