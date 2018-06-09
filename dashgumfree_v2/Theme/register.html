@@ -107,7 +107,38 @@ MAIN CONTENT
                         if(data.message == "注册成功"){
                             var id = data.payload.id;
                             var token = data.token;
-                            if (carIdList != {}) {
+                            var tokenBC = '';
+                            $.ajax({
+                                type: "post",
+                                url: "http://" + host + ":" + port + "/channels/mychannel/chaincodes/mycc",
+                                dataType: "json",
+                                beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + tokenBC );},
+                                data: {"peers": ["peer0.org1.example.com","peer1.org1.example.com"], "fcn":"CreateUserScore", "args":[id.toString()]},
+                                success: function (data) {
+                                    if (data) {
+                                        alert(data.message);
+                                    } else {
+                                        alert("数据传输失败");
+                                    }
+                                }
+                            });
+                            if (carIdList.length != 0) {
+                                for (var i=0; i<carIdList.length; i++) {
+                                    $.ajax({
+                                        type: "post",
+                                        url: "http://" + host + ":" + port + "/channels/mychannel/chaincodes/mycc",
+                                        dataType: "json",
+                                        beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + tokenBC );},
+                                        data: {"peers": ["peer0.org1.example.com","peer1.org1.example.com"], "fcn":"CreateCarScore", "args":[carIdList[i].id]},
+                                        success: function (data) {
+                                            if (data) {
+                                                alert(data.message);
+                                            } else {
+                                                alert("数据传输失败");
+                                            }
+                                        }
+                                    });
+                                }
                                 $.ajax({
                                     type: "post",
                                     url: "http://" + host + ":" + port + "/carRegister",

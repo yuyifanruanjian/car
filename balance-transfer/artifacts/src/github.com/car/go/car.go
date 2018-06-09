@@ -57,6 +57,11 @@ func (t *SimpleChaincode) CreateUserScore(stub shim.ChaincodeStubInterface, args
 	if err != nil {
 		return shim.Error("Expecting integer value for asset holding：UserId ")
 	}
+
+	userByte, erro := stub.GetState(args[0])
+    if erro == nil {
+        return shim.Error(erro.Error())
+    }
 	
 	userScore.UserId = userId
 	userScore.EventType = "0"
@@ -203,7 +208,10 @@ func (t *SimpleChaincode) CreateCarScore(stub shim.ChaincodeStubInterface, args 
 		return shim.Error("Incorrect number of arguments. Expecting 1")
 	}
 
-	
+	carByte, erro := stub.GetState(args[0])
+    if erro == nil {
+        return shim.Error(erro.Error())
+    }
 	carScore.CarId = args[0]
 	carScore.EventType = "0"
 	carScore.Event = "车辆注册"
