@@ -82,7 +82,7 @@ var register = async function (res, car) {
 var carMessage = async function (res, car) {
     try {
         let results = await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "GetCarScoreInfo", [car.id.toString()], "Jim", "Org1");
-        logger.log(results);
+        logger.info(results);
         var response = {
             success: true,
             message: '获取成功',
