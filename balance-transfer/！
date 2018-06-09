@@ -103,7 +103,7 @@ func (t *SimpleChaincode) ModifyUserScore(stub shim.ChaincodeStubInterface, args
 	if err != nil {
 		return shim.Error("Expecting float64 value for asset holding：Score ")
 	}
-	
+
 	eventType = args[2]
 
 	event = args[3]
@@ -241,11 +241,11 @@ func (t *SimpleChaincode) ModifyCarScore(stub shim.ChaincodeStubInterface, args 
 
 	carId = args[0]
 	
-	score, err = strconv.ParseFloat(args[1], 64)
-	if err != nil {
-	        return shim.Error("Expecting float64 value for asset holding：Score ")
-	}
-        
+	#score, err = strconv.ParseFloat(args[1], 64)
+	#if err != nil {
+	#	return shim.Error("Expecting float64 value for asset holding：Score ")
+	#}
+        score = 0
 	eventType = args[2]
 
 	event = args[3]

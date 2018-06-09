@@ -50,7 +50,7 @@ var register = async function (res, car) {
                                 conditions:{
                                     carId:[item.id],
                                     score:[item.score],
-                                    userId: car.id
+                                    userId: [car.id]
                                 }
                             };
                             let sql = await db.sqlInsert(insert);
