@@ -3,13 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="82c87f7e-cb2b-4cde-9707-677ca6668819" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/../balance-transfer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../balance-transfer/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../balance-transfer/controller/user-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/controller/user-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../balance-transfer/app/invoke-transaction.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/app/invoke-transaction.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../balance-transfer/model/car.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/model/car.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../balance-transfer/model/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/model/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Theme/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Theme/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Theme/submit_img.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/submit_img.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -47,11 +43,10 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Theme/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1190">
-              <caret line="463" column="19" lean-forward="true" selection-start-line="463" selection-start-column="19" selection-end-line="463" selection-end-column="19" />
+            <state relative-caret-position="324">
+              <caret line="455" column="81" lean-forward="true" selection-start-line="455" selection-start-column="81" selection-end-line="455" selection-end-column="81" />
               <folding>
                 <element signature="e#17457#21588#0" />
-                <element signature="e#21615#22115#0" />
               </folding>
             </state>
           </provider>
@@ -318,12 +313,12 @@
       <workItem from="1528191689476" duration="1162000" />
       <workItem from="1528289274691" duration="957000" />
       <workItem from="1528348881256" duration="1992000" />
-      <workItem from="1528535645097" duration="19079000" />
+      <workItem from="1528535645097" duration="19913000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="211824000" />
+    <option name="totallyTimeSpent" value="212658000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -642,11 +637,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Theme/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="463" column="19" lean-forward="true" selection-start-line="463" selection-start-column="19" selection-end-line="463" selection-end-column="19" />
+        <state relative-caret-position="324">
+          <caret line="455" column="81" lean-forward="true" selection-start-line="455" selection-start-column="81" selection-end-line="455" selection-end-column="81" />
           <folding>
             <element signature="e#17457#21588#0" />
-            <element signature="e#21615#22115#0" />
           </folding>
         </state>
       </provider>

@@ -446,13 +446,14 @@
                     success: function(data) {
                         if (data) {
                             if (data.message == "获取成功") {
+                                alert(1);
                                 $('#messageDetailList').append('<div class="desc">\n' +
                                     '                    <div class="thumb">\n' +
                                     '                    <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>\n' +
                                     '                </div>\n' +
                                     '                <div class="details">\n' +
                                     '                    <p><muted></muted><br/>\n' +
-                                    '                '+data.payload+'<br/>\n' +
+                                    '                '+JSON.stringify(data.payload)+'<br/>\n' +
                                     '                </p>\n' +
                                     '                </div>\n' +
                                     '                </div>')
