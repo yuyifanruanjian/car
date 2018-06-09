@@ -444,9 +444,9 @@ var checkArbitration = async function (res, arbitration) {
                                                 sql.sql = 'update user set score=score+? where id=?';
                                                 sql.sqlData = [value.score, value.userId];
                                                 if (value.count == -1) {
-                                                    invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [value.userId.toString(), value.score.toString(), "7", key.toString()+'+'+value.content+'+'+arbitration.ttime], "Jim", "Org1");
+                                                    await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [value.userId.toString(), value.score.toString(), "7", key.toString()+'+'+value.content+'+'+arbitration.ttime], "Jim", "Org1");
                                                 } else {
-                                                    invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [value.userId.toString(), value.score.toString(), "6", key.toString()+'+'+value.content+'+'+arbitration.ttime], "Jim", "Org1");
+                                                    await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [value.userId.toString(), value.score.toString(), "6", key.toString()+'+'+value.content+'+'+arbitration.ttime], "Jim", "Org1");
                                                 }
                                                 db.connection.query(sql.sql, sql.sqlData, async function (err, results4) {
                                                     cb(err);

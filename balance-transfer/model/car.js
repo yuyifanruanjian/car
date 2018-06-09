@@ -43,7 +43,7 @@ var register = async function (res, car) {
                                 }
                             };
                             let sql = await db.sqlInsert(insert);
-                            invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "CreateCarScore", [item.id], "Jim", "Org1");
+                            await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "CreateCarScore", [item.id], "Jim", "Org1");
                             db.connection.query(sql.sql, sql.sqlData, async function(err, results1) {
                                 callback(err);
                             });
@@ -81,8 +81,8 @@ var register = async function (res, car) {
 
 var carMessage = async function (res, car) {
     try {
-        var results = invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "GetCarScoreInfo", [car.id.toString()], "Jim", "Org1");
-        console.log(results);
+        let results = await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "GetCarScoreInfo", [car.id.toString()], "Jim", "Org1");
+        logger.log(results);
         var response = {
             success: true,
             message: '获取成功',

@@ -205,8 +205,8 @@ var buyBook = async function (res, book) {
                             });
                         },
                         async function (err) {
-                            invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [results[0].userId.toString(), results[0].score.toString(), "3", book.bookId.toString()+'+'+results[0].name+'+'+results[0].bookUrl+'+'+stime], "Jim", "Org1");
-                            invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [book.id.toString(), '-'+results[0].score.toString(), "4", book.bookId.toString()+'+'+results[0].name+'+'+results[0].bookUrl+'+'+stime], "Jim", "Org1");
+                            await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [results[0].userId.toString(), results[0].score.toString(), "3", book.bookId.toString()+'+'+results[0].name+'+'+results[0].bookUrl+'+'+stime], "Jim", "Org1");
+                            await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [book.id.toString(), '-'+results[0].score.toString(), "4", book.bookId.toString()+'+'+results[0].name+'+'+results[0].bookUrl+'+'+stime], "Jim", "Org1");
                             callback(err);
                         });
                 } else {

@@ -95,7 +95,7 @@ var submitQuestion = async function (res, question) {
                         status: '200'
                     };
                     logger.debug('submit question seuccess');
-                    invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [question.id.toString(), '-'+question.score.toString(), "5", results3[0].id.toString()+'+'+question.content+'+'+question.starttime], "Jim", "Org1");
+                    await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [question.id.toString(), '-'+question.score.toString(), "5", results3[0].id.toString()+'+'+question.content+'+'+question.starttime], "Jim", "Org1");
                 }
             }
             res.json(response);
@@ -354,7 +354,7 @@ var bestAnswer = async function (res, question) {
                     var sql = {};
                     sql.sql = 'update user set score=score+? where id=?';
                     sql.sqlData = [results[0].score, question.id];
-                    invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [question.id.toString(), results[0].score.toString(), "6", question.questionId.toString()+'+'+results[0].content+'+'+stime], "Jim", "Org1");
+                    await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [question.id.toString(), results[0].score.toString(), "6", question.questionId.toString()+'+'+results[0].content+'+'+stime], "Jim", "Org1");
                     db.connection.query(sql.sql, sql.sqlData, async function(err, results3) {
                         callback(err);
                     });

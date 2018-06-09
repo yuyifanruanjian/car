@@ -81,7 +81,7 @@ var register = async function (res, token, user) {
                         payload: results2[0]
                     };
                     logger.debug(results2[0]);
-                    invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "CreateUserScore", [results2[0].id.toString()], "Jim", "Org1");
+                    await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "CreateUserScore", [results2[0].id.toString()], "Jim", "Org1");
                 }
             }
             res.json(response);
@@ -546,7 +546,7 @@ var userName = async function (res, user) {
 
 var userMessage = async function (res, user) {
     try {
-        var results = invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "GetUserScoreInfo", [user.id.toString()], "Jim", "Org1");
+        let results = await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "GetUserScoreInfo", [user.id.toString()], "Jim", "Org1");
         console.log(results);
         var response = {
             success: true,
