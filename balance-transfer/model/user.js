@@ -547,6 +547,7 @@ var userName = async function (res, user) {
 var userMessage = async function (res, user) {
     try {
         var results = invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "GetUserScoreInfo", [user.id.toString()], "Jim", "Org1");
+        console.log(results);
         var response = {
             success: true,
             message: '获取成功',
