@@ -412,23 +412,6 @@
                             if(data){
                                 if(data.message == "提交成功"){
                                     alert(data.payload.id);
-
-                                    $.ajax({
-                                        type: "post",
-                                        url: "http://" + host + ":" + port + "/channels/mychannel/chaincodes/mycc",
-                                        dataType: "json",
-                                        beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + tokenBC );},
-                                        data: {"peers": JSON.stringify(["peer0.org1.example.com","peer1.org1.example.com"]), "fcn":"ModifyUserScore", "args":JSON.stringify([id.toString(), score.toString(), "1", photoUrl])},
-                                        success: function (data) {
-                                            if (data) {
-                                                alert(data);
-                                            } else {
-                                                alert("数据传输失败");
-                                            }
-                                        }
-                                    });
-
-
                                     $.ajax({
                                         type: "post",
                                         url: "http://"+host+":"+port+"/receivePunOrAward",

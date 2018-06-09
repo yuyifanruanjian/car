@@ -50,7 +50,6 @@ var submitPhoto = async function (res, photo) {
                     };
                     let sql = await db.sqlInsert(insert);
                     db.connection.query(sql.sql, sql.sqlData, async function(err, results1) {
-                        response.success = true;
                         callback(err);
                     });
                 }
@@ -90,6 +89,7 @@ var submitPhoto = async function (res, photo) {
                     };
                     let sql = await db.sqlSelect(queryq);
                     db.connection.query(sql.sql, sql.sqlData, async function(err, results2) {
+                        response.success = true;
                         callback(err, results2);
                     });
                 }

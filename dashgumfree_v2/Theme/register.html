@@ -108,38 +108,9 @@ MAIN CONTENT
                             var id = data.payload.id;
                             var token = data.token;
                             var tokenBC = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1Mjg1ODU5OTYsInVzZXJuYW1lIjoiSmltIiwib3JnTmFtZSI6Ik9yZzEiLCJpYXQiOjE1Mjg1NDk5OTZ9.BtC4Up-GguMaOki1dFlBY_hD3sFPHH6SJTdBniyLvDs';
-                            $.ajax({
-                                type: "post",
-                                url: "http://" + host + ":" + port + "/channels/mychannel/chaincodes/mycc",
-                                dataType: "json",
-                                beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + tokenBC );},
-                                data: {"peers": JSON.stringify(["peer0.org1.example.com","peer1.org1.example.com"]), "fcn":"CreateUserScore", "args":JSON.stringify([id.toString()])},
-                                success: function (data) {
-                                    if (data) {
-                                        alert(data.message);
-                                    } else {
-                                        alert("数据传输失败");
-                                    }
-                                }
-                            });
+
                             if (carIdList.length != 0) {
-                                for (var i=0; i<carIdList.length; i++) {
-                                    alert(carIdList[i].id);
-                                    $.ajax({
-                                        type: "post",
-                                        url: "http://" + host + ":" + port + "/channels/mychannel/chaincodes/mycc",
-                                        dataType: "json",
-                                        beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + tokenBC );},
-                                        data: {"peers": JSON.stringify(["peer0.org1.example.com","peer1.org1.example.com"]), "fcn":"CreateCarScore", "args":JSON.stringify([carIdList[i].id])},
-                                        success: function (data) {
-                                            if (data) {
-                                                alert(data.message);
-                                            } else {
-                                                alert("数据传输失败");
-                                            }
-                                        }
-                                    });
-                                }
+
                                 $.ajax({
                                     type: "post",
                                     url: "http://" + host + ":" + port + "/carRegister",
