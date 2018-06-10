@@ -103,7 +103,7 @@ var bookList = async function (res, book) {
         };
         var sql = {};
         sql.sql = 'select distinct book.id, user.name as uname, book.name as bname, bookUrl, ttime, book.score, active from book join user on (user.id=book.userId) where active=1 and userId<>?';
-        sql.sqlData = [id];
+        sql.sqlData = [book.id];
         if (book.idList.length!=0){
             sql.sql=sql.sql+' and book.id not in ( ';
             for (var i=0; i<book.idList.length; i++){

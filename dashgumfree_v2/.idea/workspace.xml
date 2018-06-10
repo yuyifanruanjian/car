@@ -4,9 +4,6 @@
     <list default="true" id="82c87f7e-cb2b-4cde-9707-677ca6668819" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/../balance-transfer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../balance-transfer/model/book.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/model/book.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../balance-transfer/model/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/model/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Theme/booklist.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/booklist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Theme/mybook.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/mybook.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -67,8 +64,8 @@
       <file leaf-file-name="booklist.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Theme/booklist.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="12">
-              <caret line="263" column="29" selection-start-line="263" selection-start-column="29" selection-end-line="263" selection-end-column="29" />
+            <state relative-caret-position="488">
+              <caret line="268" column="50" selection-start-line="268" selection-start-column="50" selection-end-line="268" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -265,12 +262,12 @@
       <workItem from="1528348881256" duration="1992000" />
       <workItem from="1528535645097" duration="23702000" />
       <workItem from="1528605280387" duration="749000" />
-      <workItem from="1528621221786" duration="14297000" />
+      <workItem from="1528621221786" duration="14611000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="231493000" />
+    <option name="totallyTimeSpent" value="231807000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -591,8 +588,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Theme/booklist.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12">
-          <caret line="263" column="29" selection-start-line="263" selection-start-column="29" selection-end-line="263" selection-end-column="29" />
+        <state relative-caret-position="488">
+          <caret line="268" column="50" selection-start-line="268" selection-start-column="50" selection-end-line="268" selection-end-column="50" />
         </state>
       </provider>
     </entry>
