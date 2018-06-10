@@ -24,7 +24,8 @@ var submitBook = async function (req, res) {
 var bookList = async function (req, res) {
     try {
         var para_json = {
-            id:JSON.parse(req.body.id)
+            id: req.body.id,
+            idList:JSON.parse(req.body.idList)
         };
         await book.bookList(res, para_json);
     } catch(error) {

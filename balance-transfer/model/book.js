@@ -102,8 +102,8 @@ var bookList = async function (res, book) {
             message: '获取失败'
         };
         var sql = {};
-        sql.sql = 'select distinct book.id, user.name as uname, book.name as bname, bookUrl, ttime, book.score, active from book join user on (user.id=book.userId) where active=1 and userId not in (';
-        sql.sqlData = []
+        sql.sql = 'select distinct book.id, user.name as uname, book.name as bname, bookUrl, ttime, book.score, active from book join user on (user.id=book.userId) where active=1 and userId<>? and book.id not in ( ';
+        sql.sqlData = [id];
         for (var i in book.id){
             sql.sql+='?,';
             sql.sqlData.push(book.id[i]);

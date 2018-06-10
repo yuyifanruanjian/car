@@ -497,6 +497,13 @@ app.post('/mineArbitration', async function(req, res) {
     await userController.mineArbitration(req, res);
 });
 
+//BoughtBook
+app.post('/boughtBook', async function(req, res) {
+    logger.debug('==================== Bought Book ==================');
+    console.log(req.body);
+    await userController.boughtBook(req, res);
+});
+
 //VotedArbitration
 app.post('/votedArbitration', async function(req, res) {
     logger.debug('==================== Voted Arbitration ==================');

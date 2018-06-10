@@ -226,7 +226,6 @@
             var req = GetRequest();
             var token = req['token'];
             var id = req['id'];
-            var idList = [id];
 
             $.ajax({
                 type: "post",
@@ -249,49 +248,73 @@
             });
             $.ajax({
                 type: "post",
-                url: "http://"+host+":"+port+"/bookList",
+                url: "http://"+host+":"+port+"/userMessage",
                 dataType: "json",
-                data:{ id: JSON.stringify(idList)},
+                data:{ id: id},
                 beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
-                success: function(data){
-                    if(data){
-                        if(data.message == "获取成功"){
-                            for (var i = 0; i < data.payload.length; i++) {
-                                if (i % 3 == 0){
-                                    $('#bookList').append("<div class=\"row\" id=\"bookList"+parseInt(i/3).toString()+"\">\n</div>");
+                success: function(data) {
+                    if (data) {
+                        if (data.message == "获取成功") {
+                            var li = JSON.parse(data.payload);
+                            var boolIdL = [];
+                            for (var i=0; i<li.length; i++) {
+                                if (li[i].Value.eventType=="4") {
+                                    boolIdL.push(li[i].Value.event.split('+')[0]);
                                 }
-                                tt = new Date(new Date(data.payload[i].ttime).getTime());
-                                $('#bookList'+parseInt(i/3).toString()).append("<div class=\"col-md-4 mb book\" id='"+data.payload[i].id+"'>\n" +
-                                    "<div class=\"white-panel pn\">\n" +
-                                    "<div class=\"white-header\">\n" +
-                                    "<h5>"+data.payload[i].uname+"</h5>\n" +
-                                    "</div>\n" +
-                                    "<p><b>"+data.payload[i].bname+"</b></p>\n" +
-                                    "<div class=\"row\">\n" +
-                                    "<div class=\"col-md-6\">\n" +
-                                    "<p class=\"small mt\">"+data.payload[i].uname+"</p>\n" +
-                                    "<p>"+tt.getFullYear()+"-"+(tt.getMonth()+1).toString()+"-"+tt.getDate()+" "+tt.getHours()+":"+tt.getMinutes()+":"+tt.getSeconds()+"</p>\n" +
-                                    "</div>\n" +
-                                    "<div class=\"col-md-6\">\n" +
-                                    "<p class=\"small mt\">总价</p>\n" +
-                                    "<p>"+data.payload[i].score+"</p>\n" +
-                                    "</div>\n" +
-                                    "</div>\n" +
-                                    "</div>\n" +
-                                    "</div>");
                             }
-                            $("#bookList").on('click','.book',function(){
-                                var bookId = $(this).attr('id');
-                                buy(bookId);
+                            alert(JSON.stringify(boolIdL));
+                            $.ajax({
+                                type: "post",
+                                url: "http://"+host+":"+port+"/bookList",
+                                dataType: "json",
+                                data:{ id: id, idList: JSON.stringify(boolIdL)},
+                                beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
+                                success: function(data){
+                                    if(data){
+                                        if(data.message == "获取成功"){
+                                            for (var i = 0; i < data.payload.length; i++) {
+                                                if (i % 3 == 0){
+                                                    $('#bookList').append("<div class=\"row\" id=\"bookList"+parseInt(i/3).toString()+"\">\n</div>");
+                                                }
+                                                tt = new Date(new Date(data.payload[i].ttime).getTime());
+                                                $('#bookList'+parseInt(i/3).toString()).append("<div class=\"col-md-4 mb book\" id='"+data.payload[i].id+"'>\n" +
+                                                    "<div class=\"white-panel pn\">\n" +
+                                                    "<div class=\"white-header\">\n" +
+                                                    "<h5>"+data.payload[i].uname+"</h5>\n" +
+                                                    "</div>\n" +
+                                                    "<p><b>"+data.payload[i].bname+"</b></p>\n" +
+                                                    "<div class=\"row\">\n" +
+                                                    "<div class=\"col-md-6\">\n" +
+                                                    "<p class=\"small mt\">"+data.payload[i].uname+"</p>\n" +
+                                                    "<p>"+tt.getFullYear()+"-"+(tt.getMonth()+1).toString()+"-"+tt.getDate()+" "+tt.getHours()+":"+tt.getMinutes()+":"+tt.getSeconds()+"</p>\n" +
+                                                    "</div>\n" +
+                                                    "<div class=\"col-md-6\">\n" +
+                                                    "<p class=\"small mt\">总价</p>\n" +
+                                                    "<p>"+data.payload[i].score+"</p>\n" +
+                                                    "</div>\n" +
+                                                    "</div>\n" +
+                                                    "</div>\n" +
+                                                    "</div>");
+                                            }
+                                            $("#bookList").on('click','.book',function(){
+                                                var bookId = $(this).attr('id');
+                                                buy(bookId);
+                                            });
+                                        }else{
+                                            alert(data.message);
+                                        }
+                                    } else{
+                                        alert("数据传输失败");
+                                    }
+                                }
                             });
-                        }else{
-                            alert(data.message);
                         }
-                    } else{
+                    } else {
                         alert("数据传输失败");
                     }
                 }
             });
+
         });
         function buy(bookId) {
             var req = GetRequest();

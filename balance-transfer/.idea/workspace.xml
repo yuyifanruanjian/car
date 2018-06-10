@@ -17,8 +17,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="643" column="29" lean-forward="true" selection-start-line="643" selection-start-column="29" selection-end-line="643" selection-end-column="29" />
+            <state relative-caret-position="343">
+              <caret line="500" column="18" selection-start-line="500" selection-start-column="18" selection-end-line="500" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -26,25 +26,25 @@
       <file leaf-file-name="user.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15372">
-              <caret line="549" column="24" selection-start-line="549" selection-start-column="24" selection-end-line="549" selection-end-column="24" />
+            <state relative-caret-position="76">
+              <caret line="455" column="58" selection-start-line="455" selection-start-column="58" selection-end-line="455" selection-end-column="58" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="car.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/artifacts/src/github.com/car/go/car.go">
+      <file leaf-file-name="book-controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controller/book-controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9072">
-              <caret line="324" column="37" selection-start-line="324" selection-start-column="31" selection-end-line="324" selection-end-column="37" />
+            <state relative-caret-position="513">
+              <caret line="29" column="24" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="photo.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="photo.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/photo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
+            <state relative-caret-position="448">
               <caret line="220" column="209" selection-start-line="220" selection-start-column="209" selection-end-line="220" selection-end-column="209" />
             </state>
           </provider>
@@ -62,8 +62,8 @@
       <file leaf-file-name="question.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/question.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1512">
-              <caret line="6" column="10" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="10" />
+            <state relative-caret-position="-84">
+              <caret line="348" column="31" selection-start-line="348" selection-start-column="31" selection-end-line="348" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -86,11 +86,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user-controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/user-controller.js">
+      <file leaf-file-name="book.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/model/book.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-53">
-              <caret line="175" column="23" lean-forward="true" selection-start-line="175" selection-start-column="23" selection-end-line="175" selection-end-column="23" />
+            <state relative-caret-position="365">
+              <caret line="107" column="26" lean-forward="true" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -98,8 +98,8 @@
       <file leaf-file-name="arbitration.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/arbitration.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="45" column="38" lean-forward="true" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
+            <state relative-caret-position="86">
+              <caret line="450" column="254" lean-forward="true" selection-start-line="450" selection-start-column="254" selection-end-line="450" selection-end-column="254" />
             </state>
           </provider>
         </entry>
@@ -116,8 +116,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>60000</find>
-      <find>port</find>
       <find>api</find>
       <find>logger</find>
       <find>cookieParser</find>
@@ -146,6 +144,8 @@
       <find>invoke</find>
       <find>ModifyUserScore</find>
       <find>update question set active=2</find>
+      <find>(</find>
+      <find>?,</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -166,22 +166,22 @@
         <option value="$PROJECT_DIR$/proxy/db_config.json" />
         <option value="$PROJECT_DIR$/app1.js" />
         <option value="$PROJECT_DIR$/proxy/db.js" />
-        <option value="$PROJECT_DIR$/controller/book-controller.js" />
         <option value="$PROJECT_DIR$/controller/question-controller.js" />
         <option value="$PROJECT_DIR$/controller/arbitration-controller.js" />
         <option value="$PROJECT_DIR$/testAPIs.sh" />
         <option value="$PROJECT_DIR$/runApp.sh" />
         <option value="$PROJECT_DIR$/artifacts/src/github.com/car/go/car.go" />
-        <option value="$PROJECT_DIR$/controller/user-controller.js" />
-        <option value="$PROJECT_DIR$/model/book.js" />
         <option value="$PROJECT_DIR$/model/question.js" />
         <option value="$PROJECT_DIR$/model/car.js" />
         <option value="$PROJECT_DIR$/app/invoke-transaction.js" />
-        <option value="$PROJECT_DIR$/model/user.js" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/model/arbitration.js" />
         <option value="$PROJECT_DIR$/controller/photo-controller.js" />
         <option value="$PROJECT_DIR$/model/photo.js" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/controller/user-controller.js" />
+        <option value="$PROJECT_DIR$/model/user.js" />
+        <option value="$PROJECT_DIR$/controller/book-controller.js" />
+        <option value="$PROJECT_DIR$/model/book.js" />
       </list>
     </option>
   </component>
@@ -314,12 +314,12 @@
       <workItem from="1528349819670" duration="1032000" />
       <workItem from="1528536994467" duration="26850000" />
       <workItem from="1528605395362" duration="968000" />
-      <workItem from="1528623424960" duration="5588000" />
+      <workItem from="1528623424960" duration="10407000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="257061000" />
+    <option name="totallyTimeSpent" value="261880000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -329,6 +329,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50073206" side_tool="true" weight="0.3293718" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32965517" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.24957556" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -343,7 +344,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32965517" />
     </layout>
     <layout-to-restore>
       <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
@@ -477,13 +477,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/book-controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" selection-start-line="23" selection-end-line="33" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/proxy/db.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -588,13 +581,6 @@
     <entry file="file://$PROJECT_DIR$/artifacts/src/github.com/car/go/car.go.rej" />
     <entry file="file://$PROJECT_DIR$/1" />
     <entry file="file://$PROJECT_DIR$/！" />
-    <entry file="file://$PROJECT_DIR$/model/book.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="6" column="10" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/artifacts/src/github.com/car/go/car.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9072">
@@ -609,45 +595,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15372">
-          <caret line="549" column="24" selection-start-line="549" selection-start-column="24" selection-end-line="549" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/arbitration.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="45" column="38" lean-forward="true" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/question.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1512">
-          <caret line="6" column="10" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="643" column="29" lean-forward="true" selection-start-line="643" selection-start-column="29" selection-end-line="643" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/car.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="281">
           <caret line="83" column="147" lean-forward="true" selection-start-line="83" selection-start-column="147" selection-end-line="83" selection-end-column="147" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/user-controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-53">
-          <caret line="175" column="23" lean-forward="true" selection-start-line="175" selection-start-column="23" selection-end-line="175" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -660,8 +611,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/photo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
+        <state relative-caret-position="448">
           <caret line="220" column="209" selection-start-line="220" selection-start-column="209" selection-end-line="220" selection-end-column="209" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/question.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-84">
+          <caret line="348" column="31" selection-start-line="348" selection-start-column="31" selection-end-line="348" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/arbitration.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="86">
+          <caret line="450" column="254" lean-forward="true" selection-start-line="450" selection-start-column="254" selection-end-line="450" selection-end-column="254" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="500" column="18" selection-start-line="500" selection-start-column="18" selection-end-line="500" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/user-controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="127" column="24" lean-forward="true" selection-start-line="127" selection-start-column="24" selection-end-line="127" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="455" column="58" selection-start-line="455" selection-start-column="58" selection-end-line="455" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/book-controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="29" column="24" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/book.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="107" column="26" lean-forward="true" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
         </state>
       </provider>
     </entry>

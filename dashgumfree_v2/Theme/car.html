@@ -258,13 +258,19 @@
                 success: function(data){
                     if(data){
                         if(data.message == "获取成功"){
-                            var li = JSON.parse(data.payload);
+                            var lijson = JSON.parse(data.payload);
+                            var li = [];
+                            for (var i = 0; i < lijson.length; i++) {
+                                if (lijson[i].Value.eventType=="1") {
+                                    li.push(lijson[i]);
+                                }
+                            }
                             alert(1);
                             for (var i = 0; i < li.length; i++) {
                                 if (i % 3 == 0){
                                     $('#photoList').append("<div class=\"row mt\" id=\"photoList"+parseInt(i/3)+"\">\n</div>");
                                 }
-                                var photoUrl = li[i].Value.event.split("+")[0];
+                                var photoUrl = li[i].Value.event.split("+")[1];
                                 $("#photoList"+parseInt(i/3)).append("<div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12 desc\">\n" +
                                     "                    <div class=\"project-wrapper\">\n" +
                                     "                        <div class=\"project\">\n" +

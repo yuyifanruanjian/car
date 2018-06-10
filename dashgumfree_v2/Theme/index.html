@@ -508,14 +508,58 @@
                         if (data.message == "获取成功") {
                             var li = JSON.parse(data.payload);
                             $('#messageDetailList').empty();
+                            var name = $('#username').text();
                             for (var i=0; i<li.length; i++) {
+                                var event = '';
+                                var message = '';
+                                if (li[i].Value.eventType=="0") {
+                                    event = li[i].Value.event;
+                                } else if (li[i].Value.eventType=="1") {
+                                    var s = li[i].Value.event.split('+');
+                                    message = ' 提交了图片 加' + (li[i].Value.newScore-li[i].Value.oldScore) + '分 ' + s[2];
+                                    event = s[1];
+                                } else if (li[i].Value.eventType=="2") {
+                                    var s = li[i].Value.event.split('+');
+                                    var d = li[i].Value.newScore-li[i].Value.oldScore;
+                                    if (d < 0) {
+                                        message = ' 接受奖惩 减' + (-1)*d + '分 ' + s[2];
+                                    } else {
+                                        message = ' 接受奖惩 加' + d + '分 ' + s[2];
+                                    }
+                                    event = s[1];
+                                } else if (li[i].Value.eventType=="3") {
+                                    var s = li[i].Value.event.split('+');
+                                    var d = li[i].Value.newScore-li[i].Value.oldScore;
+                                    message = ' 售卖教程 加' + d + '分 ' + s[3];
+                                    event = s[1]+' '+s[2];
+                                } else if (li[i].Value.eventType=="4") {
+                                    var s = li[i].Value.event.split('+');
+                                    var d = li[i].Value.oldScore-li[i].Value.newScore;
+                                    message = ' 购买教程 减' + d + '分 ' + s[3];
+                                    event = s[1]+' '+s[2];
+                                } else if (li[i].Value.eventType=="5") {
+                                    var s = li[i].Value.event.split('+');
+                                    var d = li[i].Value.oldScore-li[i].Value.newScore;
+                                    message = ' 提出问题 减' + d + '分 ' + s[2];
+                                    event = s[1];
+                                } else if (li[i].Value.eventType=="6") {
+                                    var s = li[i].Value.event.split('+');
+                                    var d = li[i].Value.newScore-li[i].Value.oldScore;
+                                    message = ' 最佳答案 加' + d + '分 ' + s[2];
+                                    event = s[1];
+                                } else if (li[i].Value.eventType=="7") {
+                                    var s = li[i].Value.event.split('+');
+                                    var d = li[i].Value.newScore-li[i].Value.oldScore;
+                                    message = ' 悬赏分回退 加' + d + '分 ' + s[2];
+                                    event = s[1];
+                                }
                                 $('#messageDetailList').append('<div class="desc">\n' +
                                     '                    <div class="thumb">\n' +
                                     '                    <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>\n' +
                                     '                </div>\n' +
                                     '                <div class="details">\n' +
-                                    '                    <p><muted></muted><br/>\n' +
-                                    '                '+li[i].Value.event+'<br/>\n' +
+                                    '                    <p style="word-wrap:break-word; "><muted>'+name+message+'</muted><br/>\n' +
+                                    '                '+event+'<br/>\n' +
                                     '                </p>\n' +
                                     '                </div>\n' +
                                     '                </div>');

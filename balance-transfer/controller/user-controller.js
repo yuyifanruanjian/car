@@ -120,6 +120,18 @@ var mineBook = async function (req, res) {
     }
 };
 
+var boughtBook = async function (req, res) {
+    try {
+        var para_json = {
+            id:JSON.parse(req.body.id),
+        };
+        await user.boughtBook(res, para_json);
+    } catch(error) {
+        logger.error('Failed to get registered user: %s with error: %s', this.body.id, error.toString());
+        return 'failed '+error.toString();
+    }
+};
+
 var mineArbitration = async function (req, res) {
     try {
         var para_json = {
@@ -189,6 +201,7 @@ exports.myCarPhoto = myCarPhoto;
 exports.mineQuestion = mineQuestion;
 exports.answerQuestion = answerQuestion;
 exports.mineBook = mineBook;
+exports.boughtBook = boughtBook;
 exports.mineArbitration = mineArbitration;
 exports.votedArbitration = votedArbitration;
 exports.userName = userName;

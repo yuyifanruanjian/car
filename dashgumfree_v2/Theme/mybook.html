@@ -169,10 +169,10 @@
             <hr>
         </section><! --/wrapper -->
 
-        <!--<section class="wrapper site-min-height" id="boughtBook">-->
-            <!--<h3><i class="fa fa-angle-right"></i> 我回答的问题</h3>-->
-            <!--<hr>-->
-        <!--</section><! &#45;&#45;/wrapper &ndash;&gt;-->
+        <section class="wrapper site-min-height" id="boughtBook">
+            <h3><i class="fa fa-angle-right"></i> 我购买的教程</h3>
+            <hr>
+        </section><! --/wrapper -->
     </section><!-- /MAIN CONTENT -->
 
     <!--main content end-->
@@ -286,6 +286,74 @@
                             alert(data.message);
                         }
                     } else{
+                        alert("数据传输失败");
+                    }
+                }
+            });
+
+            $.ajax({
+                type: "post",
+                url: "http://"+host+":"+port+"/userMessage",
+                dataType: "json",
+                data:{ id: id},
+                beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
+                success: function(data) {
+                    if (data) {
+                        if (data.message == "获取成功") {
+                            var li = JSON.parse(data.payload);
+                            var boolIdL = [];
+                            for (var i=0; i<li.length; i++) {
+                                if (li[i].Value.eventType=="4") {
+                                    boolIdL.push(li[i].Value.event.split('+')[0]);
+                                }
+                            }
+                            alert(JSON.stringify(boolIdL));
+                            $.ajax({
+                                type: "post",
+                                url: "http://"+host+":"+port+"/boughtBook",
+                                dataType: "json",
+                                data:{ id: JSON.stringify(boolIdL)},
+                                beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
+                                success: function(data){
+                                    if(data){
+                                        if(data.message == "获取成功"){
+                                            for (var i = 0; i < data.payload.length; i++) {
+                                                if (i % 3 == 0){
+                                                    $('#mineBook').append("<div class=\"row\" id=\"mineBook"+parseInt(i/3).toString()+"\">\n</div>");
+                                                }
+                                                tt = new Date(new Date(data.payload[i].ttime).getTime());
+                                                $('#mineBook'+parseInt(i/3).toString()).append("<div class=\"col-md-4 mb book\" id=\""+data.payload[i].id+"\">\n" +
+                                                    "<div class=\"white-panel pn\">\n" +
+                                                    "<div class=\"white-header\">\n" +
+                                                    "<h5>"+data.payload[i].uname+"</h5>\n" +
+                                                    "</div>\n" +
+                                                    "<p><b>"+data.payload[i].bname+"</b></p>\n" +
+                                                    "<div class=\"row\">\n" +
+                                                    "<div class=\"col-md-6\">\n" +
+                                                    "<p class=\"small mt\">"+data.payload[i].uname+"</p>\n" +
+                                                    "<p>"+tt.getFullYear()+"-"+(tt.getMonth()+1).toString()+"-"+tt.getDate()+" "+tt.getHours()+":"+tt.getMinutes()+":"+tt.getSeconds()+"</p>\n" +
+                                                    "</div>\n" +
+                                                    "<div class=\"col-md-6\">\n" +
+                                                    "<p class=\"small mt\">总价</p>\n" +
+                                                    "<p>"+data.payload[i].score+"</p>\n" +
+                                                    "</div>\n" +
+                                                    "</div>\n" +
+                                                    "</div>\n" +
+                                                    "</div>");
+                                            }
+                                            $("#mineBook").on('click','.book',function(){
+                                                var bookId = $(this).attr('id');
+                                            });
+                                        }else{
+                                            alert(data.message);
+                                        }
+                                    } else{
+                                        alert("数据传输失败");
+                                    }
+                                }
+                            });
+                        }
+                    } else {
                         alert("数据传输失败");
                     }
                 }
