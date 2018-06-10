@@ -62,35 +62,23 @@ var submitPhoto = async function (res, photo) {
                     sql.sql = 'update user set score=score+? where id=?';
                     sql.sqlData = [photo.score, photo.id];
                     db.connection.query(sql.sql, sql.sqlData, async function(err, results1) {
-                        callback(err);
-                    });
-                }
-            },
-            async function (callback) {
-                if (response.success == false) {
-                    callback(null);
-                } else {
-                    if (photo.goodOrBad=='坏') {
-                        var score = photo.score * (-1);
-                    } else {
-                        var score = photo.score;
-                    }
-                    var queryq = {
-                        wants:'id',
-                        table:'photo',
-                        conditions:{
-                            userId:[photo.id],
-                            photoUrl:[photo.photoUrl],
-                            carId:[photo.carId],
-                            score:[score],
-                            name:[photo.content],
-                            ttime:[photo.ttime],
-                        }
-                    };
-                    let sql = await db.sqlSelect(queryq);
-                    db.connection.query(sql.sql, sql.sqlData, async function(err, results2) {
-                        response.success = true;
-                        callback(err, results2);
+                        var queryq = {
+                            wants:'id',
+                            table:'photo',
+                            conditions:{
+                                userId:[photo.id],
+                                photoUrl:[photo.photoUrl],
+                                carId:[photo.carId],
+                                score:[score],
+                                name:[photo.content],
+                                ttime:[photo.ttime],
+                            }
+                        };
+                        let sql = await db.sqlSelect(queryq);
+                        db.connection.query(sql.sql, sql.sqlData, async function(err, results2) {
+                            response.success = true;
+                            callback(err, results2);
+                        });
                     });
                 }
             }
