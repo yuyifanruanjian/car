@@ -36,8 +36,11 @@ var arbitratedQuestion = async function (res, arbitration) {
                 });
             },
             async function (results0, callback) {
+                if (results0.length==0){
+                    callback(null);
+                }
                 var sql = {};
-                sql.sql = 'update question set active=2 where endtime<? and active=1 and id in ( ';
+                sql.sql = 'update question set active=2 where endtime<? and active=1 and id in (';
                 sql.sqlData = [arbitration.ttime];
                 for (var i=0; i<results0.length; i++) {
                     sql.sql+='?,';
