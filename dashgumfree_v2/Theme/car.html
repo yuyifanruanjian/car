@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>DASHGUM - Bootstrap Admin Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="assets/js/fancybox/jquery.fancybox.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-responsive.css" rel="stylesheet">
+
+    <script src="assets/js/jquery.js"></script>
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<section id="container" >
+    <!-- **********************************************************************************************************************************************************
+    TOP BAR CONTENT & NOTIFICATIONS
+    *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+        <div class="sidebar-toggle-box">
+            <div class="fa fa-bars tooltips" data-placement="right" data-original-title="收起左边栏"></div>
+        </div>
+        <!--logo start-->
+        <a href="login.html" class="logo"><b>车辆行为记录与积分体系应用</b></a>
+        <!--logo end-->
+        <div class="nav notify-row" id="top_menu">
+            <!--  notification start -->
+            <ul class="nav top-menu">
+                <!-- settings start -->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle">
+                        <i class="fa fa-tasks"></i>
+                        <span class="badge bg-theme" id="messageNumber">2</span>
+                    </a>
+                    <ul class="dropdown-menu extended tasks-bar">
+                        <div class="notify-arrow notify-arrow-green"></div>
+                        <li>
+                            <p class="green" id="messageText">你有2个待处理通知</p>
+                        </li>
+                        <div id="messageList">
+                            <li>
+                                <a onclick="goToIndex()">
+                                    <div class="task-info">
+                                        <div class="desc">yyf发来了一份认证请求</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a onclick="goToIndex()">
+                                    <div class="task-info">
+                                        <div class="desc">yyf发来一份处理请求</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </div>
+                    </ul>
+                </li>
+                <!-- settings end -->
+            </ul>
+            <!--  notification end -->
+        </div>
+        <div class="top-menu">
+            <ul class="nav pull-right top-menu">
+                <li><a class="logout" href="login.html">Logout</a></li>
+            </ul>
+        </div>
+    </header>
+    <!--header end-->
+
+    <!-- **********************************************************************************************************************************************************
+    MAIN SIDEBAR MENU
+    *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar"  class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+
+                <p class="centered"><img src="assets/img/ui-sam.jpg" onclick="goToIndex()" id="userimg" class="img-rounded" width="60" height="60"></a></p>
+                <h5 class="centered" id="username">yyf</h5>
+
+                <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-desktop"></i>
+                        <span>个人信息</span>
+                    </a>
+                    <ul class="sub">
+                        <li class="active"><a onclick="goToMyPhoto()">我的照片列表</a></li>
+                        <li><a onclick="goToMyQuestion()">我的问题列表</a></li>
+                        <li><a onclick="goToMyBook()">我的教程列表</a></li>
+                        <li><a onclick="goToMyArbitration()">我的仲裁列表</a></li>
+                    </ul>
+                </li>
+
+                <li class="sub-menu">
+                    <a class="active" href="javascript:;" >
+                        <i class="fa fa-photo"></i>
+                        <span>照片</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a onclick="goToSubmitPhoto()">提交照片</a></li>
+                        <li class="active"><a onclick="goToImgList()">照片列表</a></li>
+                    </ul>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-question"></i>
+                        <span>问题</span>
+                    </a>
+                    <ul class="sub">
+                        <li class="active"><a onclick="goToSubmitProblem()">提出问题</a></li>
+                        <li><a onclick="goToProblemList()">问题列表</a></li>
+                    </ul>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-book"></i>
+                        <span>教程</span>
+                    </a>
+                    <ul class="sub">
+                        <li class="active"><a onclick="goToSubmitBook()">上传教程</a></li>
+                        <li><a onclick="goToBookList()">教程列表</a></li>
+                    </ul>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-th-list"></i>
+                        <span>仲裁</span>
+                    </a>
+                    <ul class="sub">
+                        <li class="active"><a onclick="goToSubmitArbitration()">待仲裁问题</a></li>
+                        <li><a onclick="goToArbitrationList()">仲裁列表</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <!--sidebar end-->
+
+    <!-- **********************************************************************************************************************************************************
+    MAIN CONTENT
+    *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper site-min-height" id="photoList">
+            <h3><i class="fa fa-angle-right"></i> 车辆行为记录图片</h3>
+            <hr>
+        </section><! --/wrapper -->
+
+    </section><!-- /MAIN CONTENT -->
+
+    <!--main content end-->
+
+
+    <!--main content end-->
+    <!--footer start-->
+    <footer class="site-footer">
+        <div class="text-center">
+            2018 - yyf
+            <a onclick="goToIndex()" class="go-top">
+                <i class="fa fa-angle-up"></i>
+            </a>
+        </div>
+    </footer>
+    <!--footer end-->
+</section>
+<script src="assets/js/index.js"></script>
+<script src="assets/js/route.js"></script>
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="assets/js/fancybox/jquery.fancybox.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="assets/js/jquery.scrollTo.min.js"></script>
+<script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+<!--common script for all pages-->
+<script src="assets/js/common-scripts.js"></script>
+<script type="text/javascript">
+    $(function() {
+        //    fancybox
+        jQuery(".fancybox").fancybox();
+    });
+
+</script>
+
+<!--<script>-->
+<!--//custom select box-->
+
+<!--$(function(){-->
+<!--$("select.styled").customSelect();-->
+<!--});-->
+
+<!--</script>-->
+
+<script type="application/javascript">
+    $(document).ready(function () {
+
+        var host = "47.96.16.251";
+        var port = "4000";
+        $(function () {
+            var req = GetRequest();
+            var token = req['token'];
+            var id = req['id'];
+            var reg1 = new RegExp("(^|&)" + "cid=([^&]*)(&|$)");
+            var r = encodeURI(window.location.search).substr(1).match(reg1);
+            if (r != null) {
+                //将中文编码的字符重新变成中文
+                var carId = decodeURI(unescape(r[2]));
+            }
+
+            $.ajax({
+                type: "post",
+                url: "http://"+host+":"+port+"/userName",
+                dataType: "json",
+                data:{ id: id},
+                beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
+                success: function(data){
+                    if(data){
+                        if(data.message == "获取成功"){
+                            $('#username').text(data.payload[0].name);
+                            $('#userimg').attr('src', data.payload[0].url);
+                        }else{
+                            alert(data.message);
+                        }
+                    } else{
+                        alert("数据传输失败");
+                    }
+                }
+            });
+
+            $.ajax({
+                type: "post",
+                url: "http://"+host+":"+port+"/carMessage",
+                dataType: "json",
+                data:{ carId: carId},
+                beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
+                success: function(data){
+                    if(data){
+                        if(data.message == "获取成功"){
+                            var li = JSON.parse(data.payload);
+                            alert(1);
+                            for (var i = 0; i < li.length; i++) {
+                                if (i % 3 == 0){
+                                    $('#photoList').append("<div class=\"row mt\" id=\"photoList"+parseInt(i/3)+"\">\n</div>");
+                                }
+                                var photoUrl = li[i].Value.event.split("+")[0];
+                                $("#photoList"+parseInt(i/3)).append("<div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12 desc\">\n" +
+                                    "                    <div class=\"project-wrapper\">\n" +
+                                    "                        <div class=\"project\">\n" +
+                                    "                            <div class=\"photo-wrapper\">\n" +
+                                    "                                <div class=\"photo\">\n" +
+                                    "                                    <a class=\"fancybox\" href="+photoUrl+"><img class=\"img-responsive\" src="+photoUrl+" alt=\"\"></a>\n" +
+                                    "                                </div>\n" +
+                                    "                                <div class=\"overlay\"></div>\n" +
+                                    "                            </div>\n" +
+                                    "                        </div>\n" +
+                                    "                    </div>\n" +
+                                    "                </div><!-- col-lg-4 -->")
+                            }
+                        }else{
+                            alert(data.message);
+                        }
+                    } else{
+                        alert("数据传输失败");
+                    }
+                }
+            });
+        });
+
+    });
+
+    var num = Math.round(Math.random()*90+60);
+    //循环执行，每隔60-150秒钟执行一次showMsgIcon()
+    window.setInterval(function () {
+        var host = "47.96.16.251";
+        var port = "4000";
+
+        var req = GetRequest();
+        var token = req['token'];
+        var id = req['id'];
+        var ttime = new Date();
+        var year = ttime.getFullYear();
+        if (ttime.getMonth()+1 < 10) {
+            var month = '0'+(ttime.getMonth()+1).toString();
+        } else {
+            var month = (ttime.getMonth()+1).toString();
+        }
+        if (ttime.getDate() < 10) {
+            var day = '0'+ttime.getDate();
+        } else {
+            var day = ttime.getDate();
+        }
+        if (ttime.getHours() < 10) {
+            var hour = '0'+ttime.getHours();
+        } else {
+            var hour = ttime.getHours();
+        }
+        if (ttime.getMinutes() < 10) {
+            var minute = '0'+ttime.getMinutes();
+        } else {
+            var minute = ttime.getMinutes();
+        }
+        if (ttime.getSeconds() < 10) {
+            var second = '0'+ttime.getSeconds();
+        } else {
+            var second = ttime.getSeconds();
+        }
+        var stime = ''+year+month+day+hour+minute+second;
+        $.ajax({
+            type: "post",
+            url: "http://"+host+":"+port+"/checkArbitration",
+            dataType: "json",
+            data:{ttime: stime},
+            beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
+            success: function(data){
+                if(data){
+                    if(data.message == "检测成功"){
+                    } else {
+                    }
+                } else {
+                    alert("数据传输失败");
+                }
+            }
+        });
+
+    }, 500*num);
+</script>
+
+
+</body>
+</html>

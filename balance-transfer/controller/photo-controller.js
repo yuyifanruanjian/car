@@ -29,7 +29,9 @@ var receivePunOrAward = async function (req, res) {
         var para_json = {
             carId:req.body.carId,
             goodOrBad:req.body.goodOrBad,
-            score:req.body.score
+            score:req.body.score,
+            photoUrl: req.body.photoUrl,
+            id: req.body.id
         };
         await photo.receivePunOrAward(res, para_json);
     } catch(error) {

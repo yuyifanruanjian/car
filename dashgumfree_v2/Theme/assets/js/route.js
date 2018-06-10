@@ -115,3 +115,10 @@ function goToArbitration(arbitrationId) {
     var id = req['id'];
     window.location.href = "arbitration.html?token="+token+"&id="+id+"&aid="+arbitrationId;
 }
+
+function goToCar(carId) {
+    var req = GetRequest();
+    var token = req['token'];
+    var id = req['id'];
+    window.location.href = "car.html?token="+token+"&id="+id+"&cid="+carId;
+}

@@ -415,7 +415,7 @@
                                         type: "post",
                                         url: "http://"+host+":"+port+"/receivePunOrAward",
                                         dataType: "json",
-                                        data:{ carId: carId, goodOrBad: goodOrBad, score: score},
+                                        data:{ carId: carId, goodOrBad: goodOrBad, score: score, photoUrl: photoUrl, id: data.payload.id},
                                         beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
                                         success: function(data){
                                             if(data){

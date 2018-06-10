@@ -171,10 +171,10 @@ var receivePunOrAward = async function (res, photo) {
                     var sql = {};
                     if (photo.goodOrBad=='坏') {
                         sql.sql = 'update car set score=score-? where carId=?';
-                        await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyCarScore", [photo.carId, '-'+photo.score.toString(), "1", photo.photoUrl+'+'+stime], "Jim", "Org1");
+                        await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyCarScore", [photo.carId, '-'+photo.score.toString(), "1", photo.id.toString()+'+'+photo.photoUrl+'+'+stime], "Jim", "Org1");
                     } else {
                         sql.sql = 'update car set score=score+? where carId=?';
-                        await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyCarScore", [photo.carId, photo.score.toString(), "1", photo.photoUrl+'+'+stime], "Jim", "Org1");
+                        await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyCarScore", [photo.carId, photo.score.toString(), "1", photo.id.toString()+'+'+photo.photoUrl+'+'+stime], "Jim", "Org1");
                     }
                     sql.sqlData = [photo.score, photo.carId];
                     db.connection.query(sql.sql, sql.sqlData, async function(err, results1) {
@@ -207,10 +207,10 @@ var receivePunOrAward = async function (res, photo) {
                     var sql = {};
                     if (photo.goodOrBad=='坏') {
                         sql.sql = 'update user set score=score-? where id=?';
-                        await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [results[0].userId.toString(), '-'+photo.score.toString(), "2", photo.photoUrl+'+'+stime], "Jim", "Org1");
+                        await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [results[0].userId.toString(), '-'+photo.score.toString(), "2", photo.id.toString()+'+'+photo.photoUrl+'+'+stime], "Jim", "Org1");
                     } else {
                         sql.sql = 'update user set score=score+? where id=?';
-                        await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [results[0].userId.toString(), photo.score.toString(), "2", photo.photoUrl+'+'+stime], "Jim", "Org1");
+                        await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [results[0].userId.toString(), photo.score.toString(), "2", photo.id.toString()+'+'+photo.photoUrl+'+'+stime], "Jim", "Org1");
                     }
                     sql.sqlData = [photo.score, results[0].userId];
                     db.connection.query(sql.sql, sql.sqlData, async function(err, results2) {
@@ -218,7 +218,7 @@ var receivePunOrAward = async function (res, photo) {
                         callback(err);
                     });
                 } else {
-                    await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyCarScore", [photo.carId, photo.score.toString(), "1", photo.photoUrl+'+'+stime], "Jim", "Org1");
+                    await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyCarScore", [photo.carId, photo.score.toString(), "1", photo.id.toString()+'+'+photo.photoUrl+'+'+stime], "Jim", "Org1");
                     response.success = true;
                     callback(null);
                 }
