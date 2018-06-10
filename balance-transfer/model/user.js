@@ -446,28 +446,32 @@ var boughtBook = async function (res, user) {
             status: '999',
             message: '获取失败'
         };
-        var sql = {};
-        sql.sql = 'select distinct book.id, user.name as uname, book.name as bname, bookUrl, ttime, book.score, active from book join user on (user.id=book.userId) where book.id in ( ';
-        sql.sqlData = [];
-        for (var i in user.id){
-            sql.sql+='?,';
-            sql.sqlData.push(user.id[i]);
-        }
-        sql.sql=sql.sql.substring(0,sql.sql.length-1)+')';
-        db.connection.query(sql.sql, sql.sqlData, async function(err, results) {
-            if(err) {
-                logger.error(err);
-            } else {
-                response = {
-                    success: true,
-                    message: '获取成功',
-                    status: '200',
-                    payload: results
-                };
-                logger.debug(results);
+        if (user.id.length!=0) {
+            var sql = {};
+            sql.sql = 'select distinct book.id, user.name as uname, book.name as bname, bookUrl, ttime, book.score, active from book join user on (user.id=book.userId) where book.id in ( ';
+            sql.sqlData = [];
+            for (var i=0; i<user.id.length; i++){
+                sql.sql+='?,';
+                sql.sqlData.push(user.id[i]);
             }
+            sql.sql=sql.sql.substring(0,sql.sql.length-1)+')';
+            db.connection.query(sql.sql, sql.sqlData, async function(err, results) {
+                if(err) {
+                    logger.error(err);
+                } else {
+                    response = {
+                        success: true,
+                        message: '获取成功',
+                        status: '200',
+                        payload: results
+                    };
+                    logger.debug(results);
+                }
+                res.json(response);
+            });
+        } else {
             res.json(response);
-        });
+        }
     } catch(error) {
         logger.error('Failed to insert user: %s with error: %s', user.phone, error.toString());
         res.json(response);

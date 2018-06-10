@@ -3,21 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="82c87f7e-cb2b-4cde-9707-677ca6668819" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/../balance-transfer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../balance-transfer/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../balance-transfer/controller/book-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/controller/book-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../balance-transfer/controller/user-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/controller/user-controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../balance-transfer/model/book.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/model/book.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../balance-transfer/model/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/model/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Theme/arbitrationlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/arbitrationlist.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Theme/booklist.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/booklist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Theme/car.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/car.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Theme/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Theme/myarbitration.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/myarbitration.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Theme/mybook.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/mybook.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Theme/myquestion.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/myquestion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Theme/problemlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/problemlist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Theme/submit_arbitration.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/submit_arbitration.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -69,8 +58,8 @@
       <file leaf-file-name="mybook.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Theme/mybook.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="304" column="61" selection-start-line="304" selection-start-column="61" selection-end-line="304" selection-end-column="61" />
+            <state relative-caret-position="372">
+              <caret line="308" column="29" selection-start-line="308" selection-start-column="29" selection-end-line="308" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -78,8 +67,8 @@
       <file leaf-file-name="booklist.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Theme/booklist.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="269" column="53" selection-start-line="269" selection-start-column="47" selection-end-line="269" selection-end-column="53" />
+            <state relative-caret-position="12">
+              <caret line="263" column="29" selection-start-line="263" selection-start-column="29" selection-end-line="263" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -171,8 +160,8 @@
         <option value="$PROJECT_DIR$/Theme/myarbitration.html" />
         <option value="$PROJECT_DIR$/Theme/myquestion.html" />
         <option value="$PROJECT_DIR$/Theme/problemlist.html" />
-        <option value="$PROJECT_DIR$/Theme/booklist.html" />
         <option value="$PROJECT_DIR$/Theme/mybook.html" />
+        <option value="$PROJECT_DIR$/Theme/booklist.html" />
       </list>
     </option>
   </component>
@@ -276,12 +265,12 @@
       <workItem from="1528348881256" duration="1992000" />
       <workItem from="1528535645097" duration="23702000" />
       <workItem from="1528605280387" duration="749000" />
-      <workItem from="1528621221786" duration="13689000" />
+      <workItem from="1528621221786" duration="14297000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="230885000" />
+    <option name="totallyTimeSpent" value="231493000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -595,15 +584,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Theme/mybook.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="304" column="61" selection-start-line="304" selection-start-column="61" selection-end-line="304" selection-end-column="61" />
+        <state relative-caret-position="372">
+          <caret line="308" column="29" selection-start-line="308" selection-start-column="29" selection-end-line="308" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Theme/booklist.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="269" column="53" selection-start-line="269" selection-start-column="47" selection-end-line="269" selection-end-column="53" />
+        <state relative-caret-position="12">
+          <caret line="263" column="29" selection-start-line="263" selection-start-column="29" selection-end-line="263" selection-end-column="29" />
         </state>
       </provider>
     </entry>

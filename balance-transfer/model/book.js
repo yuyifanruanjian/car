@@ -102,13 +102,16 @@ var bookList = async function (res, book) {
             message: '获取失败'
         };
         var sql = {};
-        sql.sql = 'select distinct book.id, user.name as uname, book.name as bname, bookUrl, ttime, book.score, active from book join user on (user.id=book.userId) where active=1 and userId<>? and book.id not in ( ';
+        sql.sql = 'select distinct book.id, user.name as uname, book.name as bname, bookUrl, ttime, book.score, active from book join user on (user.id=book.userId) where active=1 and userId<>?';
         sql.sqlData = [id];
-        for (var i in book.id){
-            sql.sql+='?,';
-            sql.sqlData.push(book.id[i]);
+        if (book.idList.length!=0){
+            sql.sql=sql.sql+' and book.id not in ( ';
+            for (var i=0; i<book.idList.length; i++){
+                sql.sql+='?,';
+                sql.sqlData.push(book.idList[i]);
+            }
+            sql.sql=sql.sql.substring(0,sql.sql.length-1)+')';
         }
-        sql.sql=sql.sql.substring(0,sql.sql.length-1)+')';
         db.connection.query(sql.sql, sql.sqlData, async function(err, results) {
             if(err) {
                 logger.error(err);
