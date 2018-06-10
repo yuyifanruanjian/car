@@ -44,8 +44,8 @@
       <file leaf-file-name="photo.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/photo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1739">
-              <caret line="84" column="37" lean-forward="true" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
+            <state relative-caret-position="-84">
+              <caret line="69" column="39" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -53,7 +53,7 @@
       <file leaf-file-name="question.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/question.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
+            <state relative-caret-position="-1512">
               <caret line="6" column="10" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="10" />
             </state>
           </provider>
@@ -89,8 +89,8 @@
       <file leaf-file-name="arbitration.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/arbitration.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="42" column="49" lean-forward="true" selection-start-line="42" selection-start-column="49" selection-end-line="42" selection-end-column="49" />
+            <state relative-caret-position="338">
+              <caret line="45" column="38" lean-forward="true" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -314,12 +314,12 @@
       <workItem from="1528349819670" duration="1032000" />
       <workItem from="1528536994467" duration="26850000" />
       <workItem from="1528605395362" duration="968000" />
-      <workItem from="1528623424960" duration="2450000" />
+      <workItem from="1528623424960" duration="2982000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="253923000" />
+    <option name="totallyTimeSpent" value="254455000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -646,22 +646,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/arbitration.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="42" column="49" lean-forward="true" selection-start-line="42" selection-start-column="49" selection-end-line="42" selection-end-column="49" />
+        <state relative-caret-position="338">
+          <caret line="45" column="38" lean-forward="true" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/question.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
+        <state relative-caret-position="-1512">
           <caret line="6" column="10" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/photo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1739">
-          <caret line="84" column="37" lean-forward="true" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
+        <state relative-caret-position="-84">
+          <caret line="69" column="39" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
         </state>
       </provider>
     </entry>
