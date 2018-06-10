@@ -38,19 +38,20 @@ var arbitratedQuestion = async function (res, arbitration) {
             async function (results0, callback) {
                 if (results0.length==0){
                     callback(null);
+                } else {
+                    var sql = {};
+                    sql.sql = 'update question set active=2 where endtime<? and active=1 and id in (';
+                    sql.sqlData = [arbitration.ttime];
+                    for (var i=0; i<results0.length; i++) {
+                        sql.sql+='?,';
+                        sql.sqlData.push(results0[i].id);
+                    }
+                    sql.sql=sql.sql.substring(0, sql.sql.length-1)+')';
+                    console.log(sql);
+                    db.connection.query(sql.sql, sql.sqlData, async function(err, results) {
+                        callback(err);
+                    });
                 }
-                var sql = {};
-                sql.sql = 'update question set active=2 where endtime<? and active=1 and id in (';
-                sql.sqlData = [arbitration.ttime];
-                for (var i=0; i<results0.length; i++) {
-                    sql.sql+='?,';
-                    sql.sqlData.push(results0[i].id);
-                }
-                sql.sql=sql.sql.substring(0, sql.sql.length-1)+')';
-                console.log(sql);
-                db.connection.query(sql.sql, sql.sqlData, async function(err, results) {
-                    callback(err);
-                });
             },
             async function (callback) {
                 var queryq = {
