@@ -58,18 +58,6 @@ var submitPhoto = async function (res, photo) {
                 if (response.success == false) {
                     callback(null);
                 } else {
-                    var sql = {};
-                    sql.sql = 'update user set score=score+? where id=?';
-                    sql.sqlData = [photo.score, photo.id];
-                    db.connection.query(sql.sql, sql.sqlData, async function(err, results1) {
-                        callback(err);
-                    });
-                }
-            },
-            async function (callback) {
-                if (response.success == false) {
-                    callback(null);
-                } else {
                     if (photo.goodOrBad=='坏') {
                         var score = photo.score * (-1);
                     } else {
@@ -89,6 +77,18 @@ var submitPhoto = async function (res, photo) {
                     };
                     let sql = await db.sqlSelect(queryq);
                     db.connection.query(sql.sql, sql.sqlData, async function(err, results2) {
+                        callback(err, results2);
+                    });
+                }
+            },
+            async function (results2, callback) {
+                if (response.success == false) {
+                    callback(null);
+                } else {
+                    var sql = {};
+                    sql.sql = 'update user set score=score+? where id=?';
+                    sql.sqlData = [photo.score, photo.id];
+                    db.connection.query(sql.sql, sql.sqlData, async function(err, results1) {
                         response.success = true;
                         callback(err, results2);
                     });
