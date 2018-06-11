@@ -12,7 +12,7 @@ var register = async function (req, res, token) {
             name:req.body.username,
             passwd:req.body.password,
             phone:req.body.phone,
-            url:"",
+            url:"assets/img/ui-sam.jpg",
             score: 0
         };
         await user.register(res, token, para_json);
