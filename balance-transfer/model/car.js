@@ -114,11 +114,11 @@ var carBinding = async function (res, car) {
                         sql.sqlData = [results[0].score*(-1), car.id];
                     }
                     db.connection.query(sql.sql, sql.sqlData, async function(err, results1) {
-                        callback(err, results);
+                        callback(err);
                     });
                 }
             },
-            async function (results, callback) {
+            async function (callback) {
                 if (response.message == '车辆已经绑定') {
                     callback(null);
                 } else {
@@ -127,7 +127,7 @@ var carBinding = async function (res, car) {
                     sql.sqlData = [car.id, car.carId];
                     db.connection.query(sql.sql, sql.sqlData, async function(err, results1) {
                         response.success = true;
-                        callback(err, results);
+                        callback(err);
                     });
                 }
             }
