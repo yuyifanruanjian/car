@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="82c87f7e-cb2b-4cde-9707-677ca6668819" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/../balance-transfer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../balance-transfer/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../balance-transfer/controller/user-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/controller/user-controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../balance-transfer/model/car.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/model/car.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Theme/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Theme/mybook.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/mybook.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,7 +38,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="register.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Theme/register.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="28">
@@ -78,7 +74,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Theme/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="506">
@@ -305,12 +301,12 @@
       <workItem from="1528605280387" duration="749000" />
       <workItem from="1528621221786" duration="14972000" />
       <workItem from="1528732607791" duration="711000" />
-      <workItem from="1528781677738" duration="6029000" />
+      <workItem from="1528781677738" duration="6493000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="238908000" />
+    <option name="totallyTimeSpent" value="239372000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -553,13 +549,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Theme/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="109" selection-start-line="109" selection-end-line="109" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Theme/imglist.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="392">
@@ -614,6 +603,13 @@
             <element signature="n#div#0;n#section#0;n#section#0;n#section#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Theme/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="109" selection-start-line="109" selection-end-line="109" />
         </state>
       </provider>
     </entry>

@@ -92,7 +92,7 @@ var carBinding = async function (res, car) {
                     wants:'userId, score',
                     table:'car',
                     conditions:{
-                        photoUrl:[car.carId]
+                        carId:[car.carId]
                     }
                 };
                 let sql = await db.sqlSelect(queryq);
