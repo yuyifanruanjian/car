@@ -550,8 +550,17 @@
                                 } else if (li[i].Value.eventType=="7") {
                                     var s = li[i].Value.event.split('+');
                                     var d = li[i].Value.newScore-li[i].Value.oldScore;
-                                    message = ' 悬赏分回退 加' + d + '分 ' + s[2];
+                                    message = ' 积分回退 加' + d + '分 ' + s[2];
                                     event = s[1];
+                                } else if (li[i].Value.eventType=="8") {
+                                    var s = li[i].Value.event.split('+');
+                                    var d = li[i].Value.newScore-li[i].Value.oldScore;
+                                    if (d > 0) {
+                                        message = ' 车辆绑定 加' + d + '分 ' + s[1];
+                                    } else {
+                                        message = ' 车辆绑定 减' + d + '分 ' + s[1];
+                                    }
+                                    event = s[0];
                                 }
                                 $('#messageDetailList').append('<div class="desc">\n' +
                                     '                    <div class="thumb">\n' +
@@ -574,6 +583,34 @@
 
         $('#submitCarId1').click(function () {
             goToCar($('#carId1').val());
+        });
+
+        $('#submitCarId2').click(function () {
+            var host = "47.96.16.251";
+            var port = "4000";
+
+            var req = GetRequest();
+            var token = req['token'];
+            var id = req['id'];
+            var carId = $('#carId2').val();
+            $.ajax({
+                type: "post",
+                url: "http://"+host+":"+port+"/carBinding",
+                dataType: "json",
+                data:{id: id, carId: carId},
+                beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
+                success: function(data){
+                    if(data){
+                        if(data.message == "绑定成功"){
+                            alert(1);
+                        } else {
+                            alert(data.message);
+                        }
+                    } else {
+                        alert("数据传输失败");
+                    }
+                }
+            });
         });
 
         var num = Math.round(Math.random()*90+60);

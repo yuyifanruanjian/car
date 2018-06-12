@@ -3,12 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="82c87f7e-cb2b-4cde-9707-677ca6668819" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/../balance-transfer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../balance-transfer/model/question.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/model/question.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Theme/imglist.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/imglist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../balance-transfer/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../balance-transfer/controller/user-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/controller/user-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../balance-transfer/model/car.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/model/car.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theme/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Theme/mybook.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/mybook.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Theme/myquestion.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/myquestion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Theme/problem.html" beforeDir="false" afterPath="$PROJECT_DIR$/Theme/problem.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -70,7 +69,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="problem.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="problem.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Theme/problem.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-10052">
@@ -79,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Theme/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
-              <caret line="413" column="58" selection-start-line="413" selection-start-column="58" selection-end-line="413" selection-end-column="58" />
+            <state relative-caret-position="506">
+              <caret line="606" column="48" selection-start-line="606" selection-start-column="48" selection-end-line="606" selection-end-column="48" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#aside#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#div#0;n#section#0;n#section#0;n#section#0;n#body#0;n#html#0;n#!!top" />
@@ -96,8 +95,8 @@
       <file leaf-file-name="mybook.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Theme/mybook.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="338" column="51" selection-start-line="338" selection-start-column="51" selection-end-line="338" selection-end-column="51" />
+            <state relative-caret-position="-1930">
+              <caret line="166" column="47" selection-start-line="166" selection-start-column="32" selection-end-line="166" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -191,16 +190,16 @@
         <option value="$PROJECT_DIR$/Theme/assets/js/route.js" />
         <option value="$PROJECT_DIR$/Theme/submit_img.html" />
         <option value="$PROJECT_DIR$/Theme/car.html" />
-        <option value="$PROJECT_DIR$/Theme/index.html" />
         <option value="$PROJECT_DIR$/Theme/arbitrationlist.html" />
         <option value="$PROJECT_DIR$/Theme/myarbitration.html" />
         <option value="$PROJECT_DIR$/Theme/problemlist.html" />
         <option value="$PROJECT_DIR$/Theme/booklist.html" />
         <option value="$PROJECT_DIR$/Theme/imglist.html" />
-        <option value="$PROJECT_DIR$/Theme/mybook.html" />
         <option value="$PROJECT_DIR$/Theme/submit_arbitration.html" />
         <option value="$PROJECT_DIR$/Theme/myquestion.html" />
         <option value="$PROJECT_DIR$/Theme/problem.html" />
+        <option value="$PROJECT_DIR$/Theme/mybook.html" />
+        <option value="$PROJECT_DIR$/Theme/index.html" />
       </list>
     </option>
   </component>
@@ -306,12 +305,12 @@
       <workItem from="1528605280387" duration="749000" />
       <workItem from="1528621221786" duration="14972000" />
       <workItem from="1528732607791" duration="711000" />
-      <workItem from="1528781677738" duration="3672000" />
+      <workItem from="1528781677738" duration="6029000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="236551000" />
+    <option name="totallyTimeSpent" value="238908000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -547,18 +546,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Theme/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="413" column="58" selection-start-line="413" selection-start-column="58" selection-end-line="413" selection-end-column="58" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#aside#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#section#0;n#section#0;n#section#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Theme/problemlist.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3220">
@@ -577,13 +564,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="392">
           <caret line="167" column="54" selection-start-line="167" selection-start-column="54" selection-end-line="167" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Theme/mybook.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="338" column="51" selection-start-line="338" selection-start-column="51" selection-end-line="338" selection-end-column="51" />
         </state>
       </provider>
     </entry>
@@ -615,6 +595,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-10052">
           <caret line="246" column="22" lean-forward="true" selection-start-line="246" selection-start-column="22" selection-end-line="246" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Theme/mybook.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1930">
+          <caret line="166" column="47" selection-start-line="166" selection-start-column="32" selection-end-line="166" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Theme/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="606" column="48" selection-start-line="606" selection-start-column="48" selection-end-line="606" selection-end-column="48" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#aside#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#section#0;n#section#0;n#section#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

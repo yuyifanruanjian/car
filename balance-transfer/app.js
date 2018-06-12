@@ -429,6 +429,13 @@ app.post('/carRegister', async function(req, res) {
     await userController.carRegister(req, res);
 });
 
+//CarBinding
+app.post('/carBinding', async function(req, res) {
+    logger.debug('==================== Car Binding ==================');
+    console.log(req.body);
+    await userController.carBinding(req, res);
+});
+
 //Login
 app.post('/login', async function(req, res) {
     logger.debug('==================== Login ==================');

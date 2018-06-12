@@ -35,6 +35,19 @@ var carRegister = async function (req, res) {
     }
 };
 
+var carBinding = async function (req, res) {
+    try {
+        var para_json = {
+            id:req.body.id,
+            carId: req.body.carId,
+        };
+        await car.carBinding(res, para_json);
+    } catch(error) {
+        logger.error('Failed to get registered user: %s with error: %s', this.body.id, error.toString());
+        return 'failed '+error.toString();
+    }
+};
+
 var login = async function (req, res, token) {
     try {
         var para_json = {
@@ -194,6 +207,7 @@ var carMessage = async function (req, res) {
 
 exports.register = register;
 exports.carRegister = carRegister;
+exports.carBinding = carBinding;
 exports.login = login;
 exports.userInfo = userInfo;
 exports.minePhoto = minePhoto;
