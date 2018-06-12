@@ -106,6 +106,7 @@ var carBinding = async function (res, car) {
                     callback(null);
                 } else {
                     var sql = {};
+                    car.score = results[0].score;
                     if (results[0].score >= 0) {
                         sql.sql = 'update user set score=score+? where id=?';
                         sql.sqlData = [results[0].score, car.id];
@@ -131,7 +132,7 @@ var carBinding = async function (res, car) {
                     });
                 }
             }
-        ], async function (err, results) {
+        ], async function (err) {
             if(err) {
                 logger.error(err);
             } else {
@@ -170,7 +171,7 @@ var carBinding = async function (res, car) {
                         var second = ttime.getSeconds();
                     }
                     var stime = ''+year+month+day+hour+minute+second;
-                    await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [car.id.toString(), results[0].score.toString(), "8", car.carId+'+'+stime], "Jim", "Org1");
+                    await invoke.invokeChaincode(["peer0.org1.example.com","peer1.org1.example.com"], "mychannel", "mycc" , "ModifyUserScore", [car.id.toString(), car.score.toString(), "8", car.carId+'+'+stime], "Jim", "Org1");
                 }
             }
             res.json(response);

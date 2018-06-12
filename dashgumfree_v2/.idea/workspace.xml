@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="82c87f7e-cb2b-4cde-9707-677ca6668819" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/../balance-transfer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../balance-transfer/model/car.js" beforeDir="false" afterPath="$PROJECT_DIR$/../balance-transfer/model/car.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -300,12 +301,12 @@
       <workItem from="1528605280387" duration="749000" />
       <workItem from="1528621221786" duration="14972000" />
       <workItem from="1528732607791" duration="711000" />
-      <workItem from="1528781677738" duration="6988000" />
+      <workItem from="1528781677738" duration="7197000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="239867000" />
+    <option name="totallyTimeSpent" value="240076000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
