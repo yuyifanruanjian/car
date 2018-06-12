@@ -318,10 +318,10 @@
                                         if(data.message == "获取成功"){
                                             for (var i = 0; i < data.payload.length; i++) {
                                                 if (i % 3 == 0){
-                                                    $('#mineBook').append("<div class=\"row\" id=\"mineBook"+parseInt(i/3).toString()+"\">\n</div>");
+                                                    $('#boughtBook').append("<div class=\"row\" id=\"boughtBook"+parseInt(i/3).toString()+"\">\n</div>");
                                                 }
                                                 tt = new Date(new Date(data.payload[i].ttime).getTime());
-                                                $('#mineBook'+parseInt(i/3).toString()).append("<div class=\"col-md-4 mb book\" id=\""+data.payload[i].id+"\">\n" +
+                                                $('#boughtBook'+parseInt(i/3).toString()).append("<div class=\"col-md-4 mb book\" id=\""+data.payload[i].id+"\">\n" +
                                                     "<div class=\"white-panel pn\">\n" +
                                                     "<div class=\"white-header\">\n" +
                                                     "<h5>"+data.payload[i].uname+"</h5>\n" +
@@ -340,7 +340,7 @@
                                                     "</div>\n" +
                                                     "</div>");
                                             }
-                                            $("#mineBook").on('click','.book',function(){
+                                            $("#boughtBook").on('click','.book',function(){
                                                 var bookId = $(this).attr('id');
                                             });
                                         }else{

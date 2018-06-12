@@ -354,12 +354,14 @@
                         var stime = startt.getFullYear()+"-"+(startt.getMonth()+1).toString()+"-"+startt.getDate()+" "+startt.getHours()+":"+startt.getMinutes()+":"+startt.getSeconds()+"~"+endt.getFullYear()+"-"+(endt.getMonth()+1).toString()+"-"+endt.getDate()+" "+endt.getHours()+":"+endt.getMinutes()+":"+endt.getSeconds()
                         $('#time').val(stime);
                         var active = data.payload.active;
-                        if (active==2) {
-                            $('#status').val('问题截止');
-                        } else if (active==0) {
+                        if (active==0) {
                             $('#status').val('问题结束');
                         } else {
-                            $('#status').val('问题待解决');
+                            if (endt<ttime) {
+                                $('#status').val('问题截止');
+                            } else {
+                                $('#status').val('问题待解决');
+                            }
                         }
                     }else{
                         alert(data.message);
@@ -528,91 +530,104 @@
     });
 
     $("#submitAnswer").click(function () {
-        var rid = $("#replyContent").attr('rid');
-        var pid = $("#replyContent").attr('pid');
-        var content = $("#replyContent").val();
-        var host = "47.96.16.251";
-        var port = "4000";
+        if ($('#status').val()=='问题待解决') {
 
-        var req = GetRequest();
-        var token = req['token'];
-        var id = req['id'];
-        var questionId = req['pid'];
-        var ttime = new Date();
-        var year = ttime.getFullYear();
-        if (ttime.getMonth()+1 < 10) {
-            var month = '0'+(ttime.getMonth()+1).toString();
-        } else {
-            var month = (ttime.getMonth()+1).toString();
-        }
-        if (ttime.getDate() < 10) {
-            var day = '0'+ttime.getDate();
-        } else {
-            var day = ttime.getDate();
-        }
-        if (ttime.getHours() < 10) {
-            var hour = '0'+ttime.getHours();
-        } else {
-            var hour = ttime.getHours();
-        }
-        if (ttime.getMinutes() < 10) {
-            var minute = '0'+ttime.getMinutes();
-        } else {
-            var minute = ttime.getMinutes();
-        }
-        if (ttime.getSeconds() < 10) {
-            var second = '0'+ttime.getSeconds();
-        } else {
-            var second = ttime.getSeconds();
-        }
-        var stime = ''+year+month+day+hour+minute+second;
-        $.ajax({
-            type: "post",
-            url: "http://"+host+":"+port+"/answer",
-            dataType: "json",
-            data:{ id: id, questionId: questionId, rid: rid, pid: pid, content: content, ttime:stime},
-            beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
-            success: function(data){
-                if(data){
-                    if(data.message == "回复成功"){
-                        goToProblem(questionId);
-                    } else {
-                        alert(data.message);
-                    }
-                } else {
-                    alert("数据传输失败");
-                }
+            var rid = $("#replyContent").attr('rid');
+            var pid = $("#replyContent").attr('pid');
+            var content = $("#replyContent").val();
+            var host = "47.96.16.251";
+            var port = "4000";
+
+            var req = GetRequest();
+            var token = req['token'];
+            var id = req['id'];
+            var questionId = req['pid'];
+            var ttime = new Date();
+            var year = ttime.getFullYear();
+            if (ttime.getMonth() + 1 < 10) {
+                var month = '0' + (ttime.getMonth() + 1).toString();
+            } else {
+                var month = (ttime.getMonth() + 1).toString();
             }
-        });
-
+            if (ttime.getDate() < 10) {
+                var day = '0' + ttime.getDate();
+            } else {
+                var day = ttime.getDate();
+            }
+            if (ttime.getHours() < 10) {
+                var hour = '0' + ttime.getHours();
+            } else {
+                var hour = ttime.getHours();
+            }
+            if (ttime.getMinutes() < 10) {
+                var minute = '0' + ttime.getMinutes();
+            } else {
+                var minute = ttime.getMinutes();
+            }
+            if (ttime.getSeconds() < 10) {
+                var second = '0' + ttime.getSeconds();
+            } else {
+                var second = ttime.getSeconds();
+            }
+            var stime = '' + year + month + day + hour + minute + second;
+            $.ajax({
+                type: "post",
+                url: "http://" + host + ":" + port + "/answer",
+                dataType: "json",
+                data: {id: id, questionId: questionId, rid: rid, pid: pid, content: content, ttime: stime},
+                beforeSend: function (request) {
+                    request.setRequestHeader('Authorization', 'Bearer ' + token);
+                },
+                success: function (data) {
+                    if (data) {
+                        if (data.message == "回复成功") {
+                            goToProblem(questionId);
+                        } else {
+                            alert(data.message);
+                        }
+                    } else {
+                        alert("数据传输失败");
+                    }
+                }
+            });
+        } else {
+            alert($('#status').val());
+        }
     });
 
     function bestAnswer(answerId, userId) {
-        var host = "47.96.16.251";
-        var port = "4000";
+        if ($('#status').val()=='问题待解决') {
 
-        var req = GetRequest();
-        var token = req['token'];
-        var id = req['id'];
-        var questionId = req['pid'];
-        $.ajax({
-            type: "post",
-            url: "http://"+host+":"+port+"/bestAnswer",
-            dataType: "json",
-            data:{ id: userId, questionId: questionId, answerId: answerId, charId: id},
-            beforeSend: function(request) { request.setRequestHeader('Authorization','Bearer ' + token );},
-            success: function(data){
-                if(data){
-                    if(data.message == "选取成功"){
-                        alert(1);
+            var host = "47.96.16.251";
+            var port = "4000";
+
+            var req = GetRequest();
+            var token = req['token'];
+            var id = req['id'];
+            var questionId = req['pid'];
+            $.ajax({
+                type: "post",
+                url: "http://" + host + ":" + port + "/bestAnswer",
+                dataType: "json",
+                data: {id: userId, questionId: questionId, answerId: answerId, charId: id},
+                beforeSend: function (request) {
+                    request.setRequestHeader('Authorization', 'Bearer ' + token);
+                },
+                success: function (data) {
+                    if (data) {
+                        if (data.message == "选取成功") {
+                            alert(1);
+                        } else {
+                            alert(data.message);
+                        }
                     } else {
-                        alert(data.message);
+                        alert("数据传输失败");
                     }
-                } else {
-                    alert("数据传输失败");
                 }
-            }
-        });
+            });
+        } else {
+            alert($('#status').val());
+        }
     }
 
     $(function () {

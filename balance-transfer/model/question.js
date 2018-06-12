@@ -144,14 +144,14 @@ var questionInfo = async function (res, question) {
             message: '获取失败'
         };
         async.waterfall([
-            async function (callback) {
-                var sql = {};
-                sql.sql = 'update question set active=2 where id=? and endtime<=? and active=1';
-                sql.sqlData = [question.questionId, question.ttime];
-                db.connection.query(sql.sql, sql.sqlData, async function(err, results) {
-                    callback(err);
-                });
-            },
+            // async function (callback) {
+            //     var sql = {};
+            //     sql.sql = 'update question set active=2 where id=? and endtime<=? and active=1';
+            //     sql.sqlData = [question.questionId, question.ttime];
+            //     db.connection.query(sql.sql, sql.sqlData, async function(err, results) {
+            //         callback(err);
+            //     });
+            // },
             async function (callback) {
                 var queryq = {
                     wants:'question.content, question.score, question.starttime, question.endtime, question.active, user.name',
